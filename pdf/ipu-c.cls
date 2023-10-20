@@ -61,7 +61,7 @@
 % Changes minted line number size
 \renewcommand{\theFancyVerbLine}{\parbox{10pt}{\centering\footnotesize\arabic{FancyVerbLine}}}
 
-\newtcblisting{codebox}[2]{
+\newtcblisting{code}[2]{
     listing only,
     listing engine=minted,
     minted language=#2,
@@ -78,7 +78,6 @@
         linenos,
         autogobble,
         breaklines,
-        escapeinside=||,
         xleftmargin=10pt,
     },
     overlay={%
@@ -87,4 +86,4 @@
         \end{tcbclipinterior}
     }}
 
-\BeforeBeginEnvironment{codebox}{\vspace*{-18pt}}
+\BeforeBeginEnvironment{code}{\vspace*{-18pt}}
