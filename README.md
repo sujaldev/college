@@ -1,3 +1,3 @@
-# C Practical File
+# College
 
-Repository for my C practical file, including utilities for publishing on website and generating a PDF document.
+A repository for college related stuff and the tools to manage them.
