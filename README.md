@@ -4,7 +4,7 @@ A repository for college related stuff and the tools to manage them.
 
 ## C Programming Practical File
 
-<img align=right alt="c practical preview" width=450px src="https://github.com/sujaldev/college/assets/75830554/d57be35a-a7a1-44a5-8f86-8c954e21cba4">
+<img align=right alt="c practical preview" width=300px src="https://github.com/sujaldev/college/assets/75830554/d57be35a-a7a1-44a5-8f86-8c954e21cba4">
 
 The practical file is automatically generated from the programs organized in the `src/c-practical` directory, $\LaTeX$
 is used to typeset the document with a custom document class `tools/pdf/template/ipu-c.cls`. The generated PDF will be
