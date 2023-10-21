@@ -16,11 +16,17 @@
 
 
 \renewcommand{\@author}{Sujal Singh}
-\newcommand{\@rollno}{999999999999}
+\newcommand{\@rollno}{XXXXXXXXXXXX}
 \newcommand{\@branch}{Industrial Internet of Things -- B1}
 \renewcommand{\author}[1]{\renewcommand{\@author}{#1}}
 \newcommand{\rollno}[1]{\renewcommand{\@rollno}{#1}}
 \newcommand{\branch}[1]{\renewcommand{\@branch}{#1}}
+
+% Fetches the roll number value from the environment to keep my roll number private.
+% (Shamlessly copied from https://tex.stackexchange.com/a/547742/306289)
+\ExplSyntaxOn
+\sys_get_shell:nnN{ kpsewhich ~ --var-value ~ ROLLNO | ~ sed ~ s/^\$/XXXXXXXXXXXX/ }{} \@rollno
+\ExplSyntaxOff
 
 \newcounter{assignments}
 \setcounter{assignments}{1}
