@@ -82,7 +82,7 @@
     title=\textbf{#1:},
     minted options = {
         linenos,
-        autogobble,
+        stripall,
         breaklines,
         xleftmargin=10pt,
     },
