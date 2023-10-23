@@ -1,0 +1,48 @@
+%! Author = Sujal Singh
+%! Date = 10/23/23
+
+% Preamble
+\documentclass[11pt,a4paper,oneside]{scrarticle}
+
+% Packages
+\usepackage{mathptmx}
+\usepackage{tabularray}
+\usepackage{graphicx}
+\usepackage{sectsty}
+\usepackage{lipsum}
+
+\sectionfont{\centering}
+
+\renewcommand*{\maketitle}{
+    \pagenumbering{gobble}
+    \begin{center}
+        \vspace*{8em}
+        \includegraphics[width=200pt]{../../tools/pdf/template/logo} \\[40pt]
+        \textbf{\Huge LLB Assignment} \\[40pt]
+        \begin{table}[htb]
+            \label{tab:name-slip}
+            \begin{tblr}{rows={30pt},colspec={|X|X[3]|},hlines}
+                \textbf{Course}            & Industrial Internet of Things \\
+                \textbf{Batch}             & 1                             \\
+                \textbf{Name}              & Sujal Singh                   \\
+                \textbf{Enrollment Number} & XXXXXXXXXXXX                  \\
+            \end{tblr}
+        \end{table}
+    \end{center}
+    \newpage
+    \pagenumbering{arabic}
+}
+
+% Document
+\begin{document}
+    \maketitle
+
+    \begin{center}
+        \textbf{\LARGE Violations of Freedom of Speech by the Indian Government.} \\[10pt]
+    \end{center}
+    \begin{flushright}
+        \textit{--- Sujal Singh} \\[20pt]
+    \end{flushright}
+
+    \section*{Abstract}\label{sec:abstract}
+\end{document}
