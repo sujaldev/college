@@ -9,15 +9,17 @@
 \usepackage{tabularray}
 \usepackage{graphicx}
 \usepackage{sectsty}
-
-\sectionfont{\centering}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{romannum}
+\usepackage{hyperref}
 
 \renewcommand*{\maketitle}{
     \pagenumbering{gobble}
     \begin{center}
         \vspace*{8em}
         \includegraphics[width=200pt]{../../tools/pdf/template/logo} \\[40pt]
-        \textbf{\Huge LLB Assignment} \\[40pt]
+        \textbf{\Huge Law Assignment} \\[40pt]
         \begin{table}[htb]
             \label{tab:name-slip}
             \begin{tblr}{rows={30pt},colspec={|X|X[3]|},hlines}
@@ -32,12 +34,15 @@
     \pagenumbering{arabic}
 }
 
+\linespread{1.5}
+\titleformat{\section}{\Large\bfseries\centering}{\thesection.}{0.5em}{}
+
 % Document
 \begin{document}
     \maketitle
 
     \begin{center}
-        \textbf{\LARGE Violations of Freedom of Speech and Expression in the Digital World by the Indian Government.}
+        \textbf{\LARGE The Indian Government's Stance on Fundamental Rights in the Digital World.}
         \\[10pt]
     \end{center}
     \begin{flushright}
@@ -50,9 +55,10 @@
     \section*{Abstract}\label{sec:abstract}
     The Internet is one of mankind's greatest achievements and an open Internet, free of censorship and control by any
     authority, is crucial to avoid a dystopian future, but ever since it's inception, government authorities have
-    employed various tactics to censor the information published via the World Wide Web.\ This report details various
-    acts by the Indian government supporting censorship on the Internet and using it as a tool for mass-surveillance,
-    such acts go against constitutional values as envisioned by the authors of the Indian Constitution, and people in
-    relevant fields of studies should feel responsible to oppose the continued decline of the open Internet, due to the
-    government and massive corporations, and they should push for technical solutions that uphold constitutional values.
+    employed various tactics to censor the information published via the World Wide Web.\ This report details the
+    state of fundamental rights as they exist in the digital landscape of India and how the Indian government has often
+    violated these rights to censor the Internet and use it as a tool for mass-surveillance.\ Such acts go against
+    constitutional values as envisioned by the authors of the Indian Constitution, and people in relevant fields of
+    studies should feel responsible to oppose the continued decline of the open Internet, and they should push for
+    technical solutions that uphold constitutional values.
 \end{document}
