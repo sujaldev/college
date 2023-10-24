@@ -95,4 +95,30 @@
     These fundamental rights are guaranteed for every citizen of India, but in reality, the Indian government itself has
     a history of openly violating these rights.\ The following sections describe how the Indian government tackles
     various issues relating to maintaining fundament rights on the Internet.
+
+
+    %------------------------------------------------------------------------------------------------------------------%
+    %------------------------------------------------------------------------------------------------------------------%
+
+
+    \section{Censorship}\label{sec:censorship}
+
+    Internet Service Providers (ISPs) are often ordered by the Department of Telecommunications (DoT) to block a large
+    number of websites without any prior warnings or even without stating any reasons as to why a particular site was
+    added to the blocklist.\ This blocklist may include websites which distribute any content unfavourable to the
+    government, this violates the fundament right of speech and expression.\ The lack of transparency by the government
+    on what websites are added to the blocklist is a violation of right to information and goes against the spirit of
+    democracy, and often leads to legitimate websites being blocked.\ I have personally experienced two such instances;
+    the content delivery network of a major Microsoft owned source-code hosting website, GitHub, was blocked for months
+    by major ISPs such as Airtel, Jio, ACT Fibernet and many more.\ The website for the free and open source software
+    VLC was also blocked under orders from the Ministry of Electronics and Information Technology.\ Moreover, the
+    technical implementation of this blocklist inherently implies the violation of right to privacy as one can not block
+    a website without first knowing what websites a person is visiting in the first place.\ Till now, ISPs chose to
+    implement these orders by returning a bogus Internet address when a user requested the location of a blocked
+    website from their servers, this implementation could be easily bypassed by simply directing encrypted queries to a
+    server outside the jurisdiction of the Indian government, but now, large ISPs like Airtel and Jio have found more
+    successful methods to implement the blocklist, they exploit an inherent flaw in the encryption protocol used on the
+    web (TLS), wherein, the ISP can not know what contents on a website a user is accessing, but it can figure out what
+    website they're accessing as that information is sent out in plain-text during the initial handshake between the
+    server and the client.
 \end{document}
