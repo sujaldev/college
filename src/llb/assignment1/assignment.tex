@@ -12,7 +12,14 @@
 \usepackage{titlesec}
 \usepackage{setspace}
 \usepackage{romannum}
-\usepackage{hyperref}
+\usepackage[
+    pdftitle={The Indian Government's Stance on Fundamental Rights in the Digital World},
+    pdfsubject={The Indian Government's Stance on Fundamental Rights in the Digital World},
+    pdfauthor={Sujal Singh},
+    pdfdisplaydoctitle,
+    hidelinks,
+]{hyperref}
+\usepackage[shortlabels]{enumitem}
 
 \renewcommand*{\maketitle}{
     \pagenumbering{gobble}
@@ -27,6 +34,7 @@
                 \textbf{Batch}             & 1                             \\
                 \textbf{Name}              & Sujal Singh                   \\
                 \textbf{Enrollment Number} & XXXXXXXXXXXX                  \\
+                \textbf{Roll Number}       & XX                            \\
             \end{tblr}
         \end{table}
     \end{center}
@@ -36,6 +44,8 @@
 
 \linespread{1.5}
 \titleformat{\section}{\Large\bfseries\centering}{\thesection.}{0.5em}{}
+
+\newcommand{\link}[1]{\href{#1}{\url{#1}}}
 
 % Document
 \begin{document}
@@ -121,4 +131,28 @@
     web (TLS), wherein, the ISP can not know what contents on a website a user is accessing, but it can figure out what
     website they're accessing as that information is sent out in plain-text during the initial handshake between the
     server and the client.
+
+
+    %------------------------------------------------------------------------------------------------------------------%
+    %------------------------------------------------------------------------------------------------------------------%
+
+
+    \section{Aadhar Card}\label{sec:aadhar-card}
+    Ever since the launch of the Aadhar Card by the Unique Identification Authority of India (UIDAI), it has attracted a
+    lot of criticism which has resulted in numerous Supreme Court rulings regarding Aadhar.\ The crux of the issue with
+    Aadhar is the right to privacy, or the lack thereof, and the implications of a central database uniquely identifying
+    every citizen.\ While the Supreme court has ruled that Aadhar cards shall not be made mandatory for any essential
+    services, in reality, most government tasks have made the alternate options highly inconvenient virtually rendering
+    Aadhar as a mandatory document.\ It's not unlikely that a large portion of the population, including government
+    officials, might not even be aware that Aadhar is not a mandatory document.
+    \\
+    Most computer security experts have expressed concerns that a central database like Aadhar is a major
+    security risk to its citizens, for it's not a question of if the database will suffer a breach but a question of
+    when.\ And indeed, these predictions have come true numerous times, exposing highly sensitive information of Indian
+    citizens to foreign attackers.\ The fact is that maintaining security on such a critical project would prove to be
+    particularly hard even for big tech companies, let alone the largely technically incompetent Indian government.
+    \\
+    Even disregarding whether the government can maintain security on these systems, Aadhar serves as the link between
+    disjoint datasets allowing the government to profile its citizens.\ This threat is particularly more prominent now
+    in the age of artificial intelligence.
 \end{document}
