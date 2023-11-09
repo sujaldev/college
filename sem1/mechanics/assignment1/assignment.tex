@@ -8,6 +8,7 @@
 % Packages
 \usepackage{amsmath}
 \usepackage{mathtools}
+\usepackage{bm}
 \usepackage[
     pdftitle={Engineering Mechanics Assignment 1},
     pdfsubject={Engineering Mechanics Assignment 1},
@@ -17,8 +18,9 @@
 ]{hyperref}
 \usepackage{tikz}
 \usepackage{wrapfig}
-\usepackage{bm}
 \usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{gensymb}
 
 \usetikzlibrary{angles,arrows.meta}
 \tikzset{>={Latex[scale=1.5,round]}}
@@ -35,17 +37,17 @@
     \question{Determine the resultant of two concurrent forces with the help of law of parallelogram forces.}
     \noindent Let $F_A$ and $F_B$ be two concurrent forces and $R$ be the resultant of the two forces:
 
-    \begin{wrapfigure}[1]{r}{0.5\textwidth}
+    \begin{wrapfigure}[0]{r}{0.5\textwidth}
         \centering
         %! suppress = Quote
         \begin{tikzpicture}[scale=0.6]
             % Forces
-            \draw [<-] (2,5) coordinate (C) -- (0,0) node[midway,left] {$F_A$};
-            \draw [->] (0,0) coordinate (B) -- (6,0) coordinate (A) node[midway, below] {$F_B$};
-            \draw [->,thick] (0,0) -- (8,5) coordinate (D) node[midway,above left] {$\mathbf{R}$};
+            \draw [<-,blue] (2,5) coordinate (C) -- (0,0) node[midway,left] {$F_A$};
+            \draw [->,blue] (0,0) coordinate (B) -- (6,0) coordinate (A) node[midway, below] {$F_B$};
+            \draw [->,red,thick] (0,0) -- (8,5) coordinate (D) node[midway,above left] {$\mathbf{R}$};
 
-            \draw pic [draw] {angle=A--B--C} node[above=6pt,right=12pt] {$\theta$};
-            \draw pic [draw,angle radius=30pt] {angle=A--B--D} node[above=10pt,right=27pt] {$\phi$};
+            \draw pic [draw,blue] {angle=A--B--C} node[blue,above=6pt,right=12pt] {$\theta$};
+            \draw pic [draw,red,angle radius=30pt] {angle=A--B--D} node[red,above=10pt,right=27pt] {$\phi$};
 
             \draw [dashed] (2,5) -- (8,5) -- (6,0) -- (8,0) -- (8,5);
             \draw [{Bar[scale=2]}-{Bar[scale=2]}] (6,-0.5) -- (8,-0.5) node[midway,below=5pt] {$F_A\cdot\cos\theta$};
@@ -75,5 +77,47 @@
         $\tan\phi = \frac{R_y}{R_x}$
         \\[10pt]
         $\boxed{\bm{\phi = \tan^{-1}\left(\frac{R_y}{R_x}\right)}}$
+    }\\[20pt]
+
+    %------------------------------------------------------------------------------------------------------------------%
+    %------------------------------------------------------------------------------------------------------------------%
+
+    \question{Find the magnitude of the two forces, such that if they act at right angles, their resultant is
+        $\sqrt{10}~\unit{\newton}$. But if they act at $60\degree$, their resultant is $\sqrt{13}~\unit{\newton}$.}
+
+    \begin{wrapfigure}[1]{l}{0.5\textwidth}
+        \begin{tikzpicture}[scale=0.6]
+            \draw [->,blue] (0,0) -- (5,0) node[midway,below] {$A$};
+            \draw [->,blue] (5,0) -- (5,5) node[midway,right] {$B$};
+            \draw [->,thick,red] (0,0) -- (5,5) node[midway,above left] {$\sqrt{10}~\unit{\newton}$};
+        \end{tikzpicture}
+        \\[20pt]
+        \begin{tikzpicture}[scale=0.6]
+            \draw [->,blue] (0,0) -- (5,0) coordinate (A) node[midway,below] {$A$};
+            \draw [->,blue] (0,0) coordinate (B) -- (2,5) coordinate (C) node[midway,left] {$B$};
+            \draw [->,thick,red] (0,0) -- (7,5) coordinate (D) node[midway,above,sloped] {$\sqrt{13}~\unit{\newton}$};
+
+            \draw pic [draw,blue] {angle=A--B--C} node[blue,above=8pt,right=15pt] {$60\degree$};
+            \draw [dashed] (2,5) -- (7,5) -- (5,0);
+        \end{tikzpicture}
+    \end{wrapfigure}\vspace*{-20pt}
+
+    \begin{align}
+        A^2 + B^2 &= \left(\sqrt{10}\right)^2 = 10\\
+        A^2 + B^2 + 2AB\cdot\cos{60\degree} &= \left(\sqrt{13}\right)^2 = 13\nonumber\\
+        A^2 + B^2 + AB &= 13
+    \end{align}
+    \hspace*{0.3\textwidth}From (1) \& (2),\vspace*{-5pt}
+    \begin{align*}
+        AB &= 3\\
+        (A+B)^2 = A^2 + B^2 + 2AB &= (10) + (2\times{3}) = 16\\
+        A+B &= 4
+    \end{align*}
+    \hspace*{0.3\textwidth}Similarly,\vspace*{-5pt}
+    \begin{align*}
+        A-B &= 2
+    \end{align*}\vspace*{-20pt}
+    \parbox{\textwidth}{\centering
+        $\bm{\boxed{A = 3~\text{N}}\boxed{B = 1~\text{N}}}$
     }
 \end{document}
