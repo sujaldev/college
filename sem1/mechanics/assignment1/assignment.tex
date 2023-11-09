@@ -19,7 +19,6 @@
 \usepackage{tikz}
 \usepackage{wrapfig}
 \usepackage{amssymb}
-\usepackage{siunitx}
 \usepackage{gensymb}
 \usepackage[shortlabels]{enumitem}
 
@@ -84,19 +83,19 @@
     %------------------------------------------------------------------------------------------------------------------%
 
     \question{Find the magnitude of the two forces, such that if they act at right angles, their resultant is
-        $\sqrt{10}~\unit{\newton}$. But if they act at $60\degree$, their resultant is $\sqrt{13}~\unit{\newton}$.}
+        $\sqrt{10}$~N. But if they act at $60\degree$, their resultant is $\sqrt{13}$~N.}
 
     \begin{wrapfigure}[1]{l}{0.5\textwidth}
         \begin{tikzpicture}[scale=0.6]
             \draw [->,blue] (0,0) -- (5,0) node[midway,below] {$A$};
             \draw [->,blue] (5,0) -- (5,5) node[midway,right] {$B$};
-            \draw [->,thick,red] (0,0) -- (5,5) node[midway,above left] {$\sqrt{10}~\unit{\newton}$};
+            \draw [->,thick,red] (0,0) -- (5,5) node[midway,above left] {$\sqrt{10}$~N};
         \end{tikzpicture}
         \\[20pt]
         \begin{tikzpicture}[scale=0.6]
             \draw [->,blue] (0,0) -- (5,0) coordinate (A) node[midway,below] {$A$};
             \draw [->,blue] (0,0) coordinate (B) -- (2,5) coordinate (C) node[midway,left] {$B$};
-            \draw [->,thick,red] (0,0) -- (7,5) coordinate (D) node[midway,above,sloped] {$\sqrt{13}~\unit{\newton}$};
+            \draw [->,thick,red] (0,0) -- (7,5) coordinate (D) node[midway,above,sloped] {$\sqrt{13}$~N};
 
             \draw pic [draw,blue] {angle=A--B--C} node[blue,above=8pt,right=15pt] {$60\degree$};
             \draw [dashed] (2,5) -- (7,5) -- (5,0);
@@ -137,5 +136,39 @@
     connected with the body.\\
 
     \noindent\underline{Principle of superposition of forces} states that the combined effect of a force system acting
-    on a particle or a rigid body is the sum of the effects of the individual forces.
+    on a particle or a rigid body is the sum of the effects of the individual forces.\\
+
+    %------------------------------------------------------------------------------------------------------------------%
+    %------------------------------------------------------------------------------------------------------------------%
+
+    \question{A system of four forces acting at a point on a body is as shown in the figure:}\vspace*{-20pt}
+    \begin{center}
+        \begin{tikzpicture}
+            \draw [dashed,Stealth-Stealth] (-3,0) coordinate (X) -- (5,0) node[right] {$x$};
+            \draw [dashed,Stealth-Stealth] (0,-3) coordinate (Y) -- (0,4) node[above] {$y$};
+
+            \draw [->] (0,0) -- (4,2) node[above] {$200$~N};
+            \draw [->,scale=0.6] (0,0) -- (-3,4) node[above] {$120$~N};
+            \draw [->] (0,0) coordinate (B) -- ++(240:1.5) coordinate (A) node[below] {$50$~N};
+            \draw [->] (0,0) -- ++(310:3) coordinate (P) node[below] {$100$~N};
+
+            \draw (1.5,0.75) -- (3,0.75) node[midway,below] {$2$} -- (3,1.5) node[midway,right] {$1$};
+            \draw [scale=0.8] (-0.5,0.66) -- (-1.5,0.66) node[midway,below] {$3$} -- (-1.5,2) node[midway,left] {$4$};
+            \draw pic [draw] {angle=X--B--A} node[midway,below left=8pt] {$60\degree$};
+            \draw pic [draw] {angle=Y--B--P} node[midway,below=30pt,right] {$40\degree$};
+        \end{tikzpicture}
+    \end{center}
+    Let $R$ be the resultant force with $R_x$ being the horizontal component and $R_y$ being the vertical component,
+    \begin{align*}
+        R_x &= 200\cdot\cos{26.56\degree} + 100\cdot\sin{40\degree} -
+        (120\cdot\cos{53.13\degree} + 50\cdot\cos{60\degree})\\
+        &= \bm{146.17}~\textbf{N}\\
+        R_y &= 200\cdot\sin{26.56\degree} + 120\cdot\sin{53.13\degree} -
+        (50\cdot\sin{60\degree} + 100\cdot\cos{40\degree})\\
+        &= \bm{65.52}~\textbf{N}\\
+        R &= \sqrt{(R_x)^2 + (R_y)^2} = \sqrt{21365.66 + 4293.01}\\
+        \Aboxed{\bm{R} &= \bm{160.18}~\textbf{N}}\\
+        \theta{_R} &= \tan^{-1}\left(\frac{R_y}{R_x}\right) = \tan^{-1}\left(\frac{65.52}{146.17}\right)\\
+        \Aboxed{\bm{\theta{_R}} &= \bm{24.14\degree}}
+    \end{align*}
 \end{document}
