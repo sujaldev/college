@@ -12,7 +12,9 @@
 \RequirePackage[hmargin=0.5in,vmargin=0.8in]{geometry}
 \RequirePackage{xifthen}
 \RequirePackage{setspace}
+\RequirePackage{changepage}
 
+\pagestyle{empty}
 \onehalfspace
 
 \newcommand{\@exam}{}
@@ -67,16 +69,8 @@
 
 \newenvironment{qsection}{\@setqenvdefaults{Q}{\arabic}{qcounter}{.}}{}
 
-\newenvironment{subqsection}{\@setqenvdefaults{}{\alph}{subqcounter}{)}%
-    \begin{flushright}%
-        \vspace*{-1.4\abovedisplayskip}%
-        \begin{minipage}{0.96\textwidth}%
-        }{\end{minipage}
-    \end{flushright}\vspace*{-2\abovedisplayskip}~\\}
+\newenvironment{subqsection}{\@setqenvdefaults{}{\alph}{subqcounter}{)}\vspace*{-15pt}%
+    \begin{adjustwidth}{\parindent}{0pt}}{\end{adjustwidth}\vspace*{-15pt}}
 
-\newenvironment{subsubqsection}{\@setqenvdefaults{}{\roman}{subsubqcounter}{.}%
-    \begin{flushright}%
-        \vspace*{-1.4\abovedisplayskip}%
-        \begin{minipage}{0.96\textwidth}%
-        }{\end{minipage}
-    \end{flushright}\vspace*{-2\abovedisplayskip}~\\}
+\newenvironment{subsubqsection}{\@setqenvdefaults{}{\roman}{subsubqcounter}{.}\vspace*{-15pt}%
+    \begin{adjustwidth}{\parindent}{0pt}}{\end{adjustwidth}\vspace*{-15pt}}
