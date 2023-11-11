@@ -1,0 +1,25 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="true" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
+    <texify>
+      <compiler>PDFLATEX</compiler>
+      <compiler-path />
+      <sumatra-path />
+      <pdf-viewer>BUILT-IN-PDF-VIEWER</pdf-viewer>
+      <viewer-command />
+      <compiler-arguments />
+      <envs>
+        <env name="TEXMFHOME" value="$PROJECT_DIR$/latex-classes" />
+      </envs>
+      <main-file />
+      <output-path>{mainFileParent}/build</output-path>
+      <auxil-path>{projectDir}/auxil</auxil-path>
+      <compile-twice>false</compile-twice>
+      <output-format>PDF</output-format>
+      <latex-distribution>TEXLIVE</latex-distribution>
+      <has-been-run>false</has-been-run>
+      <bib-run-config>[]</bib-run-config>
+      <makeindex-run-config>[]</makeindex-run-config>
+    </texify>
+    <method v="2" />
+  </configuration>
+</component>
