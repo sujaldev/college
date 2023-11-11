@@ -12,8 +12,34 @@
 
 % Packages
 \usepackage{amsmath}
+\usepackage[american]{circuitikz}
+
+\ctikzset{voltage/american plus/.initial={}}
+\ctikzset{voltage/american minus/.initial={}}
 
 % Document
 \begin{document}
     \maketitle
+
+    \begin{qsection}
+        \question{}
+        \begin{subqsection}
+            \question[6]{Explain voltage and current divider rule with suitable example. Determine the current supplied
+            by each battery in the circuit shown in Fig.1.}
+            \begin{center}
+                %! suppress = EscapeUnderscore
+                \begin{circuitikz}
+                    % Loop 1
+                    \draw (0,0) to [battery1,l=$B_1$,v_=$20V$,invert] (0,4)
+                    to [R,l=$5\Omega$] (4,4)
+                    to [R,l=$3\Omega$] (4,2) to [battery1,l_=$B_2$,v=$5V$] (4,0) to (0,0);
+                    \draw [<-] (1.5,2) arc (-180:90:0.5);
+                    \node [] at (2,2) {$I_1$}
+
+                    % Loop 2
+                \end{circuitikz}\\
+                \caption{Fig.1}
+            \end{center}
+        \end{subqsection}
+    \end{qsection}
 \end{document}
