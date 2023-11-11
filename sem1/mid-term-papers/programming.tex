@@ -12,6 +12,10 @@
 
 % Packages
 \usepackage{amsmath}
+\usepackage{tabularx}
+\usepackage[outputdir=../../build]{minted}
+
+\usemintedstyle{bw}
 
 % Document
 \begin{document}
@@ -44,7 +48,76 @@
         %--------------------------------------------------------------------------------------------------------------%
         \question{}
         \begin{subqsection}
-            \question[$2.5\times{2} = 5$~Marks]{Predict output of following code}
+            \question[$2.5\times{2} = 5$~Marks]{Predict output of following code}\\
+            \begin{tabular}{|p{0.46\textwidth}|p{0.46\textwidth}|}
+                \hline
+                i. & ii. \\
+                \begin{minipage}{0.46\textwidth}
+                    \begin{minted}{c}
+#include<stdio.h>
+int main()
+{
+int x=20, y=35;
+x= y++ + x++;
+y=++y + ++x;
+printf("%d %d \n", x, y);
+return 0;
+}
+
+                    \end{minted}
+                \end{minipage}
+                & \begin{minipage}{0.46\textwidth}
+                      \begin{minted}{c}
+#include<stdio.h>
+int main()
+{
+int x=2, y=5;
+y=2*y+x;
+y=2*x+y;
+printf("%d \n", x);
+return 0;
+}
+
+                      \end{minted}
+                \end{minipage} \\
+                \hline
+            \end{tabular}
+            \newpage
+            %--------------------------------------------------------------------------------------------------------------%
+            \question[$2.5\times{2} = 5$~Marks]{Find the error in following code and correct the error}
+            \begin{subsubqsection}
+                \question{}\vspace*{-15pt}
+                \begin{minted}{c}
+#include <stdio.h>;
+int main()
+{
+int integer1, integer2, sum;           /*declaration*/
+printf("enter first integer\n")        /*prompt for first input*/
+scanf("%d", integer1);                 /read integer value into integer1*/
+printf("Enter second integer\n");      /*prompt for second input*/
+scanf("%d", &integer2);                /*read integer value into integer2*/
+sum = int1 + int2;                     /*add inputs and assign to sum*/
+printf("Sum is %d\n", sum);            /*print sum*/
+return 0;                              /*normal termination of program
+}
+                \end{minted}
+                %--------------------------------------------------------------------------------------------------------------%
+                \vspace*{20pt}
+                \question{}\vspace*{-15pt}
+                \begin{minted}{c}
+main( )
+{
+  int size ;
+  scanf ( "%d", &size );
+  int arr[size] ;
+  for ( i = 1 ; i <= size ; i++ )
+  {
+  scanf ( "%d", arr[i] ) ;
+  printf ( "%d", arr[i] ) ;
+  }
+}
+                \end{minted}
+            \end{subsubqsection}
         \end{subqsection}
     \end{qsection}
 \end{document}
