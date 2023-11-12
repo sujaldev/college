@@ -8,7 +8,7 @@
       <viewer-command />
       <compiler-arguments />
       <envs>
-        <env name="TEXMFHOME" value="$PROJECT_DIR$/latex-classes" />
+        <env name="TEXMFHOME" value="$PROJECT_DIR$/tools/texmfhome" />
       </envs>
       <main-file />
       <output-path>{mainFileParent}/build</output-path>
