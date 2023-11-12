@@ -40,7 +40,7 @@
     \pagenumbering{gobble}
     \begin{center}
         \vspace*{8em}
-        \includegraphics[width=200pt]{../../tools/pdf/template/logo} \\[40pt]
+        \includegraphics[width=200pt]{logo} \\[40pt]
         \textbf{\Huge \@title} \\[40pt]
         \begin{table}[htb]
             \label{tab:name-slip}

@@ -4,7 +4,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 %! suppress = PackageNameDoesNotMatchFileName
-\ProvidesPackage{ipu-papers}[Digital reconstruction of IPU examinations papers.]
+\ProvidesPackage{ipu-papers}[Digital reconstruction of IPU examination papers.]
 
 % Preamble
 \LoadClass[a4paper,oneside,11pt]{article}

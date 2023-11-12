@@ -11,7 +11,7 @@
 \RequirePackage{graphicx}
 \RequirePackage{tabularray}
 \RequirePackage[a4paper,left=1.5cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
-\RequirePackage[outputdir=../../../build]{minted}
+\RequirePackage[outputdir=./build]{minted}
 \RequirePackage[most,minted,listings]{tcolorbox}
 
 
