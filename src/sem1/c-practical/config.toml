@@ -1,0 +1,2 @@
+dirtype = "c-practical"
+ignore = ["CMakeLists.txt"]
