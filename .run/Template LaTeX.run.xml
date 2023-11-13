@@ -8,7 +8,7 @@
       <viewer-command />
       <compiler-arguments />
       <envs>
-        <env name="TEXMFHOME" value="$PROJECT_DIR$/tools/texmfhome" />
+        <env name="TEXMFHOME" value="$PROJECT_DIR$/utils/texmfhome" />
       </envs>
       <main-file />
       <output-path>{mainFileParent}/build</output-path>
