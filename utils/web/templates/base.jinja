@@ -5,7 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %}College Resources{% endblock %}</title>
+    <link rel="icon" href="{{ STATIC_PREFIX }}/images/favicon.svg" type="image/svg+xml">
+    <title>{% block title %}IPU Resources{% endblock %}</title>
     <style>
         * {
             box-sizing: border-box;
@@ -33,31 +34,47 @@
             line-height: 1.2;
         }
 
-        header, footer {
-            text-align: center;
+        header {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        header {
-            margin: 40px 0 10px 0;
+        #title-container {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+        }
+
+        header > img {
+            margin-right: 1em;
         }
 
         footer {
             margin-bottom: 40px;
+            text-align: center;
         }
 
         article {
             flex: 1;
-        }
-
-        .center {
-            text-align: center;
         }
     </style>
     {% block head %}
     {% endblock %}
 </head>
 <body>
-<header><h1>College Resources</h1></header>
+<header>
+    <a href="/" id="title-container">
+        <img src="{{ STATIC_PREFIX }}/images/favicon.png" alt="IPU Logo" height="40px">
+        <h1>IPU EDC</h1>
+    </a>
+    <a href="https://github.com/sujaldev/college">
+        <img src="{{ STATIC_PREFIX }}/images/github.svg" alt="GitHub Logo" height="25px">
+    </a>
+</header>
 <article>
     <p class="center">
         This website is open source, you can make contributions to it in
