@@ -63,6 +63,7 @@ class Directory:
     def build_path(self) -> Path:
         return (self.builder.build_root / self.src_path.relative_to(SRC_DIR)).resolve()
 
+    @minified
     def render_template(self):
         template = self.builder.jinja_env.get_template("listing.jinja")
         return template.render(files={
