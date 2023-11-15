@@ -12,11 +12,11 @@ class Builder:
             self,
             src_path: str | Path = SRC_DIR,
             build_root: str | Path = PROJECT_DIR / "build/www/",
-            minified: bool = True,
+            minify_output: bool = True,
     ):
         self.src_path = Path(src_path).resolve()
         self.build_root = Path(build_root).resolve()
-        self.minified = minified
+        self.minify_output = minify_output
 
         self.jinja_env = Environment(
             loader=FileSystemLoader((PROJECT_DIR / "utils/web/templates/").resolve()),

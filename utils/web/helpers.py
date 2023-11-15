@@ -31,7 +31,7 @@ def gitignored_listdir(path: str | Path) -> list[str]:
 def minified(renderer):
     @wraps(renderer)
     def minified_renderer(self, *args, **kwargs):
-        if not self.builder.minified:
+        if not self.builder.minify_output:
             return renderer(self, *args, **kwargs)
         return minify(renderer(self, *args, **kwargs), minify_css=True, minify_js=True)
 
