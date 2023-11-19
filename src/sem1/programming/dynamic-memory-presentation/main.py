@@ -15,6 +15,7 @@ class Main(Slide):
         self.intro()
         self.background()
         self.static_and_automatic_allocation()
+        self.dynamic_memory_allocation()
 
     def intro(self):
         # temporary setup to deal with the logo that I don't want to check into version control.
@@ -239,6 +240,146 @@ void main(){
         self.play(FadeOut(text))
 
         self.next_slide()
+
+    def dynamic_memory_allocation(self):
+        title = Tex(r"\textbf{Dynamic Memory Allocation}").move_to((3 * LEFT) + (3.5 * UP))
+        text_size = 30
+        text = Tex(
+            r"\begin{flushleft}"
+            r"It allows a program to dynamically request memory from the operating system at runtime. The standard "
+            r"library in C provides a few functions to be able to perform dynamic memory allocation. These are listed "
+            r"below along with suitable mnemonics."
+            r"\begin{itemize}"
+            r"\item \textbf{\textit{malloc()}} \hfill \parbox{160pt}{(memory allocate)}"
+            r"\item \textbf{\textit{calloc()}} \hfill \parbox{160pt}{(clear allocate)}"
+            r"\item \textbf{\textit{realloc()}} \hfill \parbox{160pt}{(re-allocate)}"
+            r"\item \textbf{\textit{free()}}"
+            r"\end{itemize}"
+            r"\end{flushleft}",
+            font_size=text_size
+        ).move_to((1.275 * LEFT) + UP)
+        self.play(Write(title), Write(text))
+
+        self.next_slide()
+
+        new_text = Tex(
+            r"\begin{flushleft}"
+            r"Allocates a specified number of contiguous bytes and returns a void pointer to the first byte."
+            r"\end{flushleft}",
+            font_size=text_size
+        ).move_to((1.275 * LEFT) + (2.75 * UP))
+
+        demo_code = (Code(code="int *ptr = (int*) malloc(2 * sizeof(int));", language="c", insert_line_no=False)
+                     .move_to(1.5 * UP))
+
+        ptr_box, ptr_label, ptr_val, ptr_addr, ptr_group = generate_memory_box("ptr", "0x2000", "0x1000")
+        heap_box = Rectangle(width=4, height=4).move_to((3 * RIGHT) + (1.5 * DOWN))
+        heap_label = Tex("Heap", font_size=text_size).move_to(heap_box.get_top() + (0.2 * UP))
+
+        allocated_address = Tex(r"\texttt{0x2000}", font_size=text_size).move_to(heap_box.get_top() + (0.4 * DOWN))
+        ptr_group.move_to(allocated_address.get_bottom() + (6 * LEFT) + (0.6 * DOWN))
+        arrow = Arrow(
+            start=ptr_label.get_right(), end=allocated_address.get_left(),
+            max_tip_length_to_length_ratio=0.05
+        )
+
+        block1 = Rectangle(width=2, height=1).move_to(allocated_address.get_bottom() + (0.8 * DOWN))
+        b1_text = Tex(r"10110101", font_size=text_size).move_to(block1.get_center())
+        block2 = Rectangle(width=2, height=1).move_to(block1.get_bottom() + (0.5 * DOWN))
+        b2_text = Tex(r"01101010", font_size=text_size).move_to(block2.get_center())
+
+        self.play(
+            Transform(title, Tex(r"\textbf{\textit{malloc()}}").move_to((5.5 * LEFT) + (3.5 * UP))),
+            Transform(text, new_text),
+        )
+        self.play(Write(VGroup(
+            demo_code, ptr_group, heap_box, heap_label, allocated_address
+        )))
+        self.play(Write(VGroup(
+            block1, b1_text,
+            block2, b2_text
+        )))
+        self.play(GrowArrow(arrow))
+
+        self.next_slide()
+
+        new_text = Tex(
+            r"\begin{flushleft}"
+            r"Similar to \texttt{malloc()} but ensures that the initialized values are zero."
+            r"\end{flushleft}",
+            font_size=text_size
+        ).move_to((1.8 * LEFT) + (2.75 * UP))
+
+        new_code = (Code(code="int *ptr = (int*) calloc(2, sizeof(int));", language="c", insert_line_no=False)
+                    .move_to(1.5 * UP))
+
+        new_b1 = Tex(r"00000000", font_size=text_size).move_to(block1.get_center())
+        new_b2 = Tex(r"00000000", font_size=text_size).move_to(block2.get_center())
+        self.play(
+            Transform(title, Tex(r"\textbf{\textit{calloc()}}").move_to((5.5 * LEFT) + (3.5 * UP))),
+            Transform(text, new_text),
+            Transform(demo_code, new_code),
+            Transform(b1_text, new_b1),
+            Transform(b2_text, new_b2),
+        )
+
+        self.next_slide()
+
+        new_text = Tex(
+            r"\begin{flushleft}"
+            r"Used to resize a memory area already created by \texttt{malloc()} or \texttt{calloc()}. If enough space "
+            r"isn't available, it will copy the existing data onto a new location where more space is available."
+            r"\end{flushleft}",
+            font_size=text_size
+        ).move_to((1.275 * LEFT) + (2.6 * UP))
+
+        new_code = Code(
+            code="int *new_ptr = (int*) realloc(ptr, sizeof(int) * 3);", language="c", insert_line_no=False
+        ).move_to(1.5 * UP)
+
+        block3 = Rectangle(width=2, height=1).move_to(block2.get_bottom() + (0.5 * DOWN))
+        b3_text = Tex(r"01101010", font_size=text_size).move_to(block3.get_center())
+        self.play(
+            Transform(title, Tex(r"\textbf{\textit{realloc()}}").move_to((5.48 * LEFT) + (3.5 * UP))),
+            Transform(text, new_text),
+            Transform(demo_code, new_code),
+            Transform(ptr_label, Text("new_ptr", font_size=18).move_to(ptr_box.get_top() + (0.2 * UP))),
+            Write(VGroup(block3, b3_text)),
+        )
+
+        self.next_slide()
+
+        new_text = Tex(
+            r"\begin{flushleft}"
+            r"Used to free up memory, as in to mark it available for use in further dynamic memory allocation calls."
+            r"\end{flushleft}",
+            font_size=text_size
+        ).move_to((1.275 * LEFT) + (2.6 * UP))
+
+        new_code = Code(code="free(ptr);", language="c", insert_line_no=False).move_to(1.5 * UP)
+
+        self.play(
+            Transform(title, Tex(r"\textbf{\textit{free()}}").move_to((5.75 * LEFT) + (3.5 * UP))),
+            Transform(text, new_text),
+            Transform(demo_code, new_code),
+            FadeOut(VGroup(
+                ptr_group, arrow, heap_label, heap_box, allocated_address,
+                block1, b1_text,
+                block2, b2_text,
+                block3, b3_text,
+            )),
+        )
+
+        self.next_slide()
+
+        self.play(FadeOut(VGroup(title, text, demo_code)))
+
+        self.play(Write(end := Tex(r"\textbf{\LARGE Thank you for listening!}")))
+
+        self.next_slide()
+
+        self.play(FadeOut(end))
+
 
 # noinspection DuplicatedCode
 def generate_memory_box(label: str, value: str, addr: str, position=None,
