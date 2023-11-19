@@ -1,3 +1,4 @@
+from typing import Tuple
 from pathlib import Path
 
 from memory_layout import MemoryLayout
@@ -13,6 +14,7 @@ class Main(Slide):
     def construct(self):
         self.intro()
         self.background()
+        self.static_and_automatic_allocation()
 
     def intro(self):
         # temporary setup to deal with the logo that I don't want to check into version control.
@@ -158,6 +160,99 @@ class Main(Slide):
         self.play(Unwrite(end_text))
 
         self.next_slide()
+
+    def static_and_automatic_allocation(self):
+        title = Tex(r"\textbf{Static Allocation}}").move_to((4.5 * LEFT) + (3.5 * UP))
+        text_size = 30
+        text = Tex(
+            r"\begin{flushleft}"
+            r"\textit{Static Allocation} is what happens when you declare a static or global variable. Each static or "
+            r"global variable defines one block of space, of a fixed size. The space is allocated once, when your "
+            r"program is executed, and is never freed."
+            r"\end{flushleft}",
+            font_size=text_size,
+        ).move_to((2.25 * UP) + (1.275 * LEFT))
+
+        self.play(Write(VGroup(title, text)))
+
+        demo_code = Code(code="""
+int x = 1;
+void main(){
+    static int y = 2;
+}""", language="c").move_to((4 * LEFT) + DOWN)
+
+        self.play(Write(demo_code))
+
+        data_segment = (Rectangle(width=2, height=2)
+                        .move_to((4 * RIGHT) + (0.5 * DOWN))
+                        .stretch_to_fit_height(4, about_edge=UP))
+        ds_label = Tex("Data Segment", font_size=text_size).move_to(data_segment.get_top() + (0.2 * UP))
+        x_box, x_label, x_val, x_addr, x_group = generate_memory_box("x", "1", "0x1000")
+        y_box, y_label, y_val, y_addr, y_group = generate_memory_box("y", "2", "0x1004")
+        y_group.move_to(data_segment.get_center() + UP)
+        x_group.move_to(data_segment.get_center() + DOWN)
+        self.play(Write(ds_diagram := VGroup(data_segment, ds_label, x_group, y_group)))
+        self.play(Indicate(demo_code.code[0]), Indicate(demo_code.code[2]))
+
+        self.next_slide()
+
+        new_text = Tex(
+            r"\begin{flushleft}"
+            r"\textit{Automatic Allocation} happens when you declare an automatic variable, such as a function argument"
+            r" or a local variable. These are stored on the function call stack and are automatically freed when the a "
+            r"stack frame is popped out of the stack."
+            r"\end{flushleft}",
+            font_size=text_size,
+        ).move_to((2.25 * UP) + (1.275 * LEFT))
+        self.play(
+            FadeOut(ds_diagram), FadeOut(demo_code),
+            Transform(title, Tex(r"\textbf{Automatic Allocation}}").move_to((3.95 * LEFT) + (3.5 * UP))),
+            Transform(text, new_text)
+        )
+
+        self.next_slide()
+
+        new_text = Tex(
+            r"\begin{flushleft}\begin{itemize}"
+            r"\item Static memory is allocated during compile time and thus it's size and location is pre determined, "
+            r"and so, it cannot be increased or decreased during compile time."
+            r"\item The amount of memory required has to be known at declaration."
+            r"\item It can cause wastage of memory if the size of an array is overestimated at declaration."
+            r"\item It can cause undefined behaviour if the size of an array is underestimated at declaration."
+            r"\end{itemize}\end{flushleft}",
+            font_size=text_size,
+        ).move_to((1.275 * LEFT) + UP)
+        self.play(
+            Transform(title, Tex(r"\textbf{Limitations}}").move_to((5 * LEFT) + (3.5 * UP))),
+            Transform(text, new_text)
+        )
+
+        self.next_slide()
+
+        self.play(
+            FadeOut(title),
+            Transform(text, Tex(r"\textbf{Dynamic memory allocation} solves these problems."))
+        )
+
+        self.next_slide()
+
+        self.play(FadeOut(text))
+
+        self.next_slide()
+
+# noinspection DuplicatedCode
+def generate_memory_box(label: str, value: str, addr: str, position=None,
+                        font_size=22) -> Tuple[Square, Text, Text, Tex, VGroup]:
+    memory_box = Square(1)
+    if position is not None:  # yes, the 'is not None` is required
+        memory_box.move_to(position)
+
+    box_label = Text(label, font_size=font_size).move_to(memory_box.get_top() + (0.2 * UP))
+    box_val = Text(value, font_size=font_size).move_to(memory_box.get_center())
+    box_addr = Tex(f"\\texttt{addr}", font_size=font_size).move_to(memory_box.get_bottom() + (0.2 * DOWN))
+    group = VGroup(memory_box, box_label, box_val, box_addr)
+
+    return memory_box, box_label, box_val, box_addr, group
 
 
 if __name__ == "__main__":
