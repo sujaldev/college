@@ -1,4 +1,5 @@
 from typing import Tuple
+from pathlib import Path
 
 from manim import *
 # noinspection PyUnresolvedReferences
@@ -14,15 +15,22 @@ class Main(Slide):
         self.call_by_value()
 
     def intro(self):
+        # temporary setup to deal with the logo that I don't want to check into version control.
+        logo_file = (Path(__file__).parent / "favicon.png").resolve()
+        if logo_file.exists():
+            logo = ImageMobject(logo_file).scale(0.1).move_to(2.5 * UP)
+        else:
+            logo = Square(fill_opacity=0, stroke_opacity=0)
+
         title = Tex(
             r"\textbf{Call by Value and Call by Reference in C}\\[20pt]"
             r"A presentation by Sujal Singh"
         )
-        self.play(Write(title))
+        self.play(AnimationGroup(Write(title), FadeIn(logo)))
 
         self.next_slide()
 
-        self.play(Unwrite(title))
+        self.play(AnimationGroup(Unwrite(title), FadeOut(logo)))
 
         self.next_slide()
 
