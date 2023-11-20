@@ -1,3 +1,8 @@
+"""
+Apparently this was the worst presentation the professor has ever seen, so I guess I'll have to make it again. Nothing
+more enjoyable than rewriting a presentation on dynamic memory allocation in c after a total of 4 hours of sleep, yay!
+"""
+
 from typing import Tuple
 from pathlib import Path
 
