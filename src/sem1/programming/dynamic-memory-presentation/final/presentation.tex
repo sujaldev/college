@@ -108,7 +108,7 @@ int *ptr = (int*) malloc(2 * sizeof(int));
             \item Example:
             \begin{tcolorbox}
                 \begin{minted}{c}
-int *ptr = (*int) calloc(2, sizeof(int));
+int *ptr = (int*) calloc(2, sizeof(int));
                 \end{minted}
             \end{tcolorbox}
         \end{itemize}
@@ -146,7 +146,7 @@ void main() {
     // Allocate some memory using malloc
     int *ptr = (int*) malloc(2 * sizeof(int));
 
-    // Allocate some memory using malloc
+    // Free memory allocated with malloc()
     free(ptr);
 }
                 \end{minted}
