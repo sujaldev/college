@@ -14,6 +14,8 @@
 % Packages
 \usepackage{amsmath}
 \usepackage{blkarray}
+\usepackage[outputdir=./build]{minted}
+\usepackage{tcolorbox}
 
 % Document
 \begin{document}
@@ -64,7 +66,7 @@
         \end{block}
     \end{frame}
 
-    \begin{frame}[allowframebreaks]{The How}
+    \begin{frame}[allowframebreaks,containsverbatim]{The How}
         \textbf{The Standard Library (\texttt{<stdlib.h>})}\\[10pt]
 
         The standard library in C provides some functions that handle dynamic memory allocation, these are:\\[5pt]
@@ -84,8 +86,78 @@
         \begin{itemize}
             \item Short for ``memory allocate''.
             \item It is used to dynamically allocate a block of memory of specified size.
-            \item It will return a \textbf{void pointer} to first byte of the allocated block of memory.
+            \item Returns a void pointer to the starting address of the allocated block of memory.
+            \item It can also return \texttt{NULL} if it is unable to find the requested space in memory.
+            \item Example:
+            \begin{tcolorbox}
+                \begin{minted}{c}
+int *ptr = (int*) malloc(2 * sizeof(int));
+                \end{minted}
+            \end{tcolorbox}
         \end{itemize}
 
+
+        \framebreak
+
+        \textbf{\texttt{\large calloc()}}\\[10pt]
+
+        \begin{itemize}
+            \item Short for ``clear allocate''.
+            \item It is similar to \texttt{malloc()} except that it ensures that the allocated block of memory
+            contains zero initialized bytes.
+            \item Example:
+            \begin{tcolorbox}
+                \begin{minted}{c}
+int *ptr = (*int) calloc(2, sizeof(int));
+                \end{minted}
+            \end{tcolorbox}
+        \end{itemize}
+
+        \framebreak
+
+        \textbf{\texttt{\large realloc()}}\\[10pt]
+
+        \begin{itemize}
+            \item Short for ``re-allocate''.
+            \item It is used to resize an already allocated block of memory without losing the old data.
+            \item If \texttt{realloc()} can't find the space in memory where the currently allocated block exists, it
+            will copy it to a new location where the requested amount of space is available.
+            contains zero initialized bytes.
+            \item Example:
+            \begin{tcolorbox}
+                \begin{minted}{c}
+int *ptr = (int*) realloc(ptr, 3 * sizeof(int));
+                \end{minted}
+            \end{tcolorbox}
+        \end{itemize}
+
+        \framebreak
+        \textbf{\texttt{\large free()}}
+        \begin{itemize}
+            \item It is used to free up memory that was dynamically allocated by using \texttt{malloc()} or
+            \texttt{calloc()}
+            \item It helps in preventing wastage of memory.
+            \item Example:
+            \begin{tcolorbox}
+                \begin{minted}[fontsize=\small]{c}
+#include <stdlib.h>
+
+void main() {
+    // Allocate some memory using malloc
+    int *ptr = (int*) malloc(2 * sizeof(int));
+
+    // Allocate some memory using malloc
+    free(ptr);
+}
+                \end{minted}
+            \end{tcolorbox}
+        \end{itemize}
+
+    \end{frame}
+
+    \begin{frame}{End}
+        \begin{center}
+            \textbf{\Huge The End}
+        \end{center}
     \end{frame}
 \end{document}
