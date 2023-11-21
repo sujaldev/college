@@ -1,0 +1,91 @@
+%! Authors = Dhruv Grover, Pranav Bisht, Sujal Singh
+%! Date = 11/20/23
+
+% Preamble
+\documentclass[11pt]{beamer}
+\logo{ipu-logo}
+\title{Dynamic Memory Allocation in C}
+\author{Dhruv Grover \(|\) Pranav Bisht \(|\) Sujal Singh}
+\date{}
+
+\usetheme{Madrid}
+\setbeamertemplate{frametitle continuation}[from second][]
+
+% Packages
+\usepackage{amsmath}
+\usepackage{blkarray}
+
+% Document
+\begin{document}
+    \maketitle
+
+    \begin{frame}{The What}
+        \textbf{\large What is dynamic memory allocation?}\\[10pt]
+        \begin{itemize}
+            \item Dynamic memory allocation is the process of allocating memory at \textbf{runtime}.
+            \item Dynamically allocated memory is allocated in a pool of memory called the \textbf{heap} (it has nothing
+            to do with the heap data structure) which can grow as required.
+            \item The amount of space required does not have to be known by the compiler in advance.
+            \item To read or write to dynamically allocated memory, \textbf{pointers} must be used.
+            \item Allocated block of memory can also be \textbf{resized} or \textbf{freed} after allocation at runtime.
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}[allowframebreaks]{The Why}
+        \textbf{Why do we need dynamic memory?}\\[10pt]
+        Statically allocated memory has some limitations, such as:\\[5pt]
+        \begin{itemize}
+            \item Exact size and type of storage must be known at \textbf{compile time}.
+            \item Since statically allocated memory cannot be resized at runtime
+            \begin{itemize}
+                \item It can cause \textbf{wastage of memory} if the amount of memory used is less than the memory
+                allocated at compile time.
+                \item It cannot handle the scenario wherein more memory is required at runtime than initially declared
+                during compilation.
+            \end{itemize}
+        \end{itemize}
+        And so, a need for another type of memory allocation arises.
+
+        \framebreak
+
+        Dynamically allocated memory solves these problems:\\[5pt]
+
+        \begin{itemize}
+            \item Unlike static memory, dynamic memory does not require the type and size to be declared during
+            compilation.
+            \item If the amount of space required in a dynamically allocated block increase or reduces, the allocated
+            block of memory can be re-allocated to match the new space requirements.\ This decreases wastage of memory.
+        \end{itemize}
+
+        \begin{block}{Note}
+            It is important to note that using dynamically allocated memory doesn't automatically solve undefined
+            behaviour, the allocated memory still has to be manually reallocated if the required amount of memory
+            changes.
+        \end{block}
+    \end{frame}
+
+    \begin{frame}[allowframebreaks]{The How}
+        \textbf{The Standard Library (\texttt{<stdlib.h>})}\\[10pt]
+
+        The standard library in C provides some functions that handle dynamic memory allocation, these are:\\[5pt]
+        \begin{itemize}
+            \item \textbf{\texttt{malloc()}}
+            \item \textbf{\texttt{calloc()}}
+            \item \textbf{\texttt{realloc()}}
+            \item \textbf{\texttt{free()}}
+        \end{itemize}
+        \\[10pt]
+        Let us look at these in depth individually.
+
+        \framebreak
+
+        \textbf{\texttt{\large malloc()}}\\[10pt]
+
+        \begin{itemize}
+            \item Short for ``memory allocate''.
+            \item It is used to dynamically allocate a block of memory of specified size.
+            \item It will return a \textbf{void pointer} to first byte of the allocated block of memory.
+        \end{itemize}
+
+    \end{frame}
+\end{document}
