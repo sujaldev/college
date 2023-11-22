@@ -122,7 +122,6 @@ int *ptr = (int*) calloc(2, sizeof(int));
             \item It is used to resize an already allocated block of memory without losing the old data.
             \item If \texttt{realloc()} can't find the space in memory where the currently allocated block exists, it
             will copy it to a new location where the requested amount of space is available.
-            contains zero initialized bytes.
             \item Example:
             \begin{tcolorbox}
                 \begin{minted}{c}
