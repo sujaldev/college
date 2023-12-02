@@ -1,0 +1,151 @@
+%! Author = sujal
+%! Date = 10/18/23
+
+% Preamble
+%! suppress = FileNotFound
+\documentclass[11pt]{ipu-c}
+\usepackage[
+    pdftitle={C Programming Practical File},
+    pdfsubject={C Programming Practical File},
+    pdfauthor={Sujal Singh},
+    pdfdisplaydoctitle,
+    hidelinks,
+]{hyperref}
+
+% Packages
+\usepackage{amsmath}
+\usepackage[indLines]{algpseudocodex}
+
+% Document
+\begin{document}
+    \maketitle
+
+    %------------------------------------------------------------------------------------------------------------------%
+    \experiment{1}{Write a C program to print ``Hello, World!''}
+
+    \desc{Program to print ``Hello, World!''.}\\
+
+    \sectionheading{Algorithm:}
+    \begin{algorithmic}[1]
+        \State Start
+        \State{\textbf{print} ``Hello, World!''.}
+        \State Stop
+    \end{algorithmic}~\\
+
+    \sectionheading{Flowchart:}
+    \begin{figure}[!h]
+        \label{fig:exp-1}
+        \centering
+        \begin{tikzpicture}[node distance=2cm]
+            \node (start) [startstop] {Start};
+            \node (print) [io, below of=start] {print ``Hello, World!''};
+            \node (end) [startstop,below of=print] {End};
+
+            \draw [arrow] (start) -- (print);
+            \draw [arrow] (print) -- (end);
+        \end{tikzpicture}
+    \end{figure}~\\[20pt]
+
+    \begin{code}
+        {Program}{c}
+#include <stdio.h>
+
+int main() {
+    printf("Hello, World!");
+    return 0;
+}
+    \end{code}
+    \begin{code}
+        {Input \& Output}{c}
+Hello, World!
+    \end{code}
+    %------------------------------------------------------------------------------------------------------------------%
+    %------------------------------------------------------------------------------------------------------------------%
+    \experiment{2}{Write a C program to find the greatest number among three numbers provided by the user using if
+    else.}
+
+    \desc{Program that finds the largest number among three numbers input by the user.}\\
+
+    \sectionheading{Algorithm:}
+    \begin{algorithmic}[1]
+        \State Start
+        \State{\textbf{read} $a, b, c$.}
+        \If{$a \geq b ~\textbf{and}~ a \geq c$}
+            \State $\text{largest} \gets a$
+
+        \ElsIf
+                {$b \geq a ~\textbf{and}~ b \geq c$}
+            \State $\text{largest} \gets b$
+        \Else
+            \State $\text{largest} \gets c$
+        \EndIf
+        \State \textbf{print} largest
+        \State Stop
+    \end{algorithmic}~\\\vspace*{-15pt}
+
+    \sectionheading{Flowchart:}
+    \begin{figure}[!h]
+        \label{fig:exp-2}
+        \centering
+        \begin{tikzpicture}[transform canvas={scale=0.8},node distance=2cm]
+            \node (start) [startstop] {Start};
+            \node (input) [io, below of=start] {read $a, b, c$};
+            \node (checkA) [decision, below of=input,yshift=-40pt] {$a \geq b ~\textbf{and}~ a \geq c$};
+            \node (setA) [process, right of=checkA,xshift=80pt] {$\text{set largest} = a$};
+            \node (checkB) [decision, below of=checkA,yshift=-80pt] {$b \geq a ~\textbf{and}~ b \geq c$};
+            \node (setB) [process, left of=checkB,xshift=-80pt] {$\text{set largest} = b$};
+            \node (checkC) [process, below of=checkB,yshift=-40pt] {$\text{set largest} = c$};
+            \node (output) [io, below of=checkC] {print largest};
+            \node (end) [startstop,below of=output] {End};
+
+            \draw [arrow] (start) -- (input);
+            \draw [arrow] (input) -- (checkA);
+            \draw [arrow] (checkA) -- node [anchor=south] {yes} (setA);
+            \draw [arrow] (checkA) -- node [anchor=east] {no} (checkB);
+            \draw [arrow] (checkB) -- node [anchor=south] {yes} (setB);
+            \draw [arrow] (checkB) -- node [anchor=east] {no} (checkC);
+            \draw [arrow] (checkC) -- (output);
+            \draw [arrow] (output) -- (end);
+            \draw [arrow] (setA) |- (output);
+            \draw [arrow] (setB) |- (output);
+        \end{tikzpicture}
+    \end{figure}
+
+    \newpage
+    \begin{code}
+        {Program}{c}
+#include <stdio.h>
+
+int main() {
+    int a, b, c, largest;
+
+    printf("Enter first number: ");
+    scanf("%d", &a);
+
+    printf("Enter second number: ");
+    scanf("%d", &b);
+
+    printf("Enter third number: ");
+    scanf("%d", &c);
+
+    if (a >= b && a >= c) {
+        largest = a;
+    } else if (b >= a && b >= c) {
+        largest = b;
+    } else {
+        largest = c;
+    }
+
+    printf("%d is the largest number.", largest);
+    return 0;
+}
+    \end{code}
+    \begin{code}
+        {Input \& Output}{c}
+Enter first number: 1
+Enter first number: 2
+Enter first number: 3
+3 is the largest number.
+    \end{code}
+    %------------------------------------------------------------------------------------------------------------------%
+\end{document}
