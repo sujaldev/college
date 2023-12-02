@@ -13,11 +13,19 @@
 \RequirePackage[a4paper,left=1.5cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
 \RequirePackage[outputdir=./build]{minted}
 \RequirePackage[most,minted,listings]{tcolorbox}
+\RequirePackage[shapes.geometric,arrows]{tikz}
 
+% Flowchart symbols (copied as is from overleaf docs)
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm,
+text centered, draw=black]
+\tikzstyle{process} = [rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=1cm, text centered, draw=black]
+\tikzstyle{arrow} = [thick,->,>=stealth]
 
 \renewcommand{\@author}{Sujal Singh}
 \newcommand{\@rollno}{XXXXXXXXXXXX}
-\newcommand{\@branch}{Industrial Internet of Things -- B1}
+\newcommand{\@branch}{IIOT--B1--23}
 \renewcommand{\author}[1]{\renewcommand{\@author}{#1}}
 \newcommand{\rollno}[1]{\renewcommand{\@rollno}{#1}}
 \newcommand{\branch}[1]{\renewcommand{\@branch}{#1}}
@@ -28,16 +36,12 @@
 \sys_get_shell:nnN{ kpsewhich ~ --var-value ~ ROLLNO | ~ sed ~ s/^\$/XXXXXXXXXXXX/ }{} \@rollno
 \ExplSyntaxOff
 
-\newcounter{assignments}
-\setcounter{assignments}{1}
-\newcounter{questions}
-
 \renewcommand*{\maketitle}{
     \pagenumbering{gobble}
     \begin{center}
         \vspace*{8em}
         \includegraphics[width=200pt]{logo} \\[40pt]
-        \textbf{\Huge C Programming Practical File} \\[40pt]
+        \textbf{\Huge Programming Lab Practical File} \\[40pt]
         \begin{table}[htb]
             \label{tab:name-slip}
             \begin{tblr}{rows={30pt},colspec={|X|X[3]|},hlines}
@@ -53,15 +57,16 @@
     \pagenumbering{arabic}
 }
 
-\newenvironment{assignment}{
-    \newpage
-    \setcounter{questions}{1}
-    \begin{center}
-        \textbf{\Huge Assignment--\arabic{assignments}}\\[20pt]
-    \end{center}
-    }{\newpage\stepcounter{assignments}}
-
-\newcommand{\question}[1]{\noindent\textbf{\\\arabic{questions}. #1\\[5pt]}\stepcounter{questions}}
+% TODO: Implement automatic counter here which allows sub parts like "5(a)", "5(b)".
+\newcommand{\experiment}[2]{%
+    \newpage%
+    \begin{center}%
+        \textbf{\Huge Experiment--#1}\\[30pt]%
+    \end{center}%
+    \textbf{Aim:} #2\\%
+}
+\newcommand{\sectionheading}[1]{\noindent\textbf{#1}}
+\newcommand{\desc}[1]{\sectionheading{Description:} #1}
 
 \usemintedstyle{bw}
 % Changes minted line number size
