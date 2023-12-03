@@ -362,4 +362,82 @@ Factorial of 5 is 120
     \end{code}
 
     %------------------------------------------------------------------------------------------------------------------%
+    %------------------------------------------------------------------------------------------------------------------%
+
+    \experiment{5}{Write a C program to find GCD of two integers by using a recursive function.}
+    {Program that finds the greatest common denominator of two integers input by the user using a recursive function.}
+
+    \begin{tabularsection}{Algorithm}
+        \begin{algorithmic}[1]
+            \State Start
+            \Function{gcd}{a, b}
+                \If{$b \neq 0$}
+                    \State \Return \Call{gcd}{$b,~a\mod{b}$}
+                \Else
+                    \State \Return $a$
+                \EndIf
+            \EndFunction
+            \State \textbf{read} a, b
+            \State \textbf{print} \Call{gcd}{a, b}
+            \State Stop
+        \end{algorithmic}
+    \end{tabularsection}
+
+    \begin{flowchart}
+        \begin{tikzpicture}[node distance=2cm]
+            \node (start) [startstop] {Start};
+            \node (input) [io,below of=start] {\textbf{read} $a, b$};
+            \node (output) [io,below of=input] {\textbf{print} \texttt{gcd($a, b$)}};
+            \node (stop) [startstop,below of=output] {Stop};
+
+            \draw [arrow] (start) -- (input);
+            \draw [arrow] (input) -- (output);
+            \draw [arrow] (output) -- (stop);
+
+            \node (gcd) [startstop,right of=start,xshift=150pt] {\texttt{gcd(a, b)}};
+            \node (checkB) [decision,below of=gcd,yshift=-10pt] {$b \neq 0$};
+            \node (r1) [startstop,right of=checkB,xshift=80pt] {\textbf{return} a};
+            \node (r2) [startstop,below of=checkB,yshift=-10pt] {\textbf{return} \texttt{gcd($b,~a\mod{b}$)}};
+
+            \draw [arrow] (gcd) -- (checkB);
+            \draw [arrow] (checkB) -- node [anchor=south] {no} (r1);
+            \draw [arrow] (checkB) -- node [anchor=east] {yes} (r2);
+            \draw [arrow] (r2) |- ($ (r2) + (-3.5,-2) $) -- ($ (factorial) + (-3.5, 0) $) -- (gcd);
+        \end{tikzpicture}
+    \end{flowchart}
+
+    \newpage
+    \begin{code}
+        {Program}{c}
+#include <stdio.h>
+
+int gcd(int a, int b) {
+    if (b != 0) {
+        return gcd(b, a % b);
+    }
+    return a;
+}
+
+int main() {
+    int a, b;
+
+    printf("Enter first number: ");
+    scanf("%d", &a);
+
+    printf("Enter second number: ");
+    scanf("%d", &b);
+
+    printf("GCD(%d, %d) = %d", a, b, gcd(a, b));
+
+    return 0;
+}
+    \end{code}
+    \begin{code}
+        {Input \& Output}{text}
+Enter first number: 5
+Enter second number: 10
+GCD(5, 10) = 5
+    \end{code}
+
+    %------------------------------------------------------------------------------------------------------------------%
 \end{document}
