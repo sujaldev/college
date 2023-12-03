@@ -84,13 +84,13 @@ Hello, World!
     \begin{flowchart}
         \begin{tikzpicture}[transform canvas={scale=0.7},node distance=2cm]
             \node (start) [startstop] {Start};
-            \node (input) [io, below of=start] {read $a, b, c$};
+            \node (input) [io, below of=start] {\textbf{read} $a, b, c$};
             \node (checkA) [decision, below of=input,yshift=-40pt] {$a \geq b ~\textbf{and}~ a \geq c$};
             \node (setA) [process, right of=checkA,xshift=80pt] {$\text{largest} = a$};
             \node (checkB) [decision, below of=checkA,yshift=-80pt] {$b \geq a ~\textbf{and}~ b \geq c$};
             \node (setB) [process, left of=checkB,xshift=-80pt] {$\text{largest} = b$};
             \node (checkC) [process, below of=checkB,yshift=-40pt] {$\text{largest} = c$};
-            \node (output) [io, below of=checkC] {print largest};
+            \node (output) [io, below of=checkC] {\textbf{print} largest};
             \node (stop) [startstop,below of=output] {Stop};
 
             \draw [arrow] (start) -- (input);
@@ -147,8 +147,8 @@ Enter third number: 3
     %------------------------------------------------------------------------------------------------------------------%
     %------------------------------------------------------------------------------------------------------------------%
 
-    \experiment{3}{Write a C program to find the sum of individual digits using while.}{Program that uses a while loop
-    to find the sum of the individual digits in a number input by the user.}
+    \experiment{3}{Write a C program to find the sum of individual digits of a positive integer using while.}
+    {Program that uses a while loop to find the sum of the individual digits in a number input by the user.}
 
     \begin{tabularsection}{Algorithm}
         \begin{algorithmic}[1]
@@ -215,6 +215,74 @@ int main() {
         {Input \& Output}{text}
 Enter a number: 1234
 Sum of digits = 10
+    \end{code}
+
+    %------------------------------------------------------------------------------------------------------------------%
+    %------------------------------------------------------------------------------------------------------------------%
+
+    \experiment{4(a)}{Write a C program to find the factorial of a given integer using non-recursive function.}
+    {Program that finds the factorial of a number input by the user without using a recursive function.}
+
+    \begin{tabularsection}{Algorithm}
+        \begin{algorithmic}[1]
+            \State Start
+            \State fact $\gets 1$
+            \State \textbf{read} $n$
+            \While{$n \neq 0$}
+                \State fact $= \text{fact} \times n$
+                \State $n = n - 1$
+            \EndWhile
+            \State \textbf{print} $n$
+            \State Stop
+        \end{algorithmic}
+    \end{tabularsection}
+
+    \begin{flowchart}
+        \begin{tikzpicture}[node distance=2cm]
+            \node (start) [startstop] {Start};
+            \node (initFact) [process,below of=start] {fact $= 1$};
+            \node (input) [io,below of=initFact] {\textbf{read} $n$};
+            \node (cond) [decision,below of=input,yshift=-10pt] {$n \neq 0$};
+            \node (s1) [process,right of=cond,xshift=100pt] {fact $= \text{fact}\times{n}$};
+            \node (s2) [process,below of=s1] {$n = n - 1$};
+            \node (output) [io,left of=cond,xshift=-100pt] {\textbf{print} $n$};
+            \node (stop) [startstop,below of=output] {Stop};
+
+            \draw [arrow] (start) -- (initFact);
+            \draw [arrow] (initFact) -- (input);
+            \draw [arrow] (input) -- (cond);
+            \draw [arrow] (cond) -- node [anchor=south] {yes} (s1);
+            \draw [arrow] (cond) -- node [anchor=south] {no} (output);
+            \draw [arrow] (s1) -- (s2);
+            \draw [arrow] (s2) -| (cond);
+            \draw [arrow] (output) -- (stop);
+        \end{tikzpicture}
+    \end{flowchart}
+
+    \newpage
+    \begin{code}
+        {Program}{c}
+#include <stdio.h>
+
+int main() {
+    int fact = 1, n;
+
+    printf("Enter number: ");
+    scanf("%d", &n);
+
+    while (n != 0) {
+        fact *= n;
+        n -= 1;
+    }
+
+    printf("Factorial is %d", fact);
+    return 0;
+}
+    \end{code}
+    \begin{code}
+        {Input \& Output}{text}
+Enter number: 5
+Factorial is 120
     \end{code}
 
     %------------------------------------------------------------------------------------------------------------------%
