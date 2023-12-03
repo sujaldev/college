@@ -2,6 +2,8 @@
 
 #include <stdio.h>
 
+// Recursive implementation of the factorial function,
+// similar to how it's mathematically stated in terms of itself.
 int factorial(int n) {
     if (n == 0) {
         return 1;
@@ -13,9 +15,11 @@ int factorial(int n) {
 int main() {
     int n;
 
+    // Read n
     printf("Enter number: ");
     scanf("%d", &n);
 
+    // Output factorial
     printf("Factorial of %d is %d", n, factorial(n));
 
     return 0;
