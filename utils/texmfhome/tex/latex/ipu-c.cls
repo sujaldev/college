@@ -10,10 +10,11 @@
 \RequirePackage{lmodern}
 \RequirePackage{graphicx}
 \RequirePackage{tabularray}
-\RequirePackage[a4paper,left=1.5cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
+\RequirePackage[a4paper,hmargin=1.5cm,vmargin=1.5cm]{geometry}
 \RequirePackage[outputdir=./build]{minted}
 \RequirePackage[most,minted,listings]{tcolorbox}
-\RequirePackage[shapes.geometric,arrows]{tikz}
+\RequirePackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
 
 % Flowchart symbols (copied as is from overleaf docs)
 \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black]
@@ -57,17 +58,6 @@ text centered, draw=black]
     \pagenumbering{arabic}
 }
 
-% TODO: Implement automatic counter here which allows sub parts like "5(a)", "5(b)".
-\newcommand{\experiment}[2]{%
-    \newpage%
-    \begin{center}%
-        \textbf{\Huge Experiment--#1}\\[30pt]%
-    \end{center}%
-    \textbf{Aim:} #2\\%
-}
-\newcommand{\sectionheading}[1]{\noindent\textbf{#1}}
-\newcommand{\desc}[1]{\sectionheading{Description:} #1}
-
 \usemintedstyle{bw}
 % Changes minted line number size
 \renewcommand{\theFancyVerbLine}{\parbox{10pt}{\centering\footnotesize\arabic{FancyVerbLine}}}
@@ -98,3 +88,37 @@ text centered, draw=black]
     }}
 
 \BeforeBeginEnvironment{code}{\vspace*{-18pt}}
+
+\newtcolorbox{tabularsection}[1]{
+    breakable,
+    enhanced,
+    colback=white,
+    coltitle=black,
+    colbacktitle=white,
+    top=0pt,
+    bottom=0pt,
+    sharp corners,
+    title=\textbf{#1:},
+}
+
+% TODO: Implement automatic counter here which allows sub parts like "5(a)", "5(b)".
+\newcommand{\experiment}[3]{%
+    \newpage%
+    \begin{center}%
+        \textbf{\Huge Experiment--#1}\\[30pt]%
+    \end{center}%
+    \begin{tabularsection}{Aim}%
+        ~\\#2\\%
+    \end{tabularsection}%
+    \begin{tabularsection}{Description}%
+        ~\\#3\\%
+    \end{tabularsection}}
+
+\BeforeBeginEnvironment{tabularsection}{\vspace*{-18pt}}
+
+\newenvironment{flowchart}{
+    \begin{tabularsection}{Flowchart}%
+        \centering%
+        ~\\~\\%
+        }{\\~\\%
+    \end{tabularsection}}
