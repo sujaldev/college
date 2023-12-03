@@ -48,7 +48,7 @@
 #include <stdio.h>
 
 int main() {
-    printf("Hello, World!");
+    printf("Hello, World!");  // prints "Hello, World!"
     return 0;
 }
     \end{code}
@@ -115,23 +115,32 @@ Hello, World!
 int main() {
     int a, b, c, largest;
 
+    // Read first number
     printf("Enter first number: ");
     scanf("%d", &a);
 
+    // Read second number
     printf("Enter second number: ");
     scanf("%d", &b);
 
+    // Read third number
     printf("Enter third number: ");
     scanf("%d", &c);
 
     if (a >= b && a >= c) {
+        // a is larger than both b and c
+        // (it might also be equal to one of them or even both)
         largest = a;
     } else if (b >= a && b >= c) {
+        // b is larger than both a and c
+        // (it might also be equal to one of them or even both)
         largest = b;
     } else {
+        // Since a and b aren't the largest, c must be.
         largest = c;
     }
 
+    // Output the largest number among the three.
     printf("%d is the largest number.", largest);
     return 0;
 }
@@ -198,15 +207,18 @@ Enter third number: 3
 int main() {
     int num, rem, sum = 0;
 
+    // Read num
     printf("Enter a number: ");
     scanf("%d", &num);
 
+    // Keep removing the one's place from num and add the removed digit to the running sum.
     while (num != 0) {
         rem = num % 10;
         sum += rem;
         num /= 10;
     }
 
+    // Output sum of digits
     printf("Sum of digits = %d", sum);
     return 0;
 }
@@ -265,16 +277,20 @@ Sum of digits = 10
 #include <stdio.h>
 
 int main() {
+    // Initialize fact to 1 since 0! = 1
     int fact = 1, n;
 
+    // Read n
     printf("Enter number: ");
     scanf("%d", &n);
 
+    // Keep multiplying fact by the current value of n and subtract 1 from n on each iteration.
     while (n != 0) {
         fact *= n;
         n -= 1;
     }
 
+    // Output factorial
     printf("Factorial is %d", fact);
     return 0;
 }
@@ -336,6 +352,8 @@ Factorial is 120
         {Program}{c}
 #include <stdio.h>
 
+// Recursive implementation of the factorial function,
+// similar to how it's mathematically stated in terms of itself.
 int factorial(int n) {
     if (n == 0) {
         return 1;
@@ -347,9 +365,11 @@ int factorial(int n) {
 int main() {
     int n;
 
+    // Read n
     printf("Enter number: ");
     scanf("%d", &n);
 
+    // Output factorial
     printf("Factorial of %d is %d", n, factorial(n));
 
     return 0;
@@ -411,6 +431,7 @@ Factorial of 5 is 120
         {Program}{c}
 #include <stdio.h>
 
+// Recursive function that calculates the greatest common denominator for 2 positive integers.
 int gcd(int a, int b) {
     if (b != 0) {
         return gcd(b, a % b);
@@ -421,12 +442,15 @@ int gcd(int a, int b) {
 int main() {
     int a, b;
 
+    // Read a
     printf("Enter first number: ");
     scanf("%d", &a);
 
+    // Read b
     printf("Enter second number: ");
     scanf("%d", &b);
 
+    // Output the greatest common denominator of a and b
     printf("GCD(%d, %d) = %d", a, b, gcd(a, b));
 
     return 0;
