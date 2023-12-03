@@ -14,7 +14,7 @@
 \RequirePackage[outputdir=./build]{minted}
 \RequirePackage[most,minted,listings]{tcolorbox}
 \RequirePackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows}
+\usetikzlibrary{shapes.geometric, arrows, calc}
 
 % Flowchart symbols (copied as is from overleaf docs)
 \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=3cm, minimum height=1cm,text centered, draw=black]
