@@ -4,16 +4,19 @@
 % Preamble
 \documentclass[11pt]{beamer}
 \title{Electrical Science Presentation}
-\author[Aman, Ashish, Dhruv...]
-{\(|\) Aman Gupta \(|\) Ashish Chauhan \(|\) Dhruv Grover \(|\) Harsh Raj \(|\)\\\(|\) Pranav Bisht \(|\) Sujal Singh \(|\)}
-\date[Harsh, Pranav, Sujal]{}
+\author[Aman, Ashish, Dhruv...]{\(|\) Aman Gupta \(|\) Ashish Chauhan \(|\) Dhruv Grover \(|\) Harsh Raj \(|\)\\
+    \(|\) Pranav Bisht \(|\) Sujal Singh \(|\)}
+\date[Harsh, Pranav, Sujal]{\textbf{Enrollment Numbers:\\}\texttt{0\{00,00,00,00,00,00\}00000000}}
 
 \usetheme{Madrid}
+\usecolortheme{spruce}
 \setbeamertemplate{navigation symbols}{}
-%\usecolortheme{beaver}
+\setbeamertemplate{frametitle continuation}[from second][]
 
 % Packages
 \usepackage{amsmath}
+\usepackage{lmodern}
+\usepackage{siunitx}
 
 % Document
 \begin{document}
@@ -21,7 +24,62 @@
         \begin{center}
             %! suppress = FileNotFound
             \includegraphics[width=80pt]{logo}
-        \end{center}\vspace*{-18pt}
+        \end{center}\vspace*{-10pt}
         \maketitle
+    \end{frame}
+
+    \begin{frame}[t]{Unit 2}
+        \textbf{\large Explain the mathematical expression for voltage and current relationship in star and delta
+        connection.}
+    \end{frame}
+
+    \begin{frame}[t]{Unit 3}
+        \textbf{\large What is DC Motor? - The DC motor is the motor which converts the direct current into the
+        mechanical work.}
+    \end{frame}
+
+    \begin{frame}[allowframebreaks]{Unit 4}
+        \textbf{\Large What are measuring instruments? Also classify the different categories of the measuring
+        instrument.}~\\[10pt]
+
+        Devices that are used to measure the magnitude of an electric current with different objectives are known as
+        measuring instruments.\ Some common categories of measuring instruments are:\\[10pt]
+
+        \textbf{Voltage measurement units:}
+        \begin{itemize}
+            \item \underline{Voltmeter}: Measures electrical potential in volts (\SI{}{\volt}).
+            \item \underline{\smash{Oscilloscope}}: Displays voltage waveform overtime.
+        \end{itemize}
+
+        \\[10pt]
+
+        \textbf{Current measurement units:}
+        \begin{itemize}
+            \item \underline{Ammeter}: Measures the flow of electrical current in amperes (\SI{}{\ampere}).
+        \end{itemize}
+
+        \framebreak
+
+        \textbf{Resistance measurement units:}
+        \begin{itemize}
+            \item \underline{Ohmmeter}: Measures electrical resistance in ohms ($\Omega$).
+            \item \underline{\smash{Wheatstone Bridge}}: Determines an unknown electrical resistance by balancing two
+            legs of a bridge circuit.
+        \end{itemize}
+
+        \\[10pt]
+
+        \textbf{Power measurement units:}
+        \begin{itemize}
+            \item \underline{Watt-meter}: Measures electrical power in watts (\SI{}{\watt}).
+            \item \underline{\smash{Power Analyser}}: Analyses electrical power quality.
+        \end{itemize}
+
+        \\[10pt]
+
+        \textbf{Impedance measurement units:}
+        \begin{itemize}
+            \item \underline{\smash{Impedance analyzer}}: Measures the impedance of a circuit.
+        \end{itemize}
     \end{frame}
 \end{document}
