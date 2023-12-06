@@ -17,6 +17,7 @@
 \usepackage{amsmath}
 \usepackage{lmodern}
 \usepackage{siunitx}
+\usepackage{gensymb}
 \usepackage{tikz}
 \usepackage[american]{circuitikz}
 
@@ -37,13 +38,13 @@
         \maketitle
     \end{frame}
 
-    \begin{frame}[t]{Unit 2}
+    \begin{frame}[t,allowframebreaks]{Unit 2}
         \textbf{\large Explain the mathematical expression for voltage and current relationship in star and delta
         connection.}\\[10pt]
 
         \textbf{What are lines and phases?}
 
-        The individual windings of a delta- or star-connected alternator or transformer, and their corresponding load
+        The individual windings of a delta or star-connected alternator or transformer, and their corresponding load
         impedance are called ``phases'', whereas the conductors that interconnect three-phase supplies and their loads
         are called ``lines'':\\[70pt]
 
@@ -82,6 +83,116 @@
             \end{circuitikz}
         \end{minipage}
 
+        \framebreak
+
+        \textbf{Phase and Line Voltages and Currents}\\[10pt]
+
+        The potential difference appearing across any phase is called a ``phase voltage'' ($E_P$), and the current
+        flowing through any phase is called a ``phase current'' ($I_P$).
+        \\~\\
+        The potential difference appearing between any pair of line conductors is called a ``line voltage'' ($E_L$),
+        and the current flowing through a line conductor is called a ``line current'' ($I_L$).
+        \\~\\
+        In a three-phase, three-wire system, there are three ``line conductors''.
+
+        \framebreak
+
+        \textbf{Star (Wye) Connected System}\\[10pt]
+
+        Let $V_R, V_Y~\text{and}~V_B$ represent the three phase voltages while $V_{RY}, V_{YB}$ and $V_{BR}$
+        represent the line voltages.\ Assume that the system is balanced, so:
+        \begin{center}
+            $|V_R| = |V_Y| = |V_B| = |V_{ph}|$
+        \end{center}
+        From the circuit and phasor diagram of star connected load, it can be observed that the line voltage $V_{RY}$
+        is a vector difference of $V_R$ and $V_Y$ or the vector sum of $V_R$ and $-V_Y$:
+        \begin{center}
+            $V_{RY} = V_R + (-V_Y) = V_R - V_Y$
+        \end{center}
+        Applying parallelogram law to obtain the magnitude of this, we get:
+        \begin{align*}
+            V_{RY} &= \sqrt {(V_R)^2 + (V_Y)^2 + 2 V_R V_Y \cos(60\degree)}\\
+            &= \sqrt {(V_{ph})^2 + (V_{ph})^2 + 2 (V_{ph})^2 \cos(60\degree)} = \sqrt {3} V_{ph}
+        \end{align*}
+
+        \framebreak
+
+        Similarly,
+        \begin{align*}
+            V_{RY} &= V_Y - V_B = \sqrt{3} V_{ph}\\
+            V_{BR} &= V_B - V_R = \sqrt{3} V_{ph}\\
+            \therefore V_{RY} = V_{YB} &= V_{BR} = V_{L} = \text{line voltage}\\
+            \therefore V_{L} &= \sqrt {3} V_{ph}
+        \end{align*}
+        Therefore, in a star connected system,
+        \begin{center}
+            Line voltage $= \sqrt {3}~\times$ Phase Voltage
+        \end{center}
+        Again, refer the circuit of star connected system, it can be seen that each line is in series with its
+        individual phase winding.\ Therefore, in a star connection, the line current in each line is equal to the
+        current in the corresponding phase winding.
+
+        \framebreak
+
+        Let $I_R, I_Y$ and $I_B$ be the currents in $R, Y$ and $B$ lines respectively.\ Since, the load is balanced,
+        therefore:
+        \begin{center}
+            $I_R = I_Y = I_B = I_{ph}$
+        \end{center}
+        Then,
+        \begin{align*}
+            I_L &= I_{ph}\\
+            \text{Line Current} &= \text{Phase Current}
+        \end{align*}
+        Note: for a balanced star connected system, the vector sum of line current is equal to zero.
+        \begin{center}
+            $I_R + I_Y + I_B = I_n = 0$
+        \end{center}
+        Where, $I_n$ is the neutral current.
+
+        \framebreak
+
+        \textbf{Delta Connected System}\\[10pt]
+
+        Let $I_{RY}, I_{YB}$ and $I_{BR}$ are the phase current in delta connected system while $I_R, I_Y$ and $I_B$
+        being the line currents.
+        \\~\\
+        By referring the circuit and phasor diagram, it can be seen that current in each line is the vector
+        difference of corresponding phase currents and are given as:
+        \begin{align*}
+            I_R &= I_{BR} - I_{RY}\\
+            I_Y &= I_{RY} - I_{YB}\\
+            I_B &= I_{YB} - I_{BR}
+        \end{align*}
+
+        \framebreak
+
+        Now, the magnitude of current $I_R$ can be obtained by parallelogram law of vector addition, as follows:
+        \begin{center}
+            $I_R = \sqrt{(I_{BR})^2 + (I_{RY})^2 + 2 I_{BR} I_{RY} \cos(60\degree)}$
+        \end{center}
+        Assume the system is balanced, therefore:
+        \begin{center}
+            $|I_{RY}| = |I_{BR}| = |I_{YB}| = |I_{ph}|$
+            \\~\\
+            $\Rightarrow I_R = \sqrt {(I_{ph})^2 + (I_{ph})^2 + 2 (I_{ph})^2 \cos{60\degree}} = \sqrt{3} I_{ph}$
+        \end{center}
+        Since the system is balanced, therefore the current through each line will be the same:
+        \begin{center}
+            $I_R = I_Y = I_B = I_L =$ Line Current
+            \\
+            $\therefore I_L = \sqrt {3} \times~I_{ph}$
+            \\
+            $\Rightarrow \text{Line Current} = \sqrt{3} \times~\text{Phase Current}$
+        \end{center}
+
+        \framebreak
+
+        Since, neutral does not exist in a delta connected system, thus the phase voltage and line voltage are same.
+        \begin{center}
+            $V_{RY} = V_{YB} = V_{BR} = V_L$\\
+            $\Rightarrow V_L = V_{ph}$
+        \end{center}
 
     \end{frame}
 
