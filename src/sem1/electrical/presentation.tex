@@ -190,24 +190,22 @@
                 $\boxed{I_{sh} = \frac{V_t}{R_{sh}} = \frac{E_b + I_a R_a + I_{se} R_{se}}{R_{sh}}}$
             \end{center}
         \end{minipage}
-        \begin{minipage}{0.1\textwidth}
+        \begin{minipage}{0.08\textwidth}
             ~
         \end{minipage}
-        \begin{minipage}[c]{0.49\textwidth}
-            \raggedright
-            \begin{tikzpicture}[scale=0.4]
-                % Forces
-                \draw [<-,blue] (2,5) coordinate (C) -- (0,0) node[midway,left] {$F_A$};
-                \draw [->,blue] (0,0) coordinate (B) -- (6,0) coordinate (A) node[midway, below] {$F_B$};
-                \draw [->,red,thick] (0,0) -- (8,5) coordinate (D) node[midway,above left] {$\mathbf{R}$};
+        \begin{minipage}[c]{0.45\textwidth}
+            \begin{circuitikz}[scale=0.9]
+                \draw (6,4) node[below right] {\small $+$}
+                to [short,i=$I_L$] (5,4)
+                to [R,i=$I_{se}$] (3,4)
+                to [short,i=$I_{sh}$] (0,4)
+                to [inductor,l_=$R_{sh}$] (0,0)
+                to (6,0) node [above right] {\small $-$};
 
-                \draw pic [draw,blue] {angle=A--B--C} node[blue,above=6pt,right=12pt] {$\theta$};
-                \draw pic [draw,red,angle radius=30pt] {angle=A--B--D} node[red,above=10pt,right=27pt] {$\phi$};
+                \draw (2,4) to [R,l=$R_a$,i=$I_a$] (2,2) to [V,l=$E_b$] (2,0);
 
-                \draw [dashed] (2,5) -- (8,5) -- (6,0) -- (8,0) -- (8,5);
-                \draw [{Bar[scale=2]}-{Bar[scale=2]}] (6,-0.5) -- (8,-0.5) node[midway,below=5pt] {$F_A\cdot\cos\theta$};
-                \draw [{Bar[scale=2]}-{Bar[scale=2]}] (8.5,0) -- (8.5,5) node[midway,below right=5pt] {$F_A\cdot\sin\theta$};
-            \end{tikzpicture}
+                \draw [<->] (6,0.5) -- node[midway, right=5pt] {$V_t$} (6,3.5);
+            \end{circuitikz}
         \end{minipage}
 
 
