@@ -42,32 +42,41 @@
         \textbf{\Large Write the working principle of DC motor. Also explain the classification of different DC
         motors.}\\[20pt]
 
-        \begin{center}
-            \underline{\smash{\textbf{Working Principle}}}\\[10pt]%
-            \textit{``When a current carrying conductor is placed in a magnetic field, it experiences a mechanical
-            force''}
-        \end{center}
-
-        The construction of both DC Generator and Motor is same, the only difference is here we provide energy to the
-        machine.\ As we excite the armature, the conductors of the armature, placed in magnetic field, experience a
-        mechanical force and the motor starts moving.\ The direction of rotation is given by Fleming Left Hand Rule.
-
-        \framebreak
-
         \underline{\smash{\textbf{Flemming Left Hand Rule:}}}\\[10pt]
         If we stretch the first finger, second finger and thumb of our left hand to be perpendicular to each other,
         and first finger represents the direction of the magnetic field, the second finger represents the direction
         of the current, then the thumb represents the direction of the force experienced by the current carrying
-        conductor.
-
-        \\[10pt]
+        conductor.\\~\\
 
         \begin{center}
-            \begin{tikzpicture}
+            \begin{tikzpicture}[transform canvas={scale=0.8}]
                 \draw [->,red] (0,0) -- (0,1.5) node[above,red] {$\overrightarrow{F}$}
                 \draw [->,blue] (0,0) -- (2,0.4) node[right,blue] {$\overrightarrow{B}$}
                 \draw [->,green] (0,0) -- (2,-0.8) node[right,green] {$\overrightarrow{I}$}
             \end{tikzpicture}
+        \end{center}
+
+        \framebreak
+
+        \underline{\smash{\textbf{Working Principle}}}\\[10pt]%
+
+        \begin{center}
+            \textit{``When a current carrying conductor is placed in a magnetic field, it experiences a mechanical
+            force''}
+        \end{center}
+
+        A DC motor operates based on the principle of electromagnetic induction.\ It consists of a coil (armature)
+        that carries current and is placed in a magnetic field.\ When current flows through the coil, it generates a
+        magnetic field.\ The interaction between this magnetic field and the external magnetic field (created by
+        stationary magnets or field windings) results in a torque, causing the motor to rotate.\ The commutator and
+        brushes help to maintain the direction of current flow, ensuring continuous rotation.
+
+        \framebreak
+
+        \textbf{Diagram:}
+
+        \begin{center}
+            \includegraphics[width=200pt]{dc-motor-construction}
         \end{center}
 
         \framebreak
@@ -215,44 +224,69 @@
         \textbf{\Large What are measuring instruments? Also classify the different categories of the measuring
         instrument.}~\\[10pt]
 
-        Devices that are used to measure the magnitude of an electric current with different objectives are known as
-        measuring instruments.\ Some common categories of measuring instruments are:\\[10pt]
+        An instrument is a device in which we can determine the magnitude or value of the quantity to be measured.
+        The measuring quantity can be voltage, current, power and energy etc. Generally instruments are classified
+        into two categories:
 
-        \textbf{Voltage measurement units:}
-        \begin{itemize}
-            \item \underline{Voltmeter}: Measures electrical potential in volts (\SI{}{\volt}).
-            \item \underline{\smash{Oscilloscope}}: Displays voltage waveform overtime.
-        \end{itemize}
-
-        \\[10pt]
-
-        \textbf{Current measurement units:}
-        \begin{itemize}
-            \item \underline{Ammeter}: Measures the flow of electrical current in amperes (\SI{}{\ampere}).
-        \end{itemize}
+        \begin{enumerate}
+            \item Absolute Instrument
+            \item Secondary Instrument
+        \end{enumerate}
 
         \framebreak
 
-        \textbf{Resistance measurement units:}
-        \begin{itemize}
-            \item \underline{Ohmmeter}: Measures electrical resistance in ohms ($\Omega$).
-            \item \underline{\smash{Wheatstone Bridge}}: Determines an unknown electrical resistance by balancing two
-            legs of a bridge circuit.
-        \end{itemize}
+        \textbf{Absolute Instruments}\\[10pt]
 
-        \\[10pt]
+        These instruments doesn't give direct readings but gives in terms of instrumental constant.\ These are
+        accurate measuring instruments.\ These are used in the research laboratories.
+        \\~\\
+        Example: Tangent galvanometer, which gives the measured current in terms of tangent of deflected angle, the
+        radius and the number of turns of the galvanometer.
 
-        \textbf{Power measurement units:}
-        \begin{itemize}
-            \item \underline{Watt-meter}: Measures electrical power in watts (\SI{}{\watt}).
-            \item \underline{\smash{Power Analyser}}: Analyses electrical power quality.
-        \end{itemize}
+        \framebreak
 
-        \\[10pt]
+        \textbf{Secondary Instruments}\\[10pt]
 
-        \textbf{Impedance measurement units:}
-        \begin{itemize}
-            \item \underline{\smash{Impedance analyzer}}: Measures the impedance of a circuit.
-        \end{itemize}
+        This instrument determines the value of the quantity to be measured directly. Generally these instruments are
+        calibrated by comparing with another standard secondary instrument.
+        \\~\\
+        Examples of such instruments are voltmeter, ammeter, watt-meter, etc.\ Practically secondary instruments are
+        suitable for measurement.
+        \\~\\
+        Secondary instruments are divided into three categories:
+        \begin{enumerate}
+            \item Indicating Instruments
+            \item Recording Instruments
+            \item Integrating Instruments
+        \end{enumerate}
+
+        \framebreak
+
+        \textbf{Indicating Instruments} \\[10pt]
+
+        Indicating instruments are those which indicate the instantaneous value of the electrical quantity being
+        measured at the time at which it is being measured.\ Their indications are given by pointers moving over
+        calibrated scale.
+        \\~\\
+        Example - Ammeter, Voltmeter and Watt-meter.
+
+        \framebreak
+
+        \textbf{Recording Instruments} \\[10pt]
+
+        Recording instruments are those, which gives a continuous record or the variations of such a quantity over a
+        selected period of time.\ The moving system of the instrument carries an inked pen which rests lightly on a
+        chart or graph, that is moved at a uniform and low speed, in a direction perpendicular to that of the
+        deflection of the pen.\ The path traced out by the pen presents a continuous record of the variations in the
+        deflection of the instrument.
+
+        \framebreak
+
+        \textbf{Integrating Instruments} \\[10pt]
+
+        Integrating instruments are those which measure the total quantity of electricity or electrical energy
+        supplied over a period of time.
+        \\~\\
+        Example - Ampere-hour and watt-hour meters.
     \end{frame}
 \end{document}
