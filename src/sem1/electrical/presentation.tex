@@ -18,7 +18,10 @@
 \usepackage{lmodern}
 \usepackage{siunitx}
 \usepackage{tikz}
-\usepackage{wrapfig}
+\usepackage[american]{circuitikz}
+
+\ctikzset{voltage/american plus/.initial={}}
+\ctikzset{voltage/american minus/.initial={}}
 
 % Document
 \begin{document}
@@ -101,24 +104,16 @@
                 $\boxed{V_t = E_b + T_a \left( R_a + R_{se} \right) + V_{\text{brush}}}$
             \end{center}
         \end{minipage}
-        \begin{minipage}{0.1\textwidth}
+        \begin{minipage}{0.14\textwidth}
             ~
         \end{minipage}
-        \begin{minipage}[c]{0.49\textwidth}
-            \raggedright
-            \begin{tikzpicture}[scale=0.4]
-                % Forces
-                \draw [<-,blue] (2,5) coordinate (C) -- (0,0) node[midway,left] {$F_A$};
-                \draw [->,blue] (0,0) coordinate (B) -- (6,0) coordinate (A) node[midway, below] {$F_B$};
-                \draw [->,red,thick] (0,0) -- (8,5) coordinate (D) node[midway,above left] {$\mathbf{R}$};
-
-                \draw pic [draw,blue] {angle=A--B--C} node[blue,above=6pt,right=12pt] {$\theta$};
-                \draw pic [draw,red,angle radius=30pt] {angle=A--B--D} node[red,above=10pt,right=27pt] {$\phi$};
-
-                \draw [dashed] (2,5) -- (8,5) -- (6,0) -- (8,0) -- (8,5);
-                \draw [{Bar[scale=2]}-{Bar[scale=2]}] (6,-0.5) -- (8,-0.5) node[midway,below=5pt] {$F_A\cdot\cos\theta$};
-                \draw [{Bar[scale=2]}-{Bar[scale=2]}] (8.5,0) -- (8.5,5) node[midway,below right=5pt] {$F_A\cdot\sin\theta$};
-            \end{tikzpicture}
+        \begin{minipage}[c]{0.45\textwidth}
+            \begin{circuitikz}
+                \draw (4,0) node[above right] {\small $+$} to (0,0)
+                (0,4) to [R,l_=$R_a$] (0,2) to [V,i>_=$I_a$,l=$E_b$] (0,0)
+                (0,4) [inductor,l=$R_{se}$,v=$I_{se}$] to (4,4) node[below right] {\small $-$};
+                \draw [<->] (4,0.5) -- node[midway, right=5pt] {$V_t$} (4,3.5);
+            \end{circuitikz}
         \end{minipage}
 
         \framebreak
