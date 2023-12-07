@@ -191,6 +191,43 @@
 
         \textbf{Delta Connected System}\\[10pt]
 
+        \begin{minipage}{0.3\textwidth}
+            \begin{circuitikz}
+                \draw (3,0) coordinate (C)
+                to [inductor,v^={\small $V_Y$},i<_=$I_{YB}$,*-*] (6,0) coordinate (B)
+                (3,0) to [inductor,v^={\small $V_B$},i=$I_{BR}$,-*] ++(60:3) coordinate (A)
+                to [inductor,v^={\small $V_R$},i=$I_{RY}$] ++(-60:3);
+
+                \draw (A) to [short,-*,i=$I_R$] ++(3,0) coordinate (a) node[above right] {$R$}
+                (B) to [short,-*,i=$I_Y$] (a |- 0,0) coordinate (b) node[below] {$Y$}
+                (C) -- ++(0,-1) to [short,-*,i=$I_B$] (a |- 0,-1) coordinate (c) node[below right] {$B$};
+
+                \draw [<->] ($(a)+(0.25,-0.1)$) -- node[midway,right=5pt] {\small $V_{BR}$} ($(c)+(0.25,0.1)$);
+                \draw [<->] ($(a)+(0,-0.1)$) -- node[midway,left] {\small $V_{RY}$} ($(b)+(0,0.1)$);
+                \draw [<->] ($(b)+(-1,-0.1)$) -- node[midway,left] {\small $V_{YB}$} ($(c)+(-1,0.1)$);
+            \end{circuitikz}
+        \end{minipage}
+        \begin{minipage}{0.2\textwidth}
+            ~
+        \end{minipage}
+        \begin{minipage}{0.4\textwidth}
+            \begin{tikzpicture}
+                \draw [-Stealth,thick] (0,0) coordinate (O) -- (0,2) coordinate (R) node[above] {$I_{RY}$};
+                \draw [-Stealth,thick] (0,0) -- ++(30:2) coordinate(Y) node[below right] {$-I_{BR}$};
+                \draw [-Stealth,thick] (0,0) -- ++(-30:2) node[above right] {$I_{YB}$};
+                \draw [-Stealth,thick] (0,0) -- ++(-150:2) coordinate (y) node[below left] {$I_{BR}$};
+
+                \draw [-Stealth,thick] (0,0) -- ++(60:3.4641) coordinate (D) node[above right] {$I_R$};
+                \draw [dashed] (Y) -- (D) -- (R);
+
+                \draw pic [draw] {angle=Y--O--R} node[above=17pt,right=10pt] {\tiny $60\degree$};
+                \draw pic [draw,angle radius=20pt] {angle=D--O--R} node[above=25pt,left=-17pt] {\tiny $30\degree$};
+                \draw pic [draw,angle radius=10pt] {angle=R--O--y} node[above=10pt,left=10pt] {\tiny $120\degree$};
+            \end{tikzpicture}
+        \end{minipage}
+
+        \framebreak
+
         Let $I_{RY}, I_{YB}$ and $I_{BR}$ are the phase current in delta connected system while $I_R, I_Y$ and $I_B$
         being the line currents.
         \\~\\
