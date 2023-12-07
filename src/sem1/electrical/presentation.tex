@@ -21,7 +21,7 @@
 \usepackage{tikz}
 \usepackage[american]{circuitikz}
 
-\usetikzlibrary{calc}
+\usetikzlibrary{calc,angles}
 \ctikzset{voltage/american plus/.initial={}}
 \ctikzset{voltage/american minus/.initial={}}
 \makeatletter
@@ -98,6 +98,43 @@
         \framebreak
 
         \textbf{Star (Wye) Connected System}\\[10pt]
+
+        \begin{minipage}{0.3\textwidth}
+            \begin{circuitikz}
+                \draw (3,0) coordinate (C)
+                to [cscale=0.6,inductor,v^={$V_B$},*-*] ++(1.5,1.29903) coordinate (O)
+                to [cscale=0.6,inductor,v={$V_R$},-*] ++(0,1.29903) coordinate (A);
+                \draw (O) to [cscale=0.6,inductor,v^={$V_Y$},-*,invert] (6,0) coordinate (B);
+
+                \draw (A) to [short,-*,i=$I_R$] ++(3,0) coordinate (a) node[above right] {$R$}
+                (B) to [short,-*,i=$I_Y$] (a |- 0,0) coordinate (b) node[below] {$Y$}
+                (C) -- ++(0,-1) to [short,-*,i=$I_B$] (a |- 0,-1) coordinate (c) node[below right] {$B$};
+
+                \draw [<->] ($(a)+(0.25,-0.1)$) -- node[midway,right=5pt] {\small $V_{BR}$} ($(c)+(0.25,0.1)$);
+                \draw [<->] ($(a)+(0,-0.1)$) -- node[midway,left] {\small $V_{RY}$} ($(b)+(0,0.1)$);
+                \draw [<->] ($(b)+(-1,-0.1)$) -- node[midway,left] {\small $V_{YB}$} ($(c)+(-1,0.1)$);
+            \end{circuitikz}
+        \end{minipage}
+        \begin{minipage}{0.2\textwidth}
+            ~
+        \end{minipage}
+        \begin{minipage}{0.4\textwidth}
+            \begin{tikzpicture}
+                \draw [-Stealth,thick] (0,0) coordinate (O) -- (0,2) coordinate (R) node[above] {$V_R$};
+                \draw [-Stealth,thick] (0,0) -- ++(150:2) coordinate(Y) node[above left] {$-V_Y$};
+                \draw [-Stealth,thick] (0,0) -- ++(-30:2) coordinate (y) node[above right] {$V_Y$};
+                \draw [-Stealth,thick] (0,0) -- ++(-150:2) node[below left] {$V_B$};
+
+                \draw [-Stealth,thick] (0,0) -- ++(120:3.4641) coordinate (D) node[below left] {$V_{RY}$};
+                \draw [dashed] (Y) -- (D) -- (R);
+
+                \draw pic [draw] {angle=R--O--Y} node[above=20pt,left=10pt] {\tiny $60\degree$};
+                \draw pic [draw,angle radius=20pt] {angle=R--O--D} node[above=25pt,right=-15pt] {\tiny $30\degree$};
+                \draw pic [draw,angle radius=10pt] {angle=y--O--R} node[above=10pt,right=10pt] {\tiny $120\degree$};
+            \end{tikzpicture}
+        \end{minipage}
+
+        \framebreak
 
         Let $V_R, V_Y~\text{and}~V_B$ represent the three phase voltages while $V_{RY}, V_{YB}$ and $V_{BR}$
         represent the line voltages.\ Assume that the system is balanced, so:
