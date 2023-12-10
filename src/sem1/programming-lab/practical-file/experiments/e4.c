@@ -1,4 +1,4 @@
-// Write a C program to find the greatest number among three numbers provided by the user using if else.
+// Write a C program to perform arithmetic operations using switch case statement.
 
 #include <stdio.h>
 

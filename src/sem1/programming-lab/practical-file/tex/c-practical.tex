@@ -51,7 +51,7 @@
                 & \\
                 %------------------------------------------------------------------------------------------------------%
                 \textbf{4} &%
-                Write a C program to find the greatest number among three numbers provided by the user using if else.
+                Write a C program to perform arithmetic operations using switch case statement.
                 & \\
                 %------------------------------------------------------------------------------------------------------%
                 \textbf{5(a)} &%
@@ -395,6 +395,95 @@ Enter xˆ2 coefficient (a): 1
 Enter x coefficient (b): 2
 Enter constant (c): 3
 No real roots exist.
+    \end{code}
+    %------------------------------------------------------------------------------------------------------------------%
+    %------------------------------------------------------------------------------------------------------------------%
+
+    \experiment{4}{Write a C program to perform arithmetic operations using switch case statement}
+    {Program that uses switch case statements to perform an arithmetic operation on two numbers input by the user.}
+
+    \begin{tabularsection}{Algorithm}
+        \begin{algorithmic}[1]
+            \State Start
+            \State \textbf{read} $a, b,$ operation
+            \If {operation is add}
+                \State result $\gets a + b$
+            \ElsIf
+                    {operation is subtract}
+                \State result $\gets a - b$
+            \ElsIf
+                    {operation is multiply}
+                \State result $\gets a \times b$
+            \ElsIf
+                    {operation is divide}
+                \State result $\gets \frac{a}{b}$
+            \EndIf
+            \State \textbf{print} result
+            \State Stop
+        \end{algorithmic}
+    \end{tabularsection}
+
+    \begin{flowchart}
+        \begin{tikzpicture}[node distance=2cm]
+            \node (start) [startstop] {Start};
+            \node (input) [io, below of=start] {\textbf{read} $a, b, operation$};
+            \node (output) [io, below of=input] {\textbf{print} $operation(a, b)$};
+            \node (stop) [startstop, below of=output] {Stop};
+
+            \draw [arrow] (start) -- (input);
+            \draw [arrow] (input) -- (output);
+            \draw [arrow] (output) -- (stop);
+        \end{tikzpicture}
+    \end{flowchart}
+
+    \newpage
+    \begin{code}
+        {Program}{c}
+#include <stdio.h>
+
+int main() {
+    int a, b;
+    int operation;
+
+    // Read a
+    printf("Enter first number: ");
+    scanf("%d", &a);
+
+    // Read b
+    printf("Enter second number: ");
+    scanf("%d", &b);
+
+    // Read operation
+    printf("Enter operation add(1), subtract(2), multiply(3), divide(4): ");
+    scanf("%d", &operation);
+
+    // Perform the operation input by the user on a and b
+    switch (operation) {
+        case 1:
+            printf("%d + %d = %d", a, b, a + b);
+            break;
+        case 2:
+            printf("%d - %d = %d", a, b, a - b);
+            break;
+        case 3:
+            printf("%d x %d = %d", a, b, a * b);
+            break;
+        case 4:
+            printf("%d / %d = %f", a, b, (float) a / b);
+            break;
+        default:
+            printf("Invalid operation.");
+    }
+
+    return 0;
+}
+    \end{code}
+    \begin{code}
+        {Input \& Output}{text}
+Enter first number: 2
+Enter second number: 2
+Enter operation add(1), subtract(2), multiply(3), divide(4): 1
+2 + 2 = 4
     \end{code}
 
     %------------------------------------------------------------------------------------------------------------------%
