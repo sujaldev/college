@@ -815,4 +815,104 @@ Enter number 5: 5
 Smallest: 1
 Largest: 5
     \end{code}
+
+    %------------------------------------------------------------------------------------------------------------------%
+    %------------------------------------------------------------------------------------------------------------------%
+
+    \experiment{7}{Write a C program to find the largest and smallest number in a list of integers.}
+    {Program to find the largest and smallest number in an array}
+
+    \begin{tabularsection}{Algorithm}
+        \begin{algorithmic}[1]
+            \State Start
+            \State \textbf{read} arr
+            \For{$i \gets 0; i < \text{size} - 1; i++$}
+                \For{$j \gets 0; j < \text{size} - i - 1; j++$}
+                    \If {arr$[j] >$ arr$[j + 1]$}
+                        \State arr$[j]$, arr$[j + 1] \gets$ arr$[j + 1]$, arr$[j]$
+                    \EndIf
+                \EndFor
+            \EndFor
+            \State \textbf{print} arr
+            \State Stop
+        \end{algorithmic}
+    \end{tabularsection}
+
+    \begin{flowchart}
+        \begin{tikzpicture}[transform canvas={scale=0.7},node distance=2cm]
+            \node (start) [startstop,xshift=-225pt] {Start};
+            \node (input) [io,below of=start] {\textbf{read} $arr$};
+            \node (fori) [decision,below of=input,yshift=-35pt] {\small for i $= 0$ to size $- 1$};
+            \node (forj) [decision,right of=fori,xshift=150pt] {\small for j $= 0$ to size $- i - 1$};
+            \node (cond) [decision, right of=forj,xshift=200pt] {arr$[j] >$ arr$[j + 1]$}
+            \node (swap) [process, below of=cond,yshift=-60pt] {arr$[j]$, arr$[j + 1] \gets$ arr$[j + 1]$, arr$[j]$}
+            \node (output) [io,below of=fori,yshift=-100pt] {\textbf{print} arr};
+            \node (stop) [startstop,below of=output] {Stop};
+
+            \draw [arrow] (start) -- (input);
+            \draw [arrow] (input) -- (fori);
+            \draw [arrow] (fori) -- node [anchor=south] {$0 < i <$ size $- 1$} (forj);
+            \draw [arrow] (forj) -- node [anchor=south] {$0 < j <$ size $- i - 1$} (cond);
+            \draw [arrow] (cond) -- node [anchor=west] {yes} (swap);
+            \draw [arrow] (swap) -| (forj);
+            \draw [arrow] (cond) -- node [anchor=west] {no} ++(0,5) -| (forj);
+            \draw [arrow] (forj) to[out=-135,in=-45] node [anchor=north] {$j \ge$ size $- i - 1$} (fori);
+            \draw [arrow] (fori) -- node [anchor=east] {$i \ge$ size $- 1$} (output);
+            \draw [arrow] (output) -- (stop);
+        \end{tikzpicture}
+        \\[300pt]
+    \end{flowchart}
+
+
+    \newpage
+    \begin{code}
+        {Program}{c}
+#include <stdio.h>
+
+int main() {
+    int size = 5, arr[size], temp;
+
+    // Read array
+    for (int i = 0; i < size; i++) {
+        printf("Enter number %i: ", i+1);
+        scanf("%d", &arr[i]);
+    }
+
+    // Sort the array with bubble sort
+    for (int i = 0; i < (size - 1); i++) {
+        // Since the last element after each iteration completed in the first loop ensures the greatest number bubbles
+        // up to the highest index the second loop need not traverse the whole array.
+        for (int j = 0; j < (size - i - 1); j++) {
+            // Swap the current and the next number if they're out of order.
+            if (arr[j] > arr[j + 1]) {
+                temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+
+    // Output the sorted array
+    printf("[");
+    for (int k = 0; k < (size - 1); k++) {
+        printf(" '%d' ", arr[k]);
+    }
+    if (size > 0) {
+        printf(" '%d' ", arr[size-1]);
+    }
+    printf("]");
+
+    return 0;
+}
+    \end{code}
+    \begin{code}
+        {Input \& Output}{text}
+Enter number 1: 5
+Enter number 2: 4
+Enter number 3: 3
+Enter number 4: 2
+Enter number 5: 1
+[ '1'  '2'  '3'  '4'  '5' ]
+    \end{code}
+    %------------------------------------------------------------------------------------------------------------------%
 \end{document}
