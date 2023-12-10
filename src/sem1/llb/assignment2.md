@@ -43,3 +43,33 @@ The disadvantages of a presidential system are:
 4. The transition would be a monumental task requiring enormous resources.
 
 ---
+
+<h4>Q2) What is the method of appointment of Supreme Court judges in India? Do you think India should move from current
+collegium system for appointment of judges to a new more transparent and accountable method? Suggest alternative methods
+and give advantages and disadvantages for it.</h4>
+
+India uses a collegium system to appoint judges in the Supreme Court, in this system the collegium, which consists of
+the Chief Justice of India and four senior most judges of the supreme court, set forth a recommendation list to the
+President of India, who then selects from this list to appoint judges.
+
+The collegium system has faced various criticisms such as:
+
+1. The collegium system lacks transparency as judges are appointed by a few judges in complete secrecy, this makes the
+   process for the appointment of judges vulnerable to issues such as nepotism/favouritism.
+2. The decisions made by this process are not held accountable by any administrative body.
+
+Due to such issues with the collegium system I think transitioning to a more transparent and accountable method would be
+in the best interest of the nation.
+
+In 2014, another system called the National Judicial Appointments System (NJAC) was proposed as a replacement for the
+collegium system. NJAC would have consisted of the Chief Justice of India, two senior supreme court judges, the Union
+Minister of Law and Justice, two eminent persons selected by Chief Justice of India, Prime Minister of India and the
+head of the opposition in Lok Sabha. The advantages of NJAC were:
+
+1. It would've provided more transparency and accountability.
+2. It integrates the judiciary with the executive and makes it inclusive.
+
+The disadvantages of NJAC were:
+
+1. The Indian Constitution guarantees an independent judiciary system, NJAC would have violated this by including the
+   executive in the process of appointment of judges.
