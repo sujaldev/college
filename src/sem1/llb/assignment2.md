@@ -1,7 +1,5 @@
 # Assignment 2 (Unit 3 & 4)
 
----
-
 <h4>Q1) Explain Presidential and parliamentary forms of government. Should India adopt Presidential form of government
 instead of Parliamentary form of government? Give arguments in support and against your opinion.</h4>
 
@@ -28,7 +26,7 @@ India has implemented a parliamentary form of government, but the pros and cons 
 considering. The benefits of a presidential system are:
 
 1. In a presidential system, the president can appoint experts in their respective fields to head various departments
-   and ministries without them being a member of the legislature.
+   and ministries without requiring them to be members of the legislature.
 2. A presidential system is considered more stable than a parliamentary system as the tenure of the President is fixed
    and not subject to a vote of no-confidence. This reduces pressure from the decision-making process as there is no
    risk of a sudden collapse of the government.
@@ -40,8 +38,8 @@ The disadvantages of a presidential system are:
 2. While a presidential form of government offers stability, it also implies rigidity. Compared to a parliamentary
    system, it is rather difficult to remove the President from power if the citizens no longer have confidence in their
    elected President.
-3. Since the executive and legislative branch are separate, it can lead to inefficiency and wastage of time if both the
-   branches do not agree upon a decision.
+3. Since the executive and legislative branch are separate, disagreements between them may lead to inefficiency and
+   wastage of time.
 4. The transition would be a monumental task requiring enormous resources.
 
 ---
