@@ -62,12 +62,8 @@
                 Write a C program to find the factorial of a given integer using recursive function.
                 & \\
                 %------------------------------------------------------------------------------------------------------%
-                \textbf{6(a)} &%
+                \textbf{6} &%
                 Write a C program to find GCD of two integers by using a recursive function.
-                & \\
-                %------------------------------------------------------------------------------------------------------%
-                \textbf{6(b)} &%
-                Write a C program to find GCD of two integers by using a non-recursive function.
                 & \\
                 %------------------------------------------------------------------------------------------------------%
                 \textbf{7} &%
@@ -302,6 +298,108 @@ Sum of digits = 10
     %------------------------------------------------------------------------------------------------------------------%
     %------------------------------------------------------------------------------------------------------------------%
 
+    \experiment{3}{Write a C program to find the roots of a quadratic equation.}
+    {Program that finds the roots of a quadratic equation by using the quadratic formula:\vspace*{-5pt}%
+        \begin{align*}%
+            x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+        \end{align*}\vspace*{-25pt}}
+
+    \begin{tabularsection}{Algorithm}
+        \begin{algorithmic}[1]
+            \State Start
+            \State \textbf{read} $a, b, c$
+            \State discriminant $\gets b^2 - 4ac$
+            \If {discriminant $> 0$}
+                \State root1, root2 $\gets \frac{-b \pm \sqrt{\text{discriminant}}}{2a}$
+            \ElsIf
+                    {discriminant $= 0$}
+                \State root1, root2 $\gets \frac{-b}{2a}$
+            \Else
+                \State No roots exist
+            \EndIf
+            \State \textbf{print} root1, root2
+            \State Stop
+        \end{algorithmic}
+    \end{tabularsection}
+
+    \begin{flowchart}
+        \begin{tikzpicture}[transform canvas={scale=0.8},node distance=2cm]
+            \node (start) [startstop] {Start};
+            \node (input) [io, below of=start] {\textbf{read} $a, b, c$};
+            \node (discriminant) [process, below of=input] {disriminant $\gets b^2 - 4ac$};
+            \node (cond) [decision, below of=discriminant,yshift=-20pt] {discriminant};
+            \node (c1) [process, right of=cond,xshift=100pt]
+            {root1, root2 $\gets \frac{-b \pm \sqrt{\text{discriminant}}}{2a}$};
+            \node (c2) [process, left of=cond,xshift=-100pt]
+            {root1, root2 $\gets \frac{-b}{2a}$};
+            \node (c3) [process, below of=cond,yshift=-40pt] {No real roots exist};
+            \node (output) [io, below of=c3] {\textbf{print} calculated roots};
+            \node (stop) [startstop,below of=output] {Stop};
+
+            \draw [arrow] (start) -- (input);
+            \draw [arrow] (input) -- (discriminant);
+            \draw [arrow] (discriminant) -- (cond);
+            \draw [arrow] (cond) -- node[anchor=south] {$> 0$} (c1);
+            \draw [arrow] (cond) -- node[anchor=south] {$= 0$} (c2);
+            \draw [arrow] (cond) -- node[anchor=east] {$< 0$} (c3);
+            \draw [arrow] (c3) -- (output);
+            \draw [arrow] (output) -- (stop);
+            \draw [arrow] (c1) |- (output);
+            \draw [arrow] (c2) |- (output);
+        \end{tikzpicture}
+        \\[320pt]
+    \end{flowchart}
+
+    \begin{code}
+        {Program}{c}
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    float a, b, c, discriminant, root1, root2;
+
+    // Read a
+    printf("Enter x^2 coefficient (a): ");
+    scanf("%f", &a);
+
+    // Read b
+    printf("Enter x coefficient (b): ");
+    scanf("%f", &b);
+
+    // Read c
+    printf("Enter constant (c): ");
+    scanf("%f", &c);
+
+    // Calculate the discriminant for the given equation
+    discriminant = (b * b) - (4 * a * c);
+
+    // Calculate roots by using the quadratic formula
+    if (discriminant > 0) {
+        root1 = (b + sqrt(discriminant) / (-2 * a));
+        root2 = (b - sqrt(discriminant) / (-2 * a));
+
+        printf("Two distinct real roots exist:\n%f\n%f", root1, root2);
+    } else if (discriminant == 0) {
+        root1 = b / (-2 * a);
+        printf("One distinct real root exists:\n%f", root1);
+    } else {
+        printf("No real roots exist.");
+    }
+
+    return 0;
+}
+    \end{code}
+    \begin{code}
+        {Input \& Output}{text}
+Enter xˆ2 coefficient (a): 1
+Enter x coefficient (b): 2
+Enter constant (c): 3
+No real roots exist.
+    \end{code}
+
+    %------------------------------------------------------------------------------------------------------------------%
+    %------------------------------------------------------------------------------------------------------------------%
+
     \experiment{5(a)}{Write a C program to find the factorial of a given integer using non-recursive function.}
     {Program that finds the factorial of a number input by the user without using a recursive function.}
 
@@ -454,7 +552,7 @@ Factorial of 5 is 120
     %------------------------------------------------------------------------------------------------------------------%
     %------------------------------------------------------------------------------------------------------------------%
 
-    \experiment{6(a)}{Write a C program to find GCD of two integers by using a recursive function.}
+    \experiment{6}{Write a C program to find GCD of two integers by using a recursive function.}
     {Program that finds the greatest common denominator of two integers input by the user using a recursive function.}
 
     \begin{tabularsection}{Algorithm}
