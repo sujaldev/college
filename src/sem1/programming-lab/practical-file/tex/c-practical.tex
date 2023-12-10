@@ -721,4 +721,97 @@ GCD(5, 10) = 5
     \end{code}
 
     %------------------------------------------------------------------------------------------------------------------%
+    %------------------------------------------------------------------------------------------------------------------%
+
+    \experiment{7}{Write a C program to find the largest and smallest number in a list of integers.}
+    {Program to find the largest and smallest number in an array}
+
+    \begin{tabularsection}{Algorithm}
+        \begin{algorithmic}[1]
+            \State Start
+            \State \textbf{read} arr
+            \State smallest, largest $\gets \text{arr}[0]$
+            \State smallest
+            \For{$j \gets 0; j < \text{size}; j++$}
+                \If {arr$[j] <$ smallest}
+                    \State smallest $\gets \text{arr}[j]$
+                \ElsIf
+                        {arr$[j] >$ largest}
+                    \State largest $\gets \text{arr}[j]$
+                \EndIf
+            \EndFor
+            \State \textbf{print} smallest, largest
+            \State Stop
+        \end{algorithmic}
+    \end{tabularsection}
+
+    \begin{flowchart}
+        \begin{tikzpicture}[transform canvas={scale=0.8},node distance=2cm]
+            \node (start) [startstop,xshift=-50pt] {Start};
+            \node (input) [io,below of=start] {\textbf{read} $arr$};
+            \node (for) [decision,below of=input,yshift=-25pt] {for j $= 0$ to size};
+            \node (if) [decision,right of=for,xshift=150pt] {arr$[j]$};
+            \node (c1) [process, below of=if,yshift=-20pt] {smallest $\gets \text{arr}[j]$}
+            \node (c2) [process, above of=if,yshift=20pt] {largest $\gets \text{arr}[j]$}
+            \node (output) [io,below of=for,yshift=-100pt] {\textbf{print} smallest, largest};
+            \node (stop) [startstop,below of=output] {Stop};
+
+            \draw [arrow] (start) -- (input);
+            \draw [arrow] (input) -- (for);
+            \draw [arrow] (for) -- node [anchor=south] {$0 < j <$ size} (if);
+            \draw [arrow] (if) -- node [anchor=west] {arr$[j] <$ smallest} (c1);
+            \draw [arrow] (if) -- node [anchor=west] {arr$[j] >$ largest} (c2);
+            \draw [arrow] (c1) -- (for);
+            \draw [arrow] (c2) -- (for);
+            \draw [arrow] (for) -- node [anchor=east] {$j \ge$ size} (output);
+            \draw [arrow] (output) -- (stop);
+        \end{tikzpicture}
+        \\[300pt]
+    \end{flowchart}
+
+    \newpage
+    \begin{code}
+        {Program}{c}
+#include <stdio.h>
+
+int main() {
+    int size = 5, arr[size];
+
+    // Read array
+    for (int i = 0; i < size; i++) {
+        // Another approach would be to merge the second loop right here
+        printf("Enter number %i: ", i+1);
+        scanf("%d", &arr[i]);
+    }
+
+    int smallest, largest;
+    smallest = largest = arr[0];
+
+    // Find largest and smallest
+    for (int j = 0; j < size; j++) {
+        if (arr[j] < smallest) {
+            smallest = arr[j];
+        }
+
+        if (arr[j] > largest) {
+            largest = arr[j];
+        }
+    }
+
+    // Output largest and smallest
+    printf("Smallest: %d\nLargest: %d", smallest, largest);
+
+    return 0;
+}
+    \end{code}
+    \begin{code}
+        {Input \& Output}{text}
+Enter number 1: 1
+Enter number 2: 2
+Enter number 3: 3
+Enter number 4: 4
+Enter number 5: 5
+Smallest: 1
+Largest: 5
+    \end{code}
 \end{document}
