@@ -108,3 +108,35 @@ government. Thus, India is referred to as a "Quasi-Federal State".
 Article 1 of the Indian Constitution describes India as a "Union of States". This is because the Indian Union was not
 formed as a result of an agreement between the states and the states are not provided the right to secede from the
 federation.
+
+---
+
+<h4>Q4) Give own arguments in support and against the statement while explaining the various powers and functions of the
+President. "If the office of president has no real power why not just abolish the post of president in India"</h4>
+
+India is a parliamentary form of democracy, in which the head of the government is the Prime Minister, while the
+President is the head of the state. Bhimrao Ambedkar during the consistent assembly of India remarked that the President
+represents the nation but does not rule the nation, serving as a symbol of the nation and as a ceremonial device on a
+seal through which the nation's decision are made known. But many have noted that the office of President does not have
+any real power and so the post of President of India should be abolished, some of the reasons as to why the post of the
+President should not be abolished are:
+
+1. The President serves as a check for the legislative branch as no bill can be passed without his approval. The
+   President can also reject a bill if he feels that a bill violates the constitution.
+2. The President summons both the house of the Parliament (Lok Sabha and Rajya Sabha) and prorogues them, he can also
+   dissolve the Lok Sabha.
+3. The President appoints the Chief Justice of India and Supreme Court and High Court judges.
+4. The President possesses pardoning power, allowing him the to grant pardon against punishment for an offence against
+   union law, punishment by a martial court, or death sentence.
+5. International Treaties and agreements that are approved by the Parliament are negotiated and concluded in his name.
+
+Reasons to abolish the post of the President in India:
+
+1. The President merely serves as a ceremonial symbol, the real power resides with the head of the government.
+2. During the review process for passing a bill, the President can send the bill back for reconsideration but if the
+   government sends the bill again, then he has to permit the bill.
+3. While the President can make suggestions in the appointment of Chief Justice of India, the actual decision-making
+   process is in control of the Supreme Court judges.
+4. The President can only issue the removal order of Supreme Court judge only after the address of the Parliament.
+5. Requiring the approval of the President on every bill makes law-making increase the delay in the law-making process
+   of India.
