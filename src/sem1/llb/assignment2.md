@@ -73,3 +73,38 @@ The disadvantages of NJAC were:
 
 1. The Indian Constitution guarantees an independent judiciary system, NJAC would have violated this by including the
    executive in the process of appointment of judges.
+
+---
+
+<h4>Q3) Mention federal and unitary features of the Indian Constitution. Justify why India is called a "Quasi-federal
+State" or a "Union of States" and not a federation.</h4>
+
+In a federal form of government power is distributed between the central and the state government, whereas in a unitary
+form of government, power is concentrated in one single authority. The Indian constitution is often described as federal
+in structure with unitary characteristics. Some of its federal features are:
+
+1. Dual Government: A central government exists for the centre and state governments for each state.
+2. Distribution of Powers: The Indian Constitution declares the scope of matters for which central, state or even both
+   types of governments are responsible.
+3. Supremacy of the Constitution: In case of disputes, whatever is written in the Constitution is considered supreme.
+4. Independence of Judiciary: The judiciary branch is entirely isolated from the other branches to ensure objectivity
+   and justice.
+
+Some of the unitary features of the Indian Constitution are:
+
+1. States in India are not provided the safeguard that are typically provided for states in a federal system.
+2. India only offers single-citizenship, whereas, federal constitutions allow dual citizenship, one for the state and
+   one of the centre.
+3. The Indian Constitution is applicable at both the union and the state level, which is a feature of a unitary
+   government.
+4. In case a subject is not mentioned in the scopes declared by the Indian Constitution, the residuary power is
+   distributed to the central government.
+5. In a state of emergency, the powers of the state governments are limited.
+
+In a quasi-federal state, the distribution of power between the state government and the central government is unequal,
+and as we can observe from the aforementioned points, the Indian Constitution distributes more power to the central
+government. Thus, India is referred to as a "Quasi-Federal State".
+
+Article 1 of the Indian Constitution describes India as a "Union of States". This is because the Indian Union was not
+formed as a result of an agreement between the states and the states are not provided the right to secede from the
+federation.
