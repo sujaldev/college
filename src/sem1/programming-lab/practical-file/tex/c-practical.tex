@@ -414,33 +414,61 @@ No real roots exist.
             \State Start
             \State \textbf{read} $a, b,$ operation
             \If {operation is add}
-                \State result $\gets a + b$
+                \State \textbf{print} $a + b$
             \ElsIf
                     {operation is subtract}
-                \State result $\gets a - b$
+                \State \textbf{print} $a - b$
             \ElsIf
                     {operation is multiply}
-                \State result $\gets a \times b$
+                \State \textbf{print} $a \times b$
             \ElsIf
                     {operation is divide}
-                \State result $\gets \frac{a}{b}$
+                \State \textbf{print} $\frac{a}{b}$
+            \Else
+                \State \textbf{print} ``Invalid Operation''
             \EndIf
-            \State \textbf{print} result
             \State Stop
         \end{algorithmic}
     \end{tabularsection}
 
     \begin{flowchart}
-        \begin{tikzpicture}[node distance=2cm]
+        \begin{tikzpicture}[transform canvas={scale=0.8},node distance=2cm]
             \node (start) [startstop] {Start};
             \node (input) [io, below of=start] {\textbf{read} $a, b, operation$};
-            \node (output) [io, below of=input] {\textbf{print} $operation(a, b)$};
-            \node (stop) [startstop, below of=output] {Stop};
+            \node (switch) [process, below of=input] {\textbf{switch} operation};
+            \node (c1) [decision,below of=switch,yshift=-20pt,xshift=-240pt] {\textbf{case} 1};
+            \node (c2) [decision,below of=switch,yshift=-20pt,xshift=-120pt] {\textbf{case} 2};
+            \node (c3) [decision,below of=switch,yshift=-20pt,xshift=0pt] {\textbf{case} 3};
+            \node (c4) [decision,below of=switch,yshift=-20pt,xshift=120pt] {\textbf{case} 4};
+            \node (default) [process,below of=switch,yshift=-20pt,xshift=240pt] {Invalid Operation};
+            \node (p1) [process,below of=c1,yshift=-20pt] {\textbf{print} $a + b$};
+            \node (p2) [process,below of=c2,yshift=-20pt] {\textbf{print} $a - b$};
+            \node (p3) [process,below of=c3,yshift=-20pt] {\textbf{print} $a \times b$};
+            \node (p4) [process,below of=c4,yshift=-20pt] {\textbf{print} {\Large$\frac{a}{b}$}};
+            \node (stop) [startstop,below of=p3,yshift=-40pt] {Stop};
 
             \draw [arrow] (start) -- (input);
-            \draw [arrow] (input) -- (output);
-            \draw [arrow] (output) -- (stop);
+            \draw [arrow] (input) -- (switch);
+            \draw [arrow] (switch) -| (c1);
+            \draw [arrow] (c1) -- node[anchor=south] {no} (c2);
+            \draw [arrow] (c2) -- node[anchor=south] {no} (c3);
+            \draw [arrow] (c3) -- node[anchor=south] {no} (c4);
+            \draw [arrow] (c4) -- node[anchor=south] {no} (default);
+            \draw [arrow] (c1) -- node[anchor=east] {yes} (p1);
+            \draw [arrow] (c2) -- node[anchor=east] {yes} (p2);
+            \draw [arrow] (c3) -- node[anchor=east] {yes} (p3);
+            \draw [arrow] (c4) -- node[anchor=east] {yes} (p4);
+
+            \coordinate [below of=p2,yshift=10pt] (x);
+            \coordinate [below of=p3,yshift=10pt] (joint);
+            \coordinate [below of=p4,yshift=10pt] (y);
+            \draw [thick] (p1) |- (x);
+            \draw [thick] (p2) |- (joint);
+            \draw [arrow] (p3) -- (stop);
+            \draw [thick] (p4) |- (joint);
+            \draw [thick] (default) |- (y);
         \end{tikzpicture}
+        \\[300pt]
     \end{flowchart}
 
     \newpage
