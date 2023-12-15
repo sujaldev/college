@@ -782,10 +782,10 @@ GCD(5, 10) = 5
     \end{tabularsection}
 
     \begin{flowchart}
-        \begin{tikzpicture}[transform canvas={scale=0.8},node distance=2cm]
-            \node (start) [startstop,xshift=-50pt] {Start};
+        \begin{tikzpicture}[transform canvas={scale=0.95},node distance=2cm]
+            \node (start) [startstop,xshift=-90pt] {Start};
             \node (input) [io,below of=start] {\textbf{read} $arr$};
-            \node (for) [decision,below of=input,yshift=-25pt] {for j $= 0$ to size};
+            \node (for) [decision,below of=input,yshift=-50pt] {for j $= 0$ to size};
             \node (if) [decision,right of=for,xshift=150pt] {arr$[j]$};
             \node (c1) [process, below of=if,yshift=-20pt] {smallest $\gets \text{arr}[j]$}
             \node (c2) [process, above of=if,yshift=20pt] {largest $\gets \text{arr}[j]$}
@@ -797,12 +797,12 @@ GCD(5, 10) = 5
             \draw [arrow] (for) -- node [anchor=south] {$0 < j <$ size} (if);
             \draw [arrow] (if) -- node [anchor=west] {arr$[j] <$ smallest} (c1);
             \draw [arrow] (if) -- node [anchor=west] {arr$[j] >$ largest} (c2);
-            \draw [arrow] (c1) -- (for);
-            \draw [arrow] (c2) -- (for);
+            \draw [arrow] (c1) to[out=180,in=-45] (for);
+            \draw [arrow] (c2) to[out=180,in=45] (for);
             \draw [arrow] (for) -- node [anchor=east] {$j \ge$ size} (output);
             \draw [arrow] (output) -- (stop);
         \end{tikzpicture}
-        \\[300pt]
+        \\[365pt]
     \end{flowchart}
 
     \newpage
