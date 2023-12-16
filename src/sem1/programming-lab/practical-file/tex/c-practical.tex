@@ -1034,6 +1034,35 @@ Enter number 5: 1
     \end{tabularsection}
 
     \newpage
+    \begin{flowchart}
+        \begin{tikzpicture}[node distance=2cm]
+            \node (start) [startstop,xshift=-250pt] {Start};
+            \node (input) [io,below of=start] {\textbf{read} $A, B, m, n, p$};
+            \node (fori) [decision,below of=input,yshift=-35pt] {$\forall~i \in \{0,\ldots,m\}$};
+            \node (forj) [decision,below of=fori,yshift=-80pt] {$\forall~j \in \{0,\ldots,p\}$};
+            \node (initSum) [process,below of=forj,yshift=-45pt] {sum $\gets 0$};
+            \node (fork) [decision,below of=initSum,yshift=-35pt] {$\forall~k \in \{0,\ldots,n\}$};
+            \node (updateSum) [process,below of=fork,yshift=-35pt] {sum $\gets \text{sum} + A_{ik} B_{kj}$};
+            \node (AB) [process,right of=fork,xshift=100pt] {$AB_{ij} \gets$ sum};
+            \node (output) [io,right of=fori,xshift=100pt] {\textbf{print} $AB$};
+            \node (stop) [startstop,below of=output] {Stop};
+
+            \draw [arrow] (start) -- (input);
+            \draw [arrow] (input) -- (fori);
+            \draw [arrow] (fori) -- node[anchor=south] {$i \ge m$} (output);
+            \draw [arrow] (fori) -- node[anchor=west] {$0 < i < m$} (forj);
+            \draw [arrow] (forj) to[out=135,in=-135] node [anchor=east] {$j \ge p$} (fori);
+            \draw [arrow] (forj) -- node [anchor=east] {$0 < j < p$} (initSum);
+            \draw [arrow] (initSum) -- (fork);
+            \draw [arrow] (fork) -- node [anchor=south] {$k \ge n$} (AB);
+            \draw [arrow] (fork) -- node [anchor=west] {$0 < k < n$} (updateSum);
+            \draw [arrow] (updateSum) -- ++(-3,0) |- (fork);
+            \draw [arrow] (AB) |- (forj);
+            \draw [arrow] (output) -- (stop);
+        \end{tikzpicture}
+    \end{flowchart}
+
+    \newpage
     \begin{code}
         {Program}{c}
 #include <stdio.h>
@@ -1107,5 +1136,6 @@ The matrix product AB =
 | 10 13 |
 | 28 40 |
     \end{code}
+
     %------------------------------------------------------------------------------------------------------------------%
 \end{document}
