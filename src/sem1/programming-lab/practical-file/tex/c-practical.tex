@@ -1014,5 +1014,24 @@ Enter number 5: 1
         \end{align*}
     }
 
+    \begin{tabularsection}{Algorithm}
+        \begin{algorithmic}[1]
+            \State Start
+            \State \textbf{read} $A, B, m, n, p$
+            \For {$\forall~i \in \{0,\ldots,m\}$}
+                \For {$\forall~j \in \{0,\ldots,p\}$}
+                    \State sum \gets 0;
+                    \For {$\forall~k \in \{0,\ldots,n\}$}
+                        \State sum $\gets \text{sum} + A_{ik} B_{kj}$
+                    \EndFor
+                    \State $AB_{ij} \gets$ sum
+                \EndFor
+            \EndFor
+
+            \State \textbf{print} AB
+            \State Stop
+        \end{algorithmic}
+    \end{tabularsection}
+
     %------------------------------------------------------------------------------------------------------------------%
 \end{document}
