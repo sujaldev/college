@@ -1033,5 +1033,79 @@ Enter number 5: 1
         \end{algorithmic}
     \end{tabularsection}
 
+    \newpage
+    \begin{code}
+        {Program}{c}
+#include <stdio.h>
+
+void inputMatrix(char name, int arr[][10], int rows, int columns) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            printf("Enter %c_%d%d: ", name, i + 1, j + 1);
+            scanf("%d", &(arr[i][j]));
+        }
+    }
+}
+
+void printMatrix(int arr[][10], int rows, int columns) {
+    for (int i = 0; i < rows; i++) {
+        printf("| ");
+        for (int j = 0; j < columns; j++) {
+            printf("%d ", arr[i][j]);
+        }
+    }
+}
+
+void main() {
+    int m, n, p, A[10][10], B[10][10], AB[10][10], sum;
+
+    // Read number of rows and columns for first matrix
+    printf("Enter number of rows x columns for matrix A (<10): ");
+    scanf("%dx%d", &m, &n);
+
+    // The number of rows must be equal to the number of columns in the first matrix
+    printf("Enter number of columns for matrix B (<10): ");
+    scanf("%d", &p);
+
+    // Read values for both matrices
+    inputMatrix('A', A, m, n); inputMatrix('B', B, n, p);
+
+    // Calculate matrix multiplication [O(n^3)]
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < p; j++) {
+            sum = 0;
+            for (int k = 0; k < n; k++) {sum += A[i][k] * B[k][j];}
+            AB[i][j] = sum;
+        }
+    }
+
+    // Print matrix multiplication
+    printf("\nThe matrix product AB =");
+    printMatrix(AB, m, p);
+}
+    \end{code}
+    \begin{code}
+        {Input \& Output}{text}
+Enter number of rows for matrix A (<10): 2x3
+Enter number of columns for matrix B (<10): 2
+
+Enter A_11: 0
+Enter A_12: 1
+Enter A_13: 2
+Enter A_21: 3
+Enter A_22: 4
+Enter A_23: 5
+
+Enter B_11: 0
+Enter B_12: 1
+Enter B_21: 2
+Enter B_22: 3
+Enter B_31: 4
+Enter B_32: 5
+
+The matrix product AB =
+| 10 13 |
+| 28 40 |
+    \end{code}
     %------------------------------------------------------------------------------------------------------------------%
 \end{document}
