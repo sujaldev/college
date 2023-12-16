@@ -949,5 +949,70 @@ Enter number 4: 2
 Enter number 5: 1
 [ '1'  '2'  '3'  '4'  '5' ]
     \end{code}
+
+    %------------------------------------------------------------------------------------------------------------------%
+    %------------------------------------------------------------------------------------------------------------------%
+
+    \experiment{9}{Write a C program to multiply two matrices.}{%
+        If $A$ is an $m\times{n}$ matrix and $B$ is an $n\times{p}$ matrix, such that:
+        \begin{align*}
+            A =
+            \begin{pmatrix}
+                a_{11} & a_{12} & \cdots & a_{1n} \\
+                a_{21} & a_{22} & \cdots & a_{2n} \\
+                \vdots & \vdots & \ddots & \vdots \\
+                a_{m1} & a_{m2} & \cdots & a_{mn}
+            \end{pmatrix}
+            &,\hspace{10pt}
+            B =
+            \begin{pmatrix}
+                b_{11} & b_{12} & \cdots & b_{1p} \\
+                b_{21} & b_{22} & \cdots & b_{2p} \\
+                \vdots & \vdots & \ddots & \vdots \\
+                b_{n1} & b_{n2} & \cdots & b_{np}
+            \end{pmatrix}
+        \end{align*}
+        Then the matrix product $C = AB$ is defined to be a $m\times{p}$ matrix:
+        \begin{align*}
+            C = AB =
+            \begin{pmatrix}
+                c_{11} & c_{12} & \cdots & c_{1p} \\
+                c_{21} & c_{22} & \cdots & c_{2p} \\
+                \vdots & \vdots & \ddots & \vdots \\
+                c_{m1} & c_{m2} & \cdots & c_{mp}
+            \end{pmatrix}
+        \end{align*}
+        Where,
+        \begin{align*}
+            c_{ij} = a_{i1} b_{1j} + a_{i2} b_{2j} + \cdots + a_{in} b_{nj} = \sum^n_{k=1} a_{ik} b_{kj},~
+            \text{for}~i = 1,~\ldots,~m~\text{and}~ j = 1,~\ldots,~p
+        \end{align*}
+        Example:
+        \begin{align*}
+            \begin{bmatrix}
+                0 & 1 & 2 \\
+                3 & 4 & 5
+            \end{bmatrix}
+            \times
+            \begin{bmatrix}
+                0 & 1 \\
+                2 & 3 \\
+                4 & 5
+            \end{bmatrix}
+            &=
+            \begin{bmatrix}
+                \left( 0\times{0} + 1\times{2} + 2\times{4} \right)
+                & \left( 0\times{1} + 1\times{3} + 2\times{5} \right) \\
+                \left( 3\times{0} + 4\times{2} + 5\times{4} \right)
+                & \left( 3\times{1} + 4\times{3} + 5\times{5} \right) \\
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                10 & 13 \\
+                28 & 40
+            \end{bmatrix}
+        \end{align*}
+    }
+
     %------------------------------------------------------------------------------------------------------------------%
 \end{document}
