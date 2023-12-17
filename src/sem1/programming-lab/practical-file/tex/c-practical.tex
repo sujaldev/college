@@ -79,7 +79,7 @@
                 & \\
                 %------------------------------------------------------------------------------------------------------%
                 \textbf{10} &%
-                Write a C program to check whether a matrix is symmetrical or not.
+                Write a C program to check whether a matrix is symmetric or not.
                 & \\
                 %------------------------------------------------------------------------------------------------------%
                 ~            & \vspace{25pt}               & ~                \\
@@ -1136,6 +1136,42 @@ The matrix product AB =
 | 10 13 |
 | 28 40 |
     \end{code}
+
+    %------------------------------------------------------------------------------------------------------------------%
+    %------------------------------------------------------------------------------------------------------------------%
+
+    \experiment{10}{Write a C program to check whether a matrix is symmetric or not.}{%
+        \begin{center}
+            \begin{tikzpicture}
+                \draw [latex-latex,thick] (0.5,2.5) -- (1.5,3.5);
+                \draw [latex-latex,thick] (0.5,1.5) -- (2.5,3.5);
+                \draw [latex-latex,thick,dashed] (0.5,0.5) -- (3.5,3.5);
+                \draw [latex-latex,thick] (1.5,1.5) -- (2.5,2.5);
+                \draw [latex-latex,thick] (1.5,0.5) -- (3.5,2.5);
+                \draw [latex-latex,thick] (2.5,0.5) -- (3.5,1.5);
+                \draw [dotted] (0,4) -- (4,0);
+                \draw [step=1cm,black,ultra thick] (0,0) grid (4,4);
+            \end{tikzpicture}
+        \end{center}
+        A symmetric matrix is a square matrix that is equal to its transpose. Formally described as:\\[10pt]
+        \begin{align*}
+            \boxed{\text{A is symmetric} \Longleftrightarrow A = A^T}
+        \end{align*}
+        Or,
+        \begin{align*}
+            \boxed{\text{A is symmetric} \Longleftrightarrow \forall~i,j,~~a_{ji} = a_{ij}}
+        \end{align*}\\[10pt]
+        For example, the following $3\times{3}$ matrix is symmetric:
+        \begin{align*}
+            A =
+            \begin{bmatrix}
+                1 & 2 & 3 \\
+                2 & 6 & 4 \\
+                3 & 4 & 5
+            \end{bmatrix}
+        \end{align*}
+        Since $A = A^T$
+    }
 
     %------------------------------------------------------------------------------------------------------------------%
 \end{document}
