@@ -1190,5 +1190,30 @@ The matrix product AB =
         \end{algorithmic}
     \end{tabularsection}
 
+    \newpage
+    \begin{flowchart}
+        \begin{tikzpicture}[node distance=2cm]
+            \node (start) [startstop,xshift=-325pt] {Start};
+            \node (input) [io,below of=start] {\textbf{read} $A,$ size};
+            \node (fori) [decision,below of=input,yshift=-35pt] {$\forall~i \in \{0,\ldots,\text{size}\}$};
+            \node (forj) [decision,below of=fori,yshift=-80pt] {$\forall~j \in \{0,\ldots,\text{size}\}$};
+            \node (check) [decision,below of=forj,yshift=-80pt] {$a_{ij} \neq a_{ji}$};
+            \node (asymmetric) [io,below of=check,yshift=-35pt] {\textbf{print} Matrix is asymmetric};
+            \node (symmetric) [io,right of=fori,xshift=175pt] {\textbf{print} Matrix is symmetric};
+            \node (stop) [startstop,below of=output] {Stop};
+
+            \draw [arrow] (start) -- (input);
+            \draw [arrow] (input) -- (fori);
+            \draw [arrow] (fori) -- node[anchor=south] {$i \ge$ size} (symmetric);
+            \draw [arrow] (fori) -- node[anchor=west] {$0 < i <$ size} (forj);
+            \draw [arrow] (forj) to[out=135,in=-135] node [anchor=east] {$j \ge$ size} (fori);
+            \draw [arrow] (forj) -- node [anchor=east] {$0 < j <$ size} (check);
+            \draw [arrow] (check) -- ++(-3,0) |- node[anchor=east,pos=0.25] {no} (forj);
+            \draw [arrow] (check) -- node[anchor=west] {yes} (asymmetric);
+            \draw [arrow] (symmetric) -- (stop);
+            \draw [arrow] (asymmetric) -| (stop);
+        \end{tikzpicture}
+    \end{flowchart}
+
     %------------------------------------------------------------------------------------------------------------------%
 \end{document}
