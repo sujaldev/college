@@ -768,12 +768,12 @@ GCD(5, 10) = 5
             \State \textbf{read} arr
             \State smallest, largest $\gets \text{arr}[0]$
             \State smallest
-            \For{$j \gets 0; j < \text{size}; j++$}
-                \If {arr$[j] <$ smallest}
-                    \State smallest $\gets \text{arr}[j]$
+            \For{$\forall~j \in \{0,\ldots,\text{size}\}$}
+                \If {$arr_j < \text{smallest}$}
+                    \State $\text{smallest} \gets \text{arr}_j$
                 \ElsIf
-                        {arr$[j] >$ largest}
-                    \State largest $\gets \text{arr}[j]$
+                        {$\text{arr}_j > \text{largest}$}
+                    \State $\text{largest} \gets \text{arr}_j$
                 \EndIf
             \EndFor
             \State \textbf{print} smallest, largest
@@ -785,21 +785,21 @@ GCD(5, 10) = 5
         \begin{tikzpicture}[transform canvas={scale=0.95},node distance=2cm]
             \node (start) [startstop,xshift=-90pt] {Start};
             \node (input) [io,below of=start] {\textbf{read} $arr$};
-            \node (for) [decision,below of=input,yshift=-50pt] {for j $= 0$ to size};
-            \node (if) [decision,right of=for,xshift=150pt] {arr$[j]$};
-            \node (c1) [process, below of=if,yshift=-20pt] {smallest $\gets \text{arr}[j]$}
-            \node (c2) [process, above of=if,yshift=20pt] {largest $\gets \text{arr}[j]$}
+            \node (for) [decision,below of=input,yshift=-50pt] {$\forall~j \in \{0,\ldots,\text{size}\}$};
+            \node (if) [decision,right of=for,xshift=150pt] {$\text{arr}_j$};
+            \node (c1) [process, below of=if,yshift=-20pt] {$\text{smallest} \gets \text{arr}_j$}
+            \node (c2) [process, above of=if,yshift=20pt] {$\text{largest} \gets \text{arr}_j$}
             \node (output) [io,below of=for,yshift=-100pt] {\textbf{print} smallest, largest};
             \node (stop) [startstop,below of=output] {Stop};
 
             \draw [arrow] (start) -- (input);
             \draw [arrow] (input) -- (for);
-            \draw [arrow] (for) -- node [anchor=south] {$0 < j <$ size} (if);
-            \draw [arrow] (if) -- node [anchor=west] {arr$[j] <$ smallest} (c1);
-            \draw [arrow] (if) -- node [anchor=west] {arr$[j] >$ largest} (c2);
+            \draw [arrow] (for) -- node [anchor=south] {$0 < j < \text{size}$} (if);
+            \draw [arrow] (if) -- node [anchor=west] {$\text{arr}_j < \text{smallest}$} (c1);
+            \draw [arrow] (if) -- node [anchor=west] {$arr_j > \text{largest}$} (c2);
             \draw [arrow] (c1) to[out=180,in=-45] (for);
             \draw [arrow] (c2) to[out=180,in=45] (for);
-            \draw [arrow] (for) -- node [anchor=east] {$j \ge$ size} (output);
+            \draw [arrow] (for) -- node [anchor=east] {$j \ge \text{size}$} (output);
             \draw [arrow] (output) -- (stop);
         \end{tikzpicture}
         \\[365pt]
@@ -861,10 +861,10 @@ Largest: 5
         \begin{algorithmic}[1]
             \State Start
             \State \textbf{read} arr
-            \For{$i \gets 0; i < \text{size} - 1; i++$}
-                \For{$j \gets 0; j < \text{size} - i - 1; j++$}
-                    \If {arr$[j] >$ arr$[j + 1]$}
-                        \State arr$[j]$, arr$[j + 1] \gets$ arr$[j + 1]$, arr$[j]$
+            \For{$\forall~i \in \{0,\ldots,\text{size} - 1\}$}
+                \For{$\forall~j \in \{0,\ldots,\text{size} - i - 1\}$}
+                    \If {$\text{arr}_j > \text{arr}_{j+1}$}
+                        \State $\text{arr}_j, \text{arr}_{j+1} \gets \text{arr}_{j+1}, \text{arr}_j$
                     \EndIf
                 \EndFor
             \EndFor
@@ -876,23 +876,23 @@ Largest: 5
     \begin{flowchart}
         \begin{tikzpicture}[transform canvas={scale=0.75},node distance=2cm]
             \node (start) [startstop,xshift=-250pt] {Start};
-            \node (input) [io,below of=start] {\textbf{read} $arr$};
-            \node (fori) [decision,below of=input,yshift=-35pt] {\small for i $= 0$ to size $- 1$};
-            \node (forj) [decision,right of=fori,xshift=150pt] {\small for j $= 0$ to size $- i - 1$};
-            \node (cond) [decision, right of=forj,xshift=200pt] {arr$[j] >$ arr$[j + 1]$}
-            \node (swap) [process, below of=cond,yshift=-60pt] {arr$[j]$, arr$[j + 1] \gets$ arr$[j + 1]$, arr$[j]$}
+            \node (input) [io,below of=start] {\textbf{read} arr};
+            \node (fori) [decision,below of=input,yshift=-35pt] {$\forall~i \in \{0,\ldots,\text{size} - 1\}$};
+            \node (forj) [decision,right of=fori,xshift=200pt] {$\forall~j \in \{0,\ldots,\text{size} - i - 1\}$};
+            \node (cond) [decision, right of=forj,xshift=200pt] {$\text{arr}_j > \text{arr}_{j+1}$}
+            \node (swap) [process, below of=cond,yshift=-60pt] {$\text{arr}_j, \text{arr}_{j+1} \gets \text{arr}_{j+1}, \text{arr}_j$}
             \node (output) [io,below of=fori,yshift=-100pt] {\textbf{print} arr};
             \node (stop) [startstop,below of=output] {Stop};
 
             \draw [arrow] (start) -- (input);
             \draw [arrow] (input) -- (fori);
-            \draw [arrow] (fori) -- node [anchor=south] {$0 < i <$ size $- 1$} (forj);
-            \draw [arrow] (forj) -- node [anchor=south] {$0 < j <$ size $- i - 1$} (cond);
+            \draw [arrow] (fori) -- node [anchor=south] {$0 < i < \text{size} - 1$} (forj);
+            \draw [arrow] (forj) -- node [anchor=south] {$0 < j < \text{size} - i - 1$} (cond);
             \draw [arrow] (cond) -- node [anchor=west] {yes} (swap);
             \draw [arrow] (swap) -| (forj);
             \draw [arrow] (cond) -- node [anchor=west] {no} ++(0,5) -| (forj);
-            \draw [arrow] (forj) to[out=-135,in=-45] node [anchor=north] {$j \ge$ size $- i - 1$} (fori);
-            \draw [arrow] (fori) -- node [anchor=east] {$i \ge$ size $- 1$} (output);
+            \draw [arrow] (forj) to[out=-135,in=-45] node [anchor=north] {$j \ge \text{size} - i - 1$} (fori);
+            \draw [arrow] (fori) -- node [anchor=east] {$i \ge \text{size} - 1$} (output);
             \draw [arrow] (output) -- (stop);
         \end{tikzpicture}
         \\[300pt]
@@ -1022,9 +1022,9 @@ Enter number 5: 1
                 \For {$\forall~j \in \{0,\ldots,p\}$}
                     \State sum \gets 0;
                     \For {$\forall~k \in \{0,\ldots,n\}$}
-                        \State sum $\gets \text{sum} + A_{ik} B_{kj}$
+                        \State sum $\gets \text{sum} + a_{ik} b_{kj}$
                     \EndFor
-                    \State $AB_{ij} \gets$ sum
+                    \State $ab_{ij} \gets$ sum
                 \EndFor
             \EndFor
 
@@ -1038,12 +1038,12 @@ Enter number 5: 1
         \begin{tikzpicture}[node distance=2cm]
             \node (start) [startstop,xshift=-250pt] {Start};
             \node (input) [io,below of=start] {\textbf{read} $A, B, m, n, p$};
-            \node (fori) [decision,below of=input,yshift=-35pt] {$\forall~i \in \{0,\ldots,m\}$};
-            \node (forj) [decision,below of=fori,yshift=-80pt] {$\forall~j \in \{0,\ldots,p\}$};
-            \node (initSum) [process,below of=forj,yshift=-45pt] {sum $\gets 0$};
-            \node (fork) [decision,below of=initSum,yshift=-35pt] {$\forall~k \in \{0,\ldots,n\}$};
-            \node (updateSum) [process,below of=fork,yshift=-35pt] {sum $\gets \text{sum} + A_{ik} B_{kj}$};
-            \node (AB) [process,right of=fork,xshift=100pt] {$AB_{ij} \gets$ sum};
+            \node (fori) [decision,below of=input,yshift=-45pt] {$\forall~i \in \{0,\ldots,m\}$};
+            \node (forj) [decision,below of=fori,yshift=-90pt] {$\forall~j \in \{0,\ldots,p\}$};
+            \node (initSum) [process,below of=forj,yshift=-55pt] {sum $\gets 0$};
+            \node (fork) [decision,below of=initSum,yshift=-45pt] {$\forall~k \in \{0,\ldots,n\}$};
+            \node (updateSum) [process,below of=fork,yshift=-45pt] {sum $\gets \text{sum} + a_{ik} b_{kj}$};
+            \node (AB) [process,right of=fork,xshift=100pt] {$ab_{ij} \gets$ sum};
             \node (output) [io,right of=fori,xshift=100pt] {\textbf{print} $AB$};
             \node (stop) [startstop,below of=output] {Stop};
 
@@ -1195,12 +1195,12 @@ The matrix product AB =
         \begin{tikzpicture}[node distance=2cm]
             \node (start) [startstop,xshift=-325pt] {Start};
             \node (input) [io,below of=start] {\textbf{read} $A,$ size};
-            \node (fori) [decision,below of=input,yshift=-35pt] {$\forall~i \in \{0,\ldots,\text{size}\}$};
-            \node (forj) [decision,below of=fori,yshift=-80pt] {$\forall~j \in \{0,\ldots,\text{size}\}$};
-            \node (check) [decision,below of=forj,yshift=-80pt] {$a_{ij} \neq a_{ji}$};
-            \node (asymmetric) [io,below of=check,yshift=-35pt] {\textbf{print} Matrix is asymmetric};
+            \node (fori) [decision,below of=input,yshift=-65pt] {$\forall~i \in \{0,\ldots,\text{size}\}$};
+            \node (forj) [decision,below of=fori,yshift=-110pt] {$\forall~j \in \{0,\ldots,\text{size}\}$};
+            \node (check) [decision,below of=forj,yshift=-100pt] {$a_{ij} \neq a_{ji}$};
+            \node (asymmetric) [io,below of=check,yshift=-45pt] {\textbf{print} Matrix is asymmetric};
             \node (symmetric) [io,right of=fori,xshift=175pt] {\textbf{print} Matrix is symmetric};
-            \node (stop) [startstop,below of=output] {Stop};
+            \node (stop) [startstop,below of=output,yshift=-150pt] {Stop};
 
             \draw [arrow] (start) -- (input);
             \draw [arrow] (input) -- (fori);
