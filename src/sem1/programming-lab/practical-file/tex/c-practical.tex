@@ -1173,5 +1173,22 @@ The matrix product AB =
         Since $A = A^T$
     }
 
+    \begin{tabularsection}{Algorithm}
+        \begin{algorithmic}[1]
+            \State Start
+            \State \textbf{read} $A,$ size
+            \For {$\forall~i \in \{0,\ldots,\text{size}\}$}
+                \For {$\forall~j \in \{0,\ldots,\text{size}\}$}
+                    \If{$a_{ij} \neq a_{ji}$}
+                        \State \textbf{print} Matrix isn't symmetric
+                        \State \textbf{goto} Stop
+                    \EndIf
+                \EndFor
+            \EndFor
+            \State \textbf{print} Matrix is symmetric
+            \State Stop
+        \end{algorithmic}
+    \end{tabularsection}
+
     %------------------------------------------------------------------------------------------------------------------%
 \end{document}
