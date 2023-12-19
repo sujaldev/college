@@ -1,0 +1,94 @@
+%! Author = Sujal Singh
+%! Date = 12/19/23
+
+% Preamble
+\documentclass[11pt]{beamer}
+\title{Equilibrium}
+\author[Aman, Dhruv, Daksh...]
+{\(|\) Aman Gupta \(|\) Dhruv Grover \(|\) Daksh Jain \(|\) Prashant Pulkit \(|\)\\
+    \(|\) Pranav Bisht \(|\) Sujal Singh \(|\)}
+\date[Prashant, Pranav, Sujal]{\textbf{Enrollment Numbers:}\\0\{00-00\}00000000}
+
+\usetheme{Madrid}
+\usecolortheme{beaver}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{frametitle continuation}[from second][]
+\setbeamertemplate{page number in head/foot}{}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage[linewidth=0.75pt]{structmech}
+\usepackage{tikz}
+
+\usetikzlibrary{angles,arrows.meta}
+
+\newcommand{\0}{\footnotesize}
+
+% Document
+\begin{document}
+%    \begin{frame}{Mechanics Presentation (Group 2)}
+%        \begin{center}
+%            %! suppress = FileNotFound
+%            \includegraphics[width=80pt]{logo}
+%        \end{center}\vspace*{-10pt}
+%        \maketitle
+%    \end{frame}
+%
+%    \begin{frame}[t]{Force Body Diagram}
+%        ~
+%    \end{frame}
+%
+%    \begin{frame}[t]{Equations of Equilibrium}
+%        ~
+%    \end{frame}
+%
+%    \begin{frame}[t]{Applications to Engineering Problems}
+%        ~
+%    \end{frame}
+%
+%    \begin{frame}[t]{Equilibrium of Two Force Members}
+%        ~
+%    \end{frame}
+%
+%    \begin{frame}[t]{Equilibrium of Three Force Members}
+%        ~
+%    \end{frame}
+
+    \begin{frame}[t,allowframebreaks]{Numericals}
+        Two equal loads of $2500$ N are supported by a flexible string $ABCD$ at points $B$ and $C$.\ Find the
+        tensions in the portions $AB$, $BC$ and $CD$ of the string.\\[20pt]
+
+        \begin{center}
+            \begin{tikzpicture}
+                \FixedSupport[-90]{0,4}{1.5}
+                \filldraw[black] (0,4) circle (1pt);
+                \draw [thick] (0,4) coordinate (A) node[anchor=east,xshift=-5pt] {\0$A$}
+                -- node[midway,anchor=south west,xshift=-4pt] {\0$T_1$} ++(-60:2) coordinate (B)
+                node[anchor=north east] {\0$B$}
+                -- ++(-30:2) node[midway,anchor=north east,xshift=5pt] {\0$T_2$} coordinate (C)
+                node[anchor=north west] {\0$C$}
+                -- ++(30:4) node[midway,anchor=north west] {\0$T_3$} coordinate (D)
+                node[anchor=west,xshift=5pt] {\0$D$};
+                \FixedSupport[90]{6.1961,3.2679}{1.5}
+                \filldraw[black] (D) circle (1pt);
+                \draw [dashed] (B) -- ++(0,1) coordinate (b);
+                \draw [dashed] (C) -- ++(0,1) coordinate (c);
+                \draw [-latex] (B) -- ++(0,-1) node[anchor=north] {\0 2500 N};
+                \draw [-latex] (C) -- ++(0,-1) node[anchor=north] {\0 2500 N};
+                \draw pic [draw,angle radius=8] {angle=C--B--b} node[yshift=2.5cm,xshift=1.6cm] {\tiny$120\degree$}
+                \draw pic [draw,angle radius=8] {angle=c--C--B} node[yshift=1.75cm,xshift=2.5cm] {\tiny$60\degree$}
+                \path (A) -- ++(0,-1) coordinate (a);
+                \path (D) -- ++(0,-1) coordinate (d);
+                \draw pic [draw,angle radius=8] {angle=C--D--d} node[yshift=2.8cm,xshift=5.9cm] {\tiny$60\degree$}
+                \draw pic [draw,angle radius=8] {angle=a--A--B} node[yshift=3.3cm,xshift=0.1cm] {\tiny$30\degree$}
+            \end{tikzpicture}
+        \end{center}
+    \end{frame}
+
+%    \begin{frame}{End}
+%        \begin{center}
+%            \huge Thank you for listening.
+%        \end{center}
+%    \end{frame}
+\end{document}
