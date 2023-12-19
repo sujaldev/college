@@ -84,6 +84,91 @@
                 \draw pic [draw,angle radius=8] {angle=a--A--B} node[yshift=3.3cm,xshift=0.1cm] {\tiny$30\degree$}
             \end{tikzpicture}
         \end{center}
+
+        \framebreak
+
+        \begin{minipage}{0.55\textwidth}
+            Applying equations of equilibrium at point $B$,
+            \begin{center}
+                $\boxed{\Sigma{F_x} = 0}$\\[10pt]
+                $-T_1\sin{30\degree} &+ T_2\cos{30\degree} = 0$
+            \end{center}\vspace*{-10pt}
+            \begin{align}
+                T_1 &= \frac{T_2\cos{30\degree}}{\sin{30\degree}}
+            \end{align}
+            \begin{center}
+                $\boxed{\Sigma{F_y} = 0}$
+            \end{center}\vspace*{-10pt}
+            \begin{align}
+                T_1\cos{30\degree} - 2500 - T_2\sin{30\degree} = 0
+            \end{align}
+        \end{minipage}
+        \begin{minipage}{0.4\textwidth}
+            \begin{center}
+                \\[100pt]
+                \begin{tikzpicture}[transform canvas={scale=0.7}]
+                    \draw [dashed,Stealth-Stealth] (-2,0) -- (4,0) coordinate (X);
+                    \draw [dashed,Stealth-] (0,4) coordinate (Y) node[anchor=south] {$y$} -- (0,0) coordinate (O)
+                    node [anchor=north east] {$B$};
+                    \draw [-Latex] (0,0) -- ++(120:3) coordinate (A) node[above] {$T_1$};
+                    \draw [-Latex] (0,0) -- ++(-30:3) coordinate (B) node[above] {$T_2$};
+                    \draw [-Latex] (0,0) -- ++(0,-2) node[anchor=north] {$2500$ N};
+
+                    \draw pic [draw] {angle=Y--O--A} node[above left=20pt,xshift=18pt] {\tiny$30\degree$};
+                    \draw pic [draw,angle radius=10] {angle=B--O--Y} node[below right=10pt,yshift=25pt] {\tiny$120\degree$};
+                    \draw pic [draw,angle radius=15] {angle=B--O--X} node[below right=20pt,yshift=15pt] {\tiny$30\degree$};
+                \end{tikzpicture}
+            \end{center}
+        \end{minipage}
+
+        \framebreak
+
+        Substituting for $T_1$, we get:\\
+        \begin{align*}
+            T_2 &\left( \frac{\cos{30\degree}}{\sin{30\degree}} \right) \cos{30\degree} - T_2\sin{30\degree} = 2500\\
+            T_2 &= 2500\\
+            T_1 &= \frac{T_1\cos{30\degree}}{\sin{30\degree}} = \frac{2500\times{0.866}}{0.5}\\
+            T_1 &= 4330 N
+        \end{align*}
+        \begin{center}
+            $\boxed{T_1 = 4330 \text{N}}$
+            $\boxed{T_2 = 2500 \text{N}}$
+        \end{center}
+
+        \framebreak
+
+        \begin{minipage}{0.5\textwidth}
+            Applying equations of equilibrium at point $C$,
+
+            \begin{center}
+                $\boxed{\Sigma{F_x} = 0}$
+            \end{center}
+            \begin{align*}
+                -T_2\cos{30\degree} + T_3\cos{30\degree} = 0
+            \end{align*}
+            \begin{align*}
+                T_3 = T_2
+            \end{align*}
+            \begin{align*}
+                \boxed{T_3 = 2500 \text{N}}
+            \end{align*}
+        \end{minipage}
+        \begin{minipage}{0.4\textwidth}
+            \begin{center}
+                \begin{tikzpicture}
+                    \draw [dashed,Stealth-Stealth] (-2,0)
+                    -- (0,0) coordinate (O) node[anchor=north east] {$C$}
+                    -- (2,0) node[above] {$x$};
+                    \draw [dashed,Stealth-Stealth] (0,2) coordinate (Y) node[anchor=south] {$y$} -- (0,-2);
+
+                    \draw [-Stealth] (O) -- ++(30:2) coordinate(A) node[above] {$T_3$};
+                    \draw [-Stealth] (O) -- ++(150:2) coordinate(B) node[above] {$T_2$};
+
+                    \draw pic [draw,angle radius=10] {angle=A--O--Y} node[above right=16pt,xshift=-10pt] {\tiny$60\degree$};
+                    \draw pic [draw,angle radius=8] {angle=Y--O--B} node[above left=16pt,xshift=10pt] {\tiny$60\degree$};
+                \end{tikzpicture}
+            \end{center}
+        \end{minipage}
     \end{frame}
 
 %    \begin{frame}{End}
