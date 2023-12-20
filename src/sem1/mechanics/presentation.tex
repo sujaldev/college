@@ -7,7 +7,7 @@
 \author[Aman, Dhruv, Daksh...]
 {\(|\) Aman Gupta \(|\) Dhruv Grover \(|\) Daksh Jain \(|\) Prashant Pulkit \(|\)\\
     \(|\) Pranav Bisht \(|\) Sujal Singh \(|\)}
-\date[Prashant, Pranav, Sujal]{\textbf{Enrollment Numbers:}\\0\{00-00\}00000000}
+\date[Prashant, Pranav, Sujal]{\textbf{Enrollment Numbers:}\\0\{00,00,00,00,00,00\}00000000}
 
 \usetheme{Madrid}
 \usecolortheme{beaver}
@@ -27,14 +27,14 @@
 
 % Document
 \begin{document}
-%    \begin{frame}{Mechanics Presentation (Group 2)}
-%        \begin{center}
-%            %! suppress = FileNotFound
-%            \includegraphics[width=80pt]{logo}
-%        \end{center}\vspace*{-10pt}
-%        \maketitle
-%    \end{frame}
-%
+    \begin{frame}{Mechanics Presentation (Group 2)}
+        \begin{center}
+            %! suppress = FileNotFound
+            \includegraphics[width=80pt]{logo}
+        \end{center}\vspace*{-10pt}
+        \maketitle
+    \end{frame}
+
 %    \begin{frame}[t]{Force Body Diagram}
 %        ~
 %    \end{frame}
@@ -115,8 +115,10 @@
                     \draw [-Latex] (0,0) -- ++(0,-2) node[anchor=north] {$2500$ N};
 
                     \draw pic [draw] {angle=Y--O--A} node[above left=20pt,xshift=18pt] {\tiny$30\degree$};
-                    \draw pic [draw,angle radius=10] {angle=B--O--Y} node[below right=10pt,yshift=25pt] {\tiny$120\degree$};
-                    \draw pic [draw,angle radius=15] {angle=B--O--X} node[below right=20pt,yshift=15pt] {\tiny$30\degree$};
+                    \draw pic [draw,angle radius=10] {angle=B--O--Y}
+                    node[below right=10pt,yshift=25pt] {\tiny$120\degree$};
+                    \draw pic [draw,angle radius=15] {angle=B--O--X}
+                    node[below right=20pt,yshift=15pt] {\tiny$30\degree$};
                 \end{tikzpicture}
             \end{center}
         \end{minipage}
@@ -164,16 +166,18 @@
                     \draw [-Stealth] (O) -- ++(30:2) coordinate(A) node[above] {$T_3$};
                     \draw [-Stealth] (O) -- ++(150:2) coordinate(B) node[above] {$T_2$};
 
-                    \draw pic [draw,angle radius=10] {angle=A--O--Y} node[above right=16pt,xshift=-10pt] {\tiny$60\degree$};
-                    \draw pic [draw,angle radius=8] {angle=Y--O--B} node[above left=16pt,xshift=10pt] {\tiny$60\degree$};
+                    \draw pic [draw,angle radius=10] {angle=A--O--Y}
+                    node[above right=16pt,xshift=-10pt] {\tiny$60\degree$};
+                    \draw pic [draw,angle radius=8] {angle=Y--O--B}
+                    node[above left=16pt,xshift=10pt] {\tiny$60\degree$};
                 \end{tikzpicture}
             \end{center}
         \end{minipage}
     \end{frame}
 
-%    \begin{frame}{End}
-%        \begin{center}
-%            \huge Thank you for listening.
-%        \end{center}
-%    \end{frame}
+    \begin{frame}{End}
+        \begin{center}
+            \huge Thank you for listening.
+        \end{center}
+    \end{frame}
 \end{document}
