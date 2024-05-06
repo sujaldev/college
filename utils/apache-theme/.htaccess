@@ -8,7 +8,7 @@ IndexOptions +AddAltClass +Charset=UTF-8 +FancyIndexing +FoldersFirst +HTMLTable
 IndexOptions +IgnoreCase +NameWidth=* +SuppressRules +SuppressDescription +IconsAreLinks
 
 # Some meta tags to add to the head tag
-IndexHeadInsert "<meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'><meta http-equiv='X-UA-Compatible' content='ie=edge'>"
+IndexHeadInsert "<meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'><meta http-equiv='X-UA-Compatible' content='ie=edge'><link href=/theme/favicon.svg rel=icon type=image/svg+xml>"
 
 HeaderName "/theme/header.html"
 ReadmeName "/theme/footer.html"
