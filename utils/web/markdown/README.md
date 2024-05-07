@@ -51,3 +51,7 @@ import something
 
 print("Hello, World!")
 ```
+
+### HTML
+
+<p>Manually writing html code inside markdown.</p>

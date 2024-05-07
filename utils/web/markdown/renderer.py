@@ -31,7 +31,7 @@ class HighlightRenderer(mistune.HTMLRenderer):
 
 
 render_markdown = mistune.create_markdown(
-    renderer=HighlightRenderer(),
+    renderer=HighlightRenderer(escape=False),
     plugins=['strikethrough', 'footnotes', 'table', 'speedup', 'task_lists', 'url']
 )
 
