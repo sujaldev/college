@@ -1,4 +1,5 @@
-igittigitt
 Jinja2
 minify-html
 Pygments
+mistune
+python-frontmatter
