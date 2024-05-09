@@ -176,4 +176,18 @@ Given string is a palindrome.
     % ---------------------------------------------------------------------------------------------------------------- %
 
     % ---------------------------------------------------------------------------------------------------------------- %
+    \question{Write a program that receives marks of a student for a subject as input and assigns a grade A$\|$B$\|$C%
+        $\|$D$\|$E$\|$F.}
+    \begin{code}
+        {Program}{python}
+offset = 9 - int(input("Enter marks for subject (0 - 100): ")) // 10
+# Makes negative offset values equal zero
+positive_offset = (abs(offset) + offset) // 2
+print(chr(65 + positive_offset) if offset <= 5 else "F")
+    \end{code}
+    \begin{code}
+        {Output}{text}
+Enter marks for subject (0 - 100): 90
+A
+    \end{code}
 \end{document}
