@@ -30,7 +30,7 @@
             \item len()
             \item max() and min()
             \item fetching specific content from string
-        \end{itemize}}
+        \end{itemize}}\vspace*{10pt}
     \begin{code}
         {Program}{python}
 string = "Hello, World!"
@@ -56,6 +56,43 @@ len(): 13
 max(): "r"
 min(): " "
 fetching "llo": "llo"
+    \end{code}
+    % ---------------------------------------------------------------------------------------------------------------- %
+
+    % ---------------------------------------------------------------------------------------------------------------- %
+    \\~\vfill%
+    \question{%
+        Write a program to test and check the mathematical functions such as:
+        \begin{itemize}
+            \item ciel()
+            \item sqrt()
+            \item pow()
+            \item factorial()
+        \end{itemize}}\vfill
+    \newpage
+    \begin{code}
+        {Program}{python}
+from math import ceil, sqrt, pow, factorial
+
+num = 3.14
+
+print(
+    f"num: {num}\n",
+    f"ceil(num): {ceil(num)}",
+    f"sqrt(num): {sqrt(num)}",
+    f"pow(num, 2): {pow(num, 2)}",
+    f"factorial(5): {factorial(5)}",
+    sep="\n"
+)
+    \end{code}
+    \begin{code}
+        {Output}{text}
+num: 3.14
+
+ceil(num): 4
+sqrt(num): 1.772004514666935
+pow(num, 2): 9.8596
+factorial(5): 120
     \end{code}
     % ---------------------------------------------------------------------------------------------------------------- %
 
