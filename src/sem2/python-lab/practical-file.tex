@@ -1,0 +1,63 @@
+%! Author = Sujal Singh
+%! Date = 5/8/24
+
+% Preamble
+%! suppress = FileNotFound
+\documentclass[11pt]{ipu-python}
+\usepackage[
+    pdftitle={Programming in Python Practical File},
+    pdfsubject={Programming in Python Practical File},
+    pdfauthor={Sujal Singh},
+    pdfdisplaydoctitle,
+    hidelinks,
+]{hyperref}
+
+% Packages
+\usepackage{amsmath}
+
+% Document
+\makeindex
+\begin{document}
+    \maketitle
+    % ---------------------------------------------------------------------------------------------------------------- %
+
+    % ---------------------------------------------------------------------------------------------------------------- %
+    \question{%
+        Write a program to perform string maniuplation operations using set of pre-defined functions such as:
+        \begin{itemize}
+            \item find()
+            \item upper()
+            \item len()
+            \item max() and min()
+            \item fetching specific content from string
+        \end{itemize}}
+    \begin{code}
+        {Program}{python}
+string = "Hello, World!"
+
+print(
+    f'string: "{string}"\n',
+    f'find("llo"): {string.find("llo")}',
+    f'upper(): {string.upper()}',
+    f'len(): {len(string)}',
+    f'max(): "{max(string)}"',
+    f'min(): "{min(string)}"',
+    f'fetching "llo": "{string[(start := string.find("llo")):start + len("llo")]}"',
+    sep="\n"
+)
+    \end{code}
+    \begin{code}
+        {Output}{text}
+string: "Hello, World!"
+
+find("llo"): 2
+upper(): HELLO, WORLD!
+len(): 13
+max(): "r"
+min(): " "
+fetching "llo": "llo"
+    \end{code}
+    % ---------------------------------------------------------------------------------------------------------------- %
+
+    % ---------------------------------------------------------------------------------------------------------------- %
+\end{document}
