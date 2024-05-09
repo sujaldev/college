@@ -190,4 +190,30 @@ print(chr(65 + positive_offset) if offset <= 5 else "F")
 Enter marks for subject (0 - 100): 90
 A
     \end{code}
+    % ---------------------------------------------------------------------------------------------------------------- %
+
+    % ---------------------------------------------------------------------------------------------------------------- %
+    \question{Write a program to compute the GCD of two numbers.}
+    \begin{code}
+        {Program}{python}
+def gcd(a, b):
+    # Using the Euclidean algorithm
+    if a < b:
+        return gcd(a, b - a)
+    elif a > b:
+        return gcd(a - b, b)
+    return a # if a equals b, then gcd is the same as a and b.
+
+
+print(gcd(
+    int(input("Enter first number: ")),
+    int(input("Enter second number: "))
+))
+    \end{code}
+    \begin{code}
+        {Output}{text}
+Enter first number: 10
+Enter second number: 4
+2
+    \end{code}
 \end{document}
