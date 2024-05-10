@@ -60,7 +60,9 @@
 \fancyhead[RO]{\@author}
 \fancyhead[LE]{\textbf{Practical File}}
 \fancyhead[RE]{\@rollno}
-\fancyfoot[C]{Page \thepage}
+\fancyfoot[RO]{Page \thepage~~}
+\fancyfoot[LE]{~~Page \thepage}
+\fancyfoot[C]{}
 \renewcommand{\footrulewidth}{0.4pt}
 \renewcommand{\headrulewidth}{0.4pt}
 
@@ -72,7 +74,7 @@
 
 
 % --- Code Environment ---
-\usemintedstyle{bw}
+%\usemintedstyle{bw} % I figure why not have it colored for the digital version, I'll uncomment it when printing.
 % Changes minted line number size
 \renewcommand{\theFancyVerbLine}{\parbox{10pt}{\centering\footnotesize\arabic{FancyVerbLine}}}
 \newtcblisting{code}[2]{
