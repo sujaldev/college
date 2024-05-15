@@ -73,7 +73,6 @@
         \restoregeometry
         \thispagestyle{fancy}
         \globaldefs=0
-        \pagestyle{fancy}
     }
     \fancyhead[C]{%
         \hrule\\[15pt]\textbf{\large\@assignmentname}\\[4pt]\@author~--~\@rollno,~\@batch\rule[-15pt]{0pt}{2ex}}
@@ -120,7 +119,6 @@
 
 % --- Code Environment ---
 %\usemintedstyle{bw} % I figure why not have it colored for the digital version, I'll uncomment it when printing.
-\usemintedstyle{xcode}
 % Changes minted line number size
 \renewcommand{\theFancyVerbLine}{\parbox{10pt}{\centering\footnotesize\arabic{FancyVerbLine}}}
 \newtcblisting{code}[2]{
@@ -138,7 +136,7 @@
     title=\textbf{#1:},
     minted options = {
         linenos,
-        stripall,
+%        stripall,
         breaklines,
         xleftmargin=10pt,
     },

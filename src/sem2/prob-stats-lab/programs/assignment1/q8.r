@@ -1,0 +1,8 @@
+a <- seq(from = 1, to = 100, by = 3)
+range(a)
+max(a)
+min(a)
+mean(a)
+median(a)
+var(a)
+sum(a)
