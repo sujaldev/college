@@ -105,12 +105,21 @@
     \assignmentname{#1}%
     \newpage\pagestyle{assignmentstart}}
 
-% --- Question Command ---
-\newcommand{\question}[1]{\stepcounter{questions}\noindent\textbf{\arabic{questions}. #1}\\\vspace*{10pt}}
+% --- Question Commands ---
+\newcommand{\@questionspacingvalue}{\\~\\}
+\newcommand{\@questionspacing}{\@questionspacingvalue}
+
+\newcommand{\question}[1]{\@questionspacing\stepcounter{questions}\noindent\textbf{\arabic{questions}. #1}\\}
+
+\newcommand{\firstquestion}[1]{%
+    \renewcommand{\@questionspacing}{}%
+    \question{#1}%
+    \renewcommand{\@questionspacing}{\@questionspacingvalue}}
 
 
 % --- Code Environment ---
 %\usemintedstyle{bw} % I figure why not have it colored for the digital version, I'll uncomment it when printing.
+\usemintedstyle{xcode}
 % Changes minted line number size
 \renewcommand{\theFancyVerbLine}{\parbox{10pt}{\centering\footnotesize\arabic{FancyVerbLine}}}
 \newtcblisting{code}[2]{
