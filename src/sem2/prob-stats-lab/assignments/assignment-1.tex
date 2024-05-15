@@ -16,3 +16,23 @@ a * c
 \end{code}
 %----------------------------------------------------------------------------------------------------------------------%
 
+%----------------------------------------------------------------------------------------------------------------------%
+\question{Make a vector and assign values to it and access 4\textsuperscript{th}, 3\textsuperscript{rd} and
+6\textsuperscript{th} element and access all values from 3\textsuperscript{rd} element upto the length of vector.}
+\begin{code}
+    {Program}{r}
+myvector <- c(0, 10, 20, 30, 40 , 50, 60, 70, 80)
+
+myvector[4]
+myvector[3]
+myvector[6]
+myvector[0:length(myvector)]
+\end{code}
+\begin{code}
+    {Output}{text}
+[1] 30
+[1] 20
+[1] 50
+[1]  0 10 20 30 40 50 60 70 80
+\end{code}
+%----------------------------------------------------------------------------------------------------------------------%
