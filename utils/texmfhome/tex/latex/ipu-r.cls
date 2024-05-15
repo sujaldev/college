@@ -116,7 +116,7 @@
     \question{#1}%
     \renewcommand{\@questionspacing}{\@questionspacingvalue}}
 
-\newcommand{\outputfigure}[2][0.7]{%
+\newcommand{\outputfigure}[2][0.45]{%
     \noindent\textbf{Output:}
     \begin{center}
         \includegraphics[width=#1\textwidth]{#2}

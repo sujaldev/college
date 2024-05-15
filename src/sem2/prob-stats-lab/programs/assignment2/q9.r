@@ -1,0 +1,1 @@
+plot(runif(100), type = "l")

@@ -12,3 +12,135 @@ a * c
 \end{code}
 \outputfigure{q1}
 %----------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------------------------------------%
+\firstquestion{Using R make a grouped bar plot.}
+\begin{code}
+    {Program}{r}
+students <- c(
+  "Alice", "Bob", "Eve"
+)
+subjects <- c(
+  "Physics", "Chemistry", "Mathematics"
+)
+marks <- c(
+  2, 5, 1,
+  4, 1, 2,
+  8, 7, 2
+)
+
+results <- matrix(marks, ncol = 3, nrow = 3)
+rownames(results) <- subjects
+colnames(results) <- students
+
+barplot(results, beside = TRUE)
+\end{code}
+\newpage
+\pagestyle{fancy}
+\outputfigure{q2}
+%----------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------------------------------------%
+\firstquestion{Using R make a grouped bar plot.}
+\begin{code}
+    {Program}{r}
+students <- c("Alice", "Bob", "Eve")
+subjects <- c("Physics", "Chemistry", "Mathematics")
+marks <- c(2, 5, 1, 4, 1, 2, 8, 7, 2)
+
+results <- matrix(marks, ncol = 3, nrow = 3)
+rownames(results) <- subjects
+colnames(results) <- students
+
+barplot(results)
+\end{code}
+\outputfigure{q3}
+%----------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------------------------------------%
+\newpage
+\firstquestion{Make a horizontal bar plot.}
+\begin{code}
+    {Program}{r}
+students <- c("Alice", "Bob", "Eve")
+subjects <- c("Physics", "Chemistry", "Mathematics")
+marks <- c(2, 5, 1, 4, 1, 2, 8, 7, 2)
+
+results <- matrix(marks, ncol = 3, nrow = 3)
+rownames(results) <- subjects
+colnames(results) <- students
+
+barplot(results, horiz = TRUE, las = 1)
+\end{code}
+\outputfigure[0.5]{q4}
+%----------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------------------------------------%
+\firstquestion{Make a pie chart.}
+\begin{code}
+    {Program}{r}
+pie(
+  c(70, 20, 10, 10),
+  labels = c("Sky", "Sunny Side", "Shaded Side", "Projection"),
+  col = c("#5B8AE7", "#D2A353", "#583925", "#163F92")
+)
+\end{code}
+\outputfigure[0.5]{q5}
+%----------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------------------------------------%
+\firstquestion{Make a pie chart showing atmospheric composition.}
+\begin{code}
+    {Program}{r}
+pie(
+  c(78, 21, 1, 1),
+  labels = c("Nitrogen", "Oxygen", "Argon", "Carbon Dioxide"),
+)
+\end{code}
+\outputfigure{q6}
+%----------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------------------------------------%
+\firstquestion{Make a histogram showing frequency of random numbers between 0 and 100.}
+\begin{code}
+    {Program}{r}
+x <- runif(100)
+hist(x)
+\end{code}
+\outputfigure{q7}
+%----------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------------------------------------%
+\newpage
+\firstquestion{Generate a plot using random points.}
+\begin{code}
+    {Program}{r}
+plot(
+  runif(100),
+  runif(100),
+  xlab = "x-position",
+  ylab = "y-position"
+)
+\end{code}
+\outputfigure{q8}
+%----------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------------------------------------%
+\firstquestion{Plot the fibonacci series.}
+\begin{code}
+    {Program}{r}
+plot(runif(100), type = "l")
+\end{code}
+\outputfigure{q9}
+%----------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------------------------------------%
+\newpage
+\firstquestion{Plot the Fibonacci sequence.}
+\begin{code}
+    {Program}{r}
+data <- c(0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610)
+plot(data, data, type = "b", xlab = "x", ylab = "y")
+\end{code}
+\outputfigure{q10}
+%----------------------------------------------------------------------------------------------------------------------%
