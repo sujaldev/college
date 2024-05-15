@@ -116,6 +116,13 @@
     \question{#1}%
     \renewcommand{\@questionspacing}{\@questionspacingvalue}}
 
+\newcommand{\outputfigure}[2][0.7]{%
+    \noindent\textbf{Output:}
+    \begin{center}
+        \includegraphics[width=#1\textwidth]{#2}
+    \end{center}
+}
+
 
 % --- Code Environment ---
 %\usemintedstyle{bw} % I figure why not have it colored for the digital version, I'll uncomment it when printing.
