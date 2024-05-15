@@ -3,7 +3,7 @@
 %! Date = 5/15/24
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ipu-python}[A class for R programming practical files for the Indraprastha University.]
+\ProvidesClass{ipu-r}[A class for R programming practical files for the Indraprastha University.]
 
 \LoadClass[a4paper,12pt,twoside]{report}
 
@@ -14,7 +14,7 @@
 \RequirePackage{tabularray}
 \RequirePackage[outputdir=./build]{minted}
 \RequirePackage[most,minted,listings]{tcolorbox}
-\RequirePackage[a4paper,hmargin=1.5cm,vmargin=1cm,includeheadfoot]{geometry}
+\RequirePackage[a4paper,hmargin=1.5cm,vmargin=1cm,includeheadfoot,headsep=10pt]{geometry}
 
 
 % --- Arguments ---
@@ -71,8 +71,9 @@
     \AddToHookNext{shipout/after}{%
         \globaldefs=1
         \restoregeometry
-        \pagestyle{fancy}
+        \thispagestyle{fancy}
         \globaldefs=0
+        \pagestyle{fancy}
     }
     \fancyhead[C]{%
         \hrule\\[15pt]\textbf{\large\@assignmentname}\\[4pt]\@author~--~\@rollno,~\@batch\rule[-15pt]{0pt}{2ex}}
