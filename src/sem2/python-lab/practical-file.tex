@@ -465,5 +465,117 @@ with open("input.txt") as file:
         {Output}{text}
 Hel
     \end{code}
+    \newpage
+    % ---------------------------------------------------------------------------------------------------------------- %
+
+    % ---------------------------------------------------------------------------------------------------------------- %
+    \question{Using NumPy, write a program to create 1-dimensional array, load it with numbers, and perform the
+    operation of iteration and slicing on it.}
+    \begin{code}
+        {Program}{python}
+import numpy as np
+
+print(arr := np.array([2, 3, 4, 1, 7, 6], np.int32))
+for e in np.nditer(arr):
+    print(e, end=" ")
+print()
+print(arr[2:5])
+    \end{code}
+    \begin{code}
+        {Output}{text}
+[2 3 4 1 7 6]
+2 3 4 1 7 6
+[4 1 7]
+    \end{code}
+    % ---------------------------------------------------------------------------------------------------------------- %
+
+    % ---------------------------------------------------------------------------------------------------------------- %
+    \\~\\
+    \question{Using NumPy, write a program to create multidimensional array, load it with the numbers and display the
+    content of it.}
+    \begin{code}
+        {Program}{python}
+import numpy as np
+
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+print(arr)
+    \end{code}
+    \begin{code}
+        {Output}{text}
+[[1 2 3]
+ [4 5 6]]
+    \end{code}
+    % ---------------------------------------------------------------------------------------------------------------- %
+
+    % ---------------------------------------------------------------------------------------------------------------- %
+    \\~\\
+    \question{Using NumPy, write a program to create two 1-dimensional array and perform the operation of iteration,
+        sorting the contents of array and concatenating the contents of the array.}
+    \begin{code}
+        {Program}{python}
+import numpy as np
+
+arr = np.array([9, 4, 6, 2, 7])
+
+for e in np.nditer(arr):
+    print(e)
+
+print(np.sort(arr))
+print(np.concatenate((arr, np.array([38, 77, 29, 84, 75]))))
+    \end{code}
+    \begin{code}
+        {Output}{text}
+9
+4
+6
+2
+7
+[2 4 6 7 9]
+[ 9  4  6  2  7 38 77 29 84 75]
+    \end{code}
+    % ---------------------------------------------------------------------------------------------------------------- %
+
+    % ---------------------------------------------------------------------------------------------------------------- %
+    \\~\\
+    \question{Using NumPy, initialize an array and display its dimensionality.}
+    \begin{code}
+        {Program}{python}
+import numpy as np
+
+arr = np.array([[[1, 2], [3, 4]], [[5, 6], [6, 7]], [[8, 9], [9, 10]]])
+print(arr.shape)
+    \end{code}
+    \begin{code}
+        {Output}{text}
+(3, 2, 2)
+    \end{code}
+    % ---------------------------------------------------------------------------------------------------------------- %
+
+    % ---------------------------------------------------------------------------------------------------------------- %
+    \\~\\
+    \question{Using Pandas, create a dataframe, initialize it with the contents such as your enrollment Number and
+    name and display them.}
+    \begin{code}
+        {Program}{python}
+import numpy as np
+import pandas as pd
+
+class_list = pd.DataFrame(np.array([
+    ["Name", "Enrollment Number"],
+    ["Alice", 1],
+    ["Bob", 2],
+    ["Bob", 3]
+]))
+
+print(class_list)
+    \end{code}
+    \begin{code}
+        {Output}{text}
+       0                  1
+0   Name  Enrollment Number
+1  Alice                  1
+2    Bob                  2
+3    Bob                  3
+    \end{code}
     % ---------------------------------------------------------------------------------------------------------------- %
 \end{document}
