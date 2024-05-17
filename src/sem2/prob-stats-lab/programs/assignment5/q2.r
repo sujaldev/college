@@ -1,0 +1,1 @@
+choose(4, 2) / choose(52, 2)

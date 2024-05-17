@@ -10,6 +10,7 @@
 % --- Packages ---
 \RequirePackage{lmodern}
 \RequirePackage{fancyhdr}
+\RequirePackage{enumitem}
 \RequirePackage{graphicx}
 \RequirePackage{tabularray}
 \RequirePackage[outputdir=./build]{minted}
@@ -117,11 +118,17 @@
     \question{#1}%
     \renewcommand{\@questionspacing}{\@questionspacingvalue}}
 
+\newcommand{\@figuretitle}{Output}
 \newcommand{\outputfigure}[2][0.45]{%
-    \noindent\textbf{Output:}
+    \noindent\textbf{\@figuretitle:}
     \begin{center}
         \includegraphics[width=#1\textwidth]{#2}
     \end{center}
+}
+\newcommand{\figurefigure}[2][0.45]{%
+    \renewcommand{\@figuretitle}{Figure}%
+    \outputfigure[#1]{#2}
+    \renewcommand{\@figuretitle}{Output}%
 }
 
 
