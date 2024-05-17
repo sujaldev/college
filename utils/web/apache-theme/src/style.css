@@ -25,26 +25,22 @@ body {
 
 header {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     margin: 1rem 0;
-    text-align: center;
 }
 
 #heading-wrapper {
-    display: inline-flex;
-    max-width: 80%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
 }
 
 #heading-wrapper > * {
-    margin: 0.5rem 0;
-    display: inline;
+    margin: 0;
+}
+
+#heading-wrapper > h4 {
+    font-size: calc(15px + 0.45vw);
 }
 
 #ipu-logo {

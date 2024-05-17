@@ -34,26 +34,22 @@
 
         header {
             display: flex;
-            flex-wrap: wrap;
-            flex-direction: row;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            gap: 20px;
+            gap: 10px;
             margin: 1rem 0;
-            text-align: center;
         }
 
         #heading-wrapper {
-            display: inline-flex;
-            max-width: 80%;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            text-align: center;
         }
 
         #heading-wrapper > * {
-            margin: 0.5rem 0;
-            display: inline;
+            margin: 0;
+        }
+
+        #heading-wrapper > h4 {
+            font-size: calc(15px + 0.45vw);
         }
 
         #ipu-logo {
@@ -507,19 +503,15 @@
 <header>
     <img src="/theme/logo.svg" alt="GGSIPU Logo" id="ipu-logo">
     <div id="heading-wrapper">
-        <h1>University School of Automation &amp; Robotics</h1>
-        <p>
-            Archive for all resources I've accumulated over time, possibly useful to all first year students and IIoT
-            students in later years. Visit
-            <a href="https://github.com/sujaldev/college" target="_blank">source repository</a> to contribute.
-        </p>
+        <h4>University School of Automation &amp; Robotics</h4>
+        <p>Personal resource archive for various courses.</p>
     </div>
 </header>
 <main>
     {{ content }}
 </main>
 <footer>
-    This site is maintained by <a href="https://sujal.dev/">Sujal Singh</a>.
+    To contribute or report issues, visit <a href="https://github.com/sujaldev/college">source repository</a>.
 </footer>
 </body>
 </html>
