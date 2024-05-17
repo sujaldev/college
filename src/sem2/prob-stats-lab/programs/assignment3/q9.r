@@ -1,0 +1,5 @@
+library("psych")
+x <- c(4, 12, 36, 108, 324, 972, 2916)
+mean(x, na.rm = TRUE)
+geometric.mean(x, na.rm = TRUE)
+harmonic.mean(x, na.rm = TRUE)
