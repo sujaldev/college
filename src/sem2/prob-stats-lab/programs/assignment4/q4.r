@@ -1,0 +1,5 @@
+x <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+mean(x)
+sd(x)
+# Coefficient of variance
+(sd(x) / mean(x)) * 100

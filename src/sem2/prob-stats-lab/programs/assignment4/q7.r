@@ -1,0 +1,5 @@
+grp <- seq(0, 5)
+f <- c(5, 35, 2, 24, 25, 35)
+x <- rep(grp, f)
+mad(x)
+mad(x) / median(x)
