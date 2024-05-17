@@ -1,0 +1,19 @@
+\startassignment{Measures of Dispersion}
+
+%----------------------------------------------------------------------------------------------------------------------%
+\firstquestion{Find the range and coefficent of range.}
+\begin{code}
+    {Program}{r}
+x <- floor(runif(10, min = 0, max = 100))
+x
+range(x)
+# Coefficent of range
+(max(x) - min(x)) / (max(x) + min(x))
+\end{code}
+\begin{code}
+    {Output}{text}
+ [1] 38 31 39 44 68 78 47 12 20 27
+[1] 12 78
+[1] 0.7333333
+\end{code}
+%----------------------------------------------------------------------------------------------------------------------%
