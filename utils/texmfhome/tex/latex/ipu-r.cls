@@ -42,7 +42,7 @@
     \end{minipage}\vfill%
     \begin{center}
         \rule{\textwidth}{2pt}\\[30pt]%
-        \textbf{\Large Probability and Statistics for Engineers Lab: (BS110P)}\\[20pt]%
+        \textbf{\Large Probability and Statistics for Engineers Lab (BS110P)}\\[20pt]%
         \textbf{\LARGE Practical File}%
         \\[25pt]\rule{\textwidth}{2pt}\\\vfill%
         {\large\begin{tblr}{width=0.75\textwidth,colspec={|X[c]|X[c]|},rows=30pt,hlines}
