@@ -102,7 +102,7 @@
 % --- Assignment commands ---
 \newcommand{\startassignment}[1]{%
     \newpage%
-    \setcounter{page}{1}%
+%    \setcounter{page}{1}%
     \setcounter{questions}{0}%
     \assignmentname{#1}%
     \newpage\pagestyle{assignmentstart}}
