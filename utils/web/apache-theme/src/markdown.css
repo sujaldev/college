@@ -2,6 +2,10 @@
     border-bottom: 1px solid lightgrey;
 }
 
+#markdown img {
+    width: 100%;
+}
+
 #markdown blockquote {
     margin: 1rem 1.25rem;
     padding: 1px 10px;
