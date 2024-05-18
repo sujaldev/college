@@ -2,6 +2,7 @@ Options +Indexes
 
 # Ignore listing of the listing directory
 IndexIgnore "/theme"
+IndexIgnore "README.md"
 
 # Indexing options
 IndexOptions +AddAltClass +Charset=UTF-8 +FancyIndexing +FoldersFirst +HTMLTable

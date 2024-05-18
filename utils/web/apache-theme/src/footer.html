@@ -39,4 +39,27 @@
     });
 
     path.innerHTML = pathContents.join('&rsaquo;');
+
+    // --- README Loader --- //
+    async function loadREADME() {
+        let content = await fetch("./README.md")
+            .then((response) => {
+                if (!response.ok) {
+                    throw Error("error loading readme")
+                }
+                return response.text()
+            })
+            .then((html) => {
+                const parser = new DOMParser()
+                const doc = parser.parseFromString(html, "text/html")
+                const markdownStyle = document.createElement("link")
+                markdownStyle.rel = "stylesheet"
+                markdownStyle.href = "/theme/markdown.css"
+                document.head.appendChild(markdownStyle)
+                document.getElementsByTagName("main")[0].appendChild(doc.getElementById("markdown"))
+            })
+
+    }
+
+    loadREADME();
 </script>
