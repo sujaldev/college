@@ -11,7 +11,7 @@ import frontmatter
 from minify_html import minify
 from pygments import highlight
 from pygments.formatters.html import HtmlFormatter
-from pygments.lexers import get_lexer_by_name
+from pygments.lexers import get_lexer_by_name, get_lexer_for_filename
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 # --- Command line ---
@@ -46,9 +46,21 @@ render_markdown = mistune.create_markdown(
 source = sys.stdin.read()
 
 # --- Parse frontmatter ---
-metadata, content = frontmatter.parse(source)
-filename = Path(os.environ.get("SCRIPT_FILENAME", "/Document")).resolve().name
-metadata["title"] = metadata.get("title", filename)
+filename = Path(os.environ.get("SCRIPT_FILENAME", "/Document")).resolve()
+filename, extn = filename.name, filename.suffix
+
+if extn == ".md":
+    metadata, content = frontmatter.parse(source)
+    metadata["title"] = metadata.get("title", filename)
+else:
+    # noinspection PyUnresolvedReferences
+    content = f"""
+<h3 style="border-bottom:1px solid lightgrey;padding-bottom:5px">{filename}</h3>
+
+```{{{get_lexer_for_filename(filename).name.lower()}}}
+{source}
+```""".strip()
+    metadata = {"title": filename}
 
 # --- Render markdown ---
 content = render_markdown(content)
