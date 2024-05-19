@@ -1,5 +1,8 @@
 Options +Indexes
 
+ErrorDocument 404 /theme/404.md
+ErrorDocument 403 /theme/403.md
+
 # Ignore listing of the listing directory
 IndexIgnore "/theme"
 IndexIgnore "README.md"
