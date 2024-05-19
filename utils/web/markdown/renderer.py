@@ -49,4 +49,4 @@ content = render_markdown(content)
 html = template.render(content=content, **metadata)
 
 # --- Post-processing ---
-print(minify(html))
+print(minify(html, minify_css=True, minify_js=True))
