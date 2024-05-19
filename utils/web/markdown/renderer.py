@@ -2,6 +2,7 @@
 # these projects, I've just glued it together).
 
 import sys
+import argparse
 from pathlib import Path
 
 import mistune
@@ -12,9 +13,14 @@ from pygments.formatters.html import HtmlFormatter
 from pygments.lexers import get_lexer_by_name
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 
+# --- Command line ---
+parser = argparse.ArgumentParser(prog="ipu-md", description="Render markdown/code files as html.")
+parser.add_argument("template", help="Absolute path to the jinja2 template file.")
+args = parser.parse_args()
+
 # --- Setup ---
 env = Environment(
-    loader=FileSystemLoader(Path(__file__).resolve().parent),
+    loader=FileSystemLoader(Path(args.template).resolve().parent),
     autoescape=select_autoescape()
 )
 template = env.get_template("template.jinja2")
