@@ -1,6 +1,7 @@
 # A very simple script to render markdown files (simple enough that most code here was available in the documentation of
 # these projects, I've just glued it together).
 
+import os
 import sys
 import argparse
 from pathlib import Path
@@ -46,7 +47,8 @@ source = sys.stdin.read()
 
 # --- Parse frontmatter ---
 metadata, content = frontmatter.parse(source)
-metadata["title"] = metadata.get("title", "USAR Resources")
+filename = Path(os.environ.get("SCRIPT_FILENAME", "/Document")).resolve().name
+metadata["title"] = metadata.get("title", filename)
 
 # --- Render markdown ---
 content = render_markdown(content)
