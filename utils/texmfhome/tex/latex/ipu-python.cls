@@ -53,6 +53,11 @@
     \pagenumbering{arabic}
 }
 
+% --- Setup Long Table for Index ---
+\DefTblrTemplate{caption}{default}{}    % Removes a caption
+\DefTblrTemplate{capcont}{default}{}    % Removes a caption on subsequent pages
+\DefTblrTemplate{contfoot}{default}{}   % Removes text denoting continuation on next page
+
 
 % --- Header & Footer ---
 \pagestyle{fancy}
