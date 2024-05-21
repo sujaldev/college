@@ -72,6 +72,20 @@
 \setcounter{questions}{0}
 \newcommand{\question}[1]{\stepcounter{questions}\noindent\textbf{\arabic{questions}. #1}\\\vspace*{10pt}}
 
+% --- Figures ---
+\newcommand{\@figuretitle}{Output}
+\newcommand{\outputfigure}[2][0.45]{%
+    \noindent\textbf{\@figuretitle:}
+    \begin{center}
+        \includegraphics[width=#1\textwidth]{#2}
+    \end{center}
+}
+\newcommand{\figurefigure}[2][0.45]{%
+    \renewcommand{\@figuretitle}{Figure}%
+    \outputfigure[#1]{#2}
+    \renewcommand{\@figuretitle}{Output}%
+}
+
 
 % --- Code Environment ---
 %\usemintedstyle{bw} % I figure why not have it colored for the digital version, I'll uncomment it when printing.
