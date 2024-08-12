@@ -1,0 +1,193 @@
+%! Author = Sujal Singh
+%! Date = 8/10/24
+
+% Preamble
+%! suppress = FileNotFound
+\documentclass[12pt]{ipu-math}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\setlength{\parindent}{0pt}
+
+% Document
+\begin{document}
+    \startassignment{Examples of Vector Spaces}
+
+    % -------------------------------------------------- Example 1 --------------------------------------------------- %
+    \example
+    Let $F$ be any field and $V$ be the set of all n--tuples:
+    \begin{align*}
+        V &= \{(x_1, x_2, \ldots, x_n): ~x_1, x_2, \ldots, x_n \in F\}
+    \end{align*}
+    then $V$ is denoted by $F^n$.\ Vector addition and scalar multiplication for $F^n$ is defined as below
+    $\forall x,y \in F^n$ and $c \in F$, where $x_i, y_i \in F$ and $i = 1, 2, \ldots, n$:
+    \begin{align*}
+        x + y &= (x_1 + y_1, x_2 + y_2, \ldots, x_n + y_n)\\
+        c \cdot x &= (c \cdot x_1, c \cdot x_2, \ldots, c \cdot x_n)
+    \end{align*}
+    Verify that the $F^n(F)$ forms a vector space.
+
+    \\~
+
+    \solution
+    Vector addition for $F^n(F)$ is defined as,
+    \begin{align*}
+        x + y &= (x_1 + y_1, x_2 + y_2, \ldots, x_n + y_n)
+    \end{align*}
+    where $x_i,y_i \in F$, and since addition of elements of a field is closed under that field, $x_i + y_i \in F$,
+    and so, $(x + y) \in F^n$, $\forall x,y \in F^n$.\ Therefore, \underline{closure property} is satisfied for vector
+    addition.
+    \begin{align*}
+        x + y = (x_1 + y_1, \ldots, x_n + y_n) &= (y_1 + x_1, \ldots, y_n + x_n) = y + x \tag{Commutativity}\\
+        x + (y + z) = (x_1 + (y_1 + z_1), \ldots) &= ((x_1 + y_1) + z_1), \ldots) = (x + y) + z \tag{Associativity}\\
+        x + 0 &= (x_1 + 0, \ldots, x_n + 0) = x \tag{Additive Identity}\\
+        x + (-x) &= (x_1 + (-x_1),\ldots,x_n + (-x_n)) = 0 \tag{Additive Inverse}
+    \end{align*}%
+    Scalar multiplication for $F^n(F)$ is defined as,
+    \begin{align*}
+        c \cdot x &= (c \cdot x_1, c \cdot x_2, \ldots, c \cdot x_n)
+    \end{align*}%
+    where $c, x_i \in F$, and since multiplication of elements of a field is closed under that field,
+    $c \cdot x_i \in F$, and so, $c \cdot x \in F^n$, $\forall x \in F^n$ and $c \in F$.\ Therefore,
+    \underline{closure property} is satisfied for scalar multiplication. $\forall \alpha,\beta \in F$:%
+    \begin{align*}
+        1 \cdot x &= (1 \cdot x_1, 1 \cdot x_2, \ldots, 1 \cdot x_n) = x \tag{Multiplicative Identity}\\
+        (\alpha \beta) x
+        = ((\alpha\beta) x_1, \ldots, (\alpha\beta) x_n)
+        &= (\alpha(\beta x_1), \ldots, \alpha(\beta x_n))
+        = \alpha(\beta x) \tag{Associativity}\\
+        \alpha\cdot(x + y)
+        = (\alpha\cdot(x_1 + y_1), \ldots)
+        &= ((\alpha\cdot x_1) + (\alpha\cdot y_1), \ldots)
+        = (\alpha\cdot x) + (\alpha\cdot y) \tag{Distributivity}\\
+        (\alpha + \beta)\cdot x
+        = ((\alpha + \beta)\cdot x_1, \ldots)
+        &= (\alpha\cdot x_1 + \beta\cdot x_1, \ldots)
+        = (\alpha\cdot x) + (\beta\cdot x) \tag{Distributivity}
+    \end{align*}
+
+    \\~
+
+    Hence, $F^n(F)$ forms a vector space.
+
+    % ---------------------------------------------------------------------------------------------------------------- %
+    \newpage
+    \pagestyle{fancy}
+
+    % -------------------------------------------------- Example 2 --------------------------------------------------- %
+    \example
+    Verify that the set of all matrices of order $m\times{n}$, having elements from field $F$, denoted by
+    $F^{m\times{n}}(F)$, forms a vector space.
+
+    \\~
+
+    \solution
+    Let $F$ be any field, $m, n \in \mathbb{Z}$, and $F^{m\times{n}}$ be the set of all $m\times{n}$ matrices over $F$.
+    \begin{align*}
+        F^{m\times{n}} = \{(a_{ij})_{m\times{n}} \mid a_{ij} \in F\}
+    \end{align*}
+    Vector addition is defined as follows $\forall A, B \in F^{m\times{n}}$:
+    \begin{gather*}
+        A + B = (a_{ij} + b_{ij})_{m\times{n}}\\
+        \forall i = 1, \ldots, n,~\forall j = 1, \ldots, n
+    \end{gather*}where,%
+    \begin{align*}
+        A = (a_{ij})_{m\times{n}} &=
+        \begin{pmatrix}
+            a_{11} & \ldots & a_{1n} \\
+            \vdots & \ddots & \vdots \\
+            a_{m1} & \ldots & a_{mn} \\
+        \end{pmatrix}\\~\\
+        B = (b_{ij})_{m\times{n}} &=
+        \begin{pmatrix}
+            b_{11} & \ldots & b_{1n} \\
+            \vdots & \ddots & \vdots \\
+            b_{m1} & \ldots & b_{mn} \\
+        \end{pmatrix}\\
+    \end{align*}%
+    Scalar multiplication is defined as $c\cdot{A} = (c\cdot a_{ij})_{m\times{n}}$, $\forall c,\alpha,\beta \in F$.
+    \begin{align*}
+        A + B
+        &= (a_{ij} + b_{ij})_{m\times{n}}
+        \tag{$(a_{ij} + b_{ij}) \in F \implies$ Closure Property}\\
+        A + B
+        = (a_{ij} + b_{ij})_{m\times{n}}
+        &= (b_{ij} + a_{ij})_{m\times{n}}
+        = B + A \tag{Commutativity}\\
+        A + (B + C)
+        = (a_{ij} + (b_{ij} + c_{ij}))_{m\times{n}}
+        &= ((a_{ij} + b_{ij}) + c_{ij})_{m\times{n}}
+        = (A + B) + C \tag{Associativity}\\
+        A + (0)_{m\times{n}}
+        = (a_{ij} + 0)_{m\times{n}}
+        &= (a_{ij})_{m\times{n}}
+        = A \tag{Additive Identity}\\
+        A + (-A)
+        = (a_{ij} + (-a_{ij}))_{m\times{n}}
+        &= (0)_{m\times{n}}
+        = 0 \tag{Additive Inverse}\\
+        c\cdot A
+        &= (c\cdot a_{ij})_{m\times{n}}
+        \tag{$(c\cdot a_{ij}) \in F \implies$ Closure Property}\\
+        (\alpha\beta)\cdot A
+        = ((\alpha\beta)\cdot a_{ij})_{m\times{n}}
+        &= (\alpha\cdot(\beta a_{ij}))_{m\times{n}}
+        =\alpha\cdot(\beta A) \tag{Associativity}\\
+        (\alpha + \beta)\cdot A
+        &= ((\alpha + \beta)\cdot a_{ij})_{m\times{n}}\\
+        &= ((\alpha\cdot{a_{ij}}) + (\beta\cdot{a_{ij}}))_{m\times{n}}\\
+        &=(\alpha\cdot{A}) + (\beta\cdot{A}) \tag{Distributivity}\\
+        \alpha\cdot(A + B)
+        &= (\alpha\cdot(a_{ij} + b_{ij}))_{m\times{n}}\\
+        &= ((\alpha\cdot a_{ij}) + (\alpha\cdot b_{ij}))_{m\times{n}}\\
+        &=(\alpha\cdot{A}) + (\alpha\cdot{B}) \tag{Distributivity}
+    \end{align*}
+
+    \\~
+
+    Hence, $F^{m\times{n}}(F)$ forms a vector space.
+
+    % ---------------------------------------------------------------------------------------------------------------- %
+    \newpage
+    % -------------------------------------------------- Example 3 --------------------------------------------------- %
+    \example
+    Let $S$ be any non-empty set and $F$ be any field, and let $\mathcal{F}(S,F)$ denote the set of all functions from
+    $S \rightarrow F$:%
+    \begin{align*}%
+        \mathcal{F}(S,F) = \{f \mid f: S\rightarrow F\}
+    \end{align*}%
+    Vector addition is defined as follows, let $f,g \in \mathcal{F}(S,F)$:%
+    \begin{align*}%
+    (f+g)(s)
+        = f(s) + g(s)\tag{$\forall s \in S$}
+    \end{align*}%
+    and scalar multiplication is defined as follows, let $c \in F$:%
+    \begin{align*}
+    (c\cdot{f})(s)
+        = c\cdot{f(s)}
+    \end{align*}
+
+    \\~
+
+    \solution
+    Since $f:S\rightarrow F$ and $g:S\rightarrow F \implies f(s) + g(s) \in F,~ \forall s \in S$, and so,
+    $(f+g)(s) \in \mathcal{F}(S,F)$.\ Therefore, \underline{closure property} for vector addition is satisfied.
+    \begin{align*}
+    (f+g)(s)
+        = f(s) + g(s) &= g(s) + f(s) = (g+f)(s)\tag{Commutativity}\\
+        (f+(g+h))(s) = f(s) + (g(s) + h(s)) &= (f(s) + g(s)) + h(s) = ((f+g)+h)(s)\tag{Associativity}\\
+        0(s) &= 0,~\forall s \in S\tag{Additive Identity}\\
+        (f+(-f))(s) &= f(s) + (-f(s)) = 0\tag{Additive Inverse}
+    \end{align*}%
+    $(c\cdot{f})(s) = c\cdot{f(s)}$, where
+    $c,f(s) \in F \implies c\cdot{f(s)} \in F \implies (c\cdot f)(s) \in \mathcal{F}(S,F)$.\ Therefore,
+    \underline{closure property} is satisfied for scalar multiplication.%
+    \begin{align*}
+        f(s) &= 1,~\forall s \in S\tag{Multiplicative Identity}\\
+        (\alpha\beta\cdot{f})(s) = (\alpha\beta)\cdot{f(s)}
+        &= \alpha\cdot(\beta f(s)) = ((\beta f(s))\cdot\alpha)(s),~\forall s \in S\tag{Associativity}\\
+    \end{align*}
+    % ---------------------------------------------------------------------------------------------------------------- %
+\end{document}
