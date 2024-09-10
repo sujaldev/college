@@ -28,8 +28,7 @@
         {Program}{python}
 from collections import deque
 
-INITIAL, TARGET = (0, 0), (0, 1)
-J1_CAPACITY, J2_CAPACITY = 4, 3
+INITIAL, TARGET,J1_CAPACITY, J2_CAPACITY = (0, 0), (0, 1), 4, 3
 
 def possible_moves(current_state):
     moves = {current_state}
@@ -43,7 +42,6 @@ def possible_moves(current_state):
     # Transfer
     moves.add((a - (transfer := min(a, J2_CAPACITY - b)), b + transfer))
     moves.add((a + (transfer := min(b, J1_CAPACITY - a)), b - transfer))
-
     moves.remove(current_state)
     return moves
 
@@ -63,16 +61,122 @@ def search(initial_state, target_state):
     return []
 
 result = search(INITIAL, TARGET)
-if result:
-    print(f"Moves: {len(result) - 1}\nPath: ", end="")
-    print(*result, sep=" -> ")
-else:
-    print("Unreachable Target")
-    \end{code}
+print(f"Moves: {len(result) - 1 if result else 'Unreachable Target'}\nPath: ", end="")
+print(*result, sep=" -> ")
+    \end{code}%
     \begin{code}
         {Output}{text}
 Moves: 4
 Path: (0, 0) -> (4, 0) -> (1, 3) -> (1, 0) -> (0, 1)
+    \end{code}
+    \newpage%
+
+    \vspace*{-30pt}\question{8 Tile Problem.}\vspace*{-10pt}%
+    \begin{code}
+        {Program}{python}
+from copy import deepcopy
+from heapq import heappush, heappop
+
+SIZE = 3
+INITIAL = [
+    [1, 2, 3],
+    [8, 0, 4],
+    [7, 6, 5]]
+TARGET = [
+    [2, 8, 1],
+    [0, 4, 3],
+    [7, 6, 5]]
+BLANK_POS = [1, 1]
+ALLOWED_MOVES = ((1, 0), (-1, 0), (0, 1), (0, -1))
+
+
+def heuristic(state):
+    # Increases cost for every misplaced tile.
+    h = 0
+    for x in range(SIZE):
+        for y in range(SIZE):
+            if state[x][y] != TARGET[x][y]:
+                h += 1
+    return h
+
+
+def possible_moves(state, blank_pos):
+    x, y = blank_pos
+    moves = []
+    for i, j in ALLOWED_MOVES:
+        p, q = x + i, y + j
+        if not ((0 <= p <= 2) and (0 <= q <= 2)):
+            continue
+        next_state = deepcopy(state)
+        next_state[x][y], next_state[p][q] = next_state[p][q], next_state[x][y]
+        moves.append((next_state, (p, q)))
+    return moves
+
+
+def search():
+    pq = []
+    visited = set()
+    heappush(pq, (heuristic(INITIAL), 0, INITIAL, BLANK_POS))
+
+    while pq:
+        h, g, current, current_blank_pos = heappop(pq)
+        print(current)
+        if current == TARGET:
+            return
+        visited.add(tuple(map(tuple, current)))
+
+        for next_state, next_blank_pos in possible_moves(current, current_blank_pos):
+            if tuple(map(tuple, next_state)) in visited:
+                continue
+            new_g = g + 1
+            new_h = new_g + heuristic(next_state)
+            heappush(pq, (new_h, new_g, next_state, next_blank_pos))
+
+
+search()
+    \end{code}%
+    \begin{code}
+        {Output}{text}
+[[1, 2, 3], [8, 0, 4], [7, 6, 5]]
+[[1, 2, 3], [0, 8, 4], [7, 6, 5]]
+[[1, 2, 3], [8, 4, 0], [7, 6, 5]]
+[[1, 2, 0], [8, 4, 3], [7, 6, 5]]
+[[1, 0, 3], [8, 2, 4], [7, 6, 5]]
+[[1, 0, 2], [8, 4, 3], [7, 6, 5]]
+[[1, 2, 3], [8, 6, 4], [7, 0, 5]]
+[[0, 1, 3], [8, 2, 4], [7, 6, 5]]
+[[0, 2, 3], [1, 8, 4], [7, 6, 5]]
+[[1, 2, 3], [8, 4, 5], [7, 6, 0]]
+[[1, 3, 0], [8, 2, 4], [7, 6, 5]]
+[[2, 0, 3], [1, 8, 4], [7, 6, 5]]
+[[8, 1, 3], [0, 2, 4], [7, 6, 5]]
+[[0, 1, 2], [8, 4, 3], [7, 6, 5]]
+[[2, 8, 3], [1, 0, 4], [7, 6, 5]]
+[[2, 8, 3], [0, 1, 4], [7, 6, 5]]
+[[2, 8, 3], [1, 4, 0], [7, 6, 5]]
+[[8, 1, 2], [0, 4, 3], [7, 6, 5]]
+[[2, 8, 0], [1, 4, 3], [7, 6, 5]]
+[[1, 2, 3], [7, 8, 4], [0, 6, 5]]
+[[1, 3, 4], [8, 2, 0], [7, 6, 5]]
+[[1, 4, 2], [8, 0, 3], [7, 6, 5]]
+[[2, 3, 0], [1, 8, 4], [7, 6, 5]]
+[[1, 4, 2], [0, 8, 3], [7, 6, 5]]
+[[1, 2, 3], [8, 6, 4], [0, 7, 5]]
+[[1, 2, 3], [8, 6, 4], [7, 5, 0]]
+[[1, 2, 3], [0, 6, 4], [8, 7, 5]]
+[[1, 2, 3], [8, 4, 5], [7, 0, 6]]
+[[1, 3, 4], [8, 0, 2], [7, 6, 5]]
+[[8, 1, 3], [2, 0, 4], [7, 6, 5]]
+[[1, 3, 4], [0, 8, 2], [7, 6, 5]]
+[[2, 3, 4], [1, 8, 0], [7, 6, 5]]
+[[2, 8, 3], [1, 6, 4], [7, 0, 5]]
+[[8, 1, 3], [2, 4, 0], [7, 6, 5]]
+[[2, 8, 3], [1, 4, 5], [7, 6, 0]]
+[[8, 1, 0], [2, 4, 3], [7, 6, 5]]
+[[2, 0, 8], [1, 4, 3], [7, 6, 5]]
+[[8, 0, 1], [2, 4, 3], [7, 6, 5]]
+[[0, 8, 1], [2, 4, 3], [7, 6, 5]]
+[[2, 8, 1], [0, 4, 3], [7, 6, 5]]
     \end{code}
 
 \end{document}
