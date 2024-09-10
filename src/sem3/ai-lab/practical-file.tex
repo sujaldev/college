@@ -1,0 +1,78 @@
+%! Author = sujal
+%! Date = 9/10/24
+
+% Preamble
+%! suppress = FileNotFound
+\documentclass[11pt]{ipu-python}
+\doctitle{Artificial Intelligence Lab (ARI251)}
+
+% Packages
+\usepackage{amsmath}
+\usepackage[
+    pdftitle={AI Lab Practical File},
+    pdfsubject={AI Lab Practical File},
+    pdfauthor={Sujal Singh},
+    pdfdisplaydoctitle,
+    hidelinks,
+]{hyperref}
+
+% Document
+\begin{document}
+    \maketitle
+    \newpage\pagenumbering{arabic}\pagestyle{fancy}\question{%
+        Given two jugs with capacities 4 liters and 3 liters respectively, measure exactly 1 liter in the second jug,
+        by only performing the following operations: fill either jug to full capacity, empty either jug or transfer
+        water from one jug to another until either first jug is empty or the second jug is full (or vice versa).
+        Find the sequence of operations that reaches the target state with the minimum amount of moves.}\vspace*{-10pt}%
+    \begin{code}
+        {Program}{python}
+from collections import deque
+
+INITIAL, TARGET = (0, 0), (0, 1)
+J1_CAPACITY, J2_CAPACITY = 4, 3
+
+def possible_moves(current_state):
+    moves = {current_state}
+    a, b = current_state
+    # Empty
+    moves.add((0, b))
+    moves.add((a, 0))
+    # Fill
+    moves.add((J1_CAPACITY, b))
+    moves.add((a, J2_CAPACITY))
+    # Transfer
+    moves.add((a - (transfer := min(a, J2_CAPACITY - b)), b + transfer))
+    moves.add((a + (transfer := min(b, J1_CAPACITY - a)), b - transfer))
+
+    moves.remove(current_state)
+    return moves
+
+def search(initial_state, target_state):
+    queue = deque([(initial_state, [])])
+    visited = set()
+
+    while queue:
+        current, path = queue.popleft()
+        if current == target_state:
+            return path + [current]
+        visited.add(current)
+
+        for child in possible_moves(current):
+            if child not in visited:
+                queue.append((child, path + [current]))
+    return []
+
+result = search(INITIAL, TARGET)
+if result:
+    print(f"Moves: {len(result) - 1}\nPath: ", end="")
+    print(*result, sep=" -> ")
+else:
+    print("Unreachable Target")
+    \end{code}
+    \begin{code}
+        {Output}{text}
+Moves: 4
+Path: (0, 0) -> (4, 0) -> (1, 3) -> (1, 0) -> (0, 1)
+    \end{code}
+
+\end{document}
