@@ -15,10 +15,15 @@
     pdfdisplaydoctitle,
     hidelinks,
 ]{hyperref}
+\usepackage{tabularray}
 
 % Document
 \begin{document}
     \maketitle
+    \input{index}
+    % ---------------------------------------------------------------------------------------------------------------- %
+
+    % ---------------------------------------------------------------------------------------------------------------- %
     \newpage\pagenumbering{arabic}\pagestyle{fancy}\question{%
         Given two jugs with capacities 4 liters and 3 liters respectively, measure exactly 1 liter in the second jug,
         by only performing the following operations: fill either jug to full capacity, empty either jug or transfer
@@ -177,6 +182,38 @@ search()
 [[8, 0, 1], [2, 4, 3], [7, 6, 5]]
 [[0, 8, 1], [2, 4, 3], [7, 6, 5]]
 [[2, 8, 1], [0, 4, 3], [7, 6, 5]]
+    \end{code}
+
+    \vspace*{15pt}
+    \question{Color nodes such that no adjacent nodes have the same color with the minimum number of colors.}%
+    \begin{code}
+        {Program}{python}
+graph = {
+    "A": ["B", "C"],
+    "B": ["A", "C", "B"],
+    "C": ["A", "B", "D"],
+    "D": ["B", "C"]
+}
+
+color = {
+    "A": 0,
+    "B": 0,
+    "C": 0,
+    "D": 0
+}
+
+for parent, children in graph.items():
+    for child in children:
+        if color[child] == color[parent]:
+            color[child] += color[parent] + 1
+
+print(color)
+print(len(set(color.values())))
+    \end{code}
+    \begin{code}
+        {Output}{text}
+{'A': 0, 'B': 7, 'C': 3, 'D': 0}
+3
     \end{code}
 
 \end{document}
