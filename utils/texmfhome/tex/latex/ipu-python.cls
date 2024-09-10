@@ -20,9 +20,11 @@
 \renewcommand{\@author}{Sujal Singh}
 \newcommand{\@rollno}{04119051723} % what can one do, look up my GPA? I'll tell you, it's exactly mediocre (~50%ile).
 \newcommand{\@batch}{IIOT--B1--23}
+\newcommand{\@doctitle}{Programming in Python (ICT 160)}
 \renewcommand{\author}[1]{\renewcommand{\@author}{#1}}
 \newcommand{\rollno}[1]{\renewcommand{\@rollno}{#1}}
 \newcommand{\batch}[1]{\renewcommand{\@batch}{#1}}
+\newcommand{\doctitle}[1]{\renewcommand{\@doctitle}{#1}}
 
 
 % --- Title Page ---
@@ -40,7 +42,7 @@
     \end{minipage}\vfill%
     \begin{center}
         \rule{\textwidth}{2pt}\\[30pt]%
-        \textbf{\Huge Programming in Python (ICT 160)}\\[20pt]%
+        \textbf{\Huge \@doctitle}\\[20pt]%
         \textbf{\LARGE Practical File}%
         \\[25pt]\rule{\textwidth}{2pt}\\\vfill%
         {\large\begin{tblr}{width=0.75\textwidth,colspec={|X[c]|X[c]|},rows=30pt,hlines}
@@ -61,7 +63,7 @@
 
 % --- Header & Footer ---
 \pagestyle{fancy}
-\fancyhead[LO]{\textbf{Programming in Python (ICT 160)}}
+\fancyhead[LO]{\textbf{\@doctitle}}
 \fancyhead[RO]{\@author}
 \fancyhead[LE]{\textbf{Practical File}}
 \fancyhead[RE]{\@rollno}
@@ -82,7 +84,7 @@
 \newcommand{\outputfigure}[2][0.45]{%
     \noindent\textbf{\@figuretitle:}
     \begin{center}
-        \includegraphics[width=#1\textwidth]{#2}
+    \includegraphics[width=#1\textwidth]{#2}
     \end{center}
 }
 \newcommand{\figurefigure}[2][0.45]{%
