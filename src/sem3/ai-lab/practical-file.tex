@@ -187,7 +187,21 @@ search()
     \end{code}
 
     \vspace*{15pt}
-    \question{Color nodes such that no adjacent nodes have the same color with the minimum number of colors.}%
+    \question{Color nodes such that no adjacent nodes have the same color with the minimum number of colors.}
+    \vspace*{-30pt}%
+    \begin{center}%
+        \begin{tikzpicture}%
+            \node[shape=circle,draw=red,color=red] (A) at (0,2) {A};
+            \node[shape=circle,draw=blue,color=blue] (B) at (2,4) {B};
+            \node[shape=circle,draw=blue,color=blue] (C) at (2,0) {C};
+            \node[shape=circle,draw=red,color=red] (D) at (4,2) {D};
+
+            \path [-] (A) edge (B);
+            \path [-] (A) edge (C);
+            \path [-] (B) edge (D);
+            \path [-] (C) edge (D);
+        \end{tikzpicture}
+    \end{center}~\\%
     \begin{code}
         {Program}{python}
 graph = {
