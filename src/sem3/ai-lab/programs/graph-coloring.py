@@ -4,9 +4,9 @@ Color nodes such that no adjacent nodes have the same color with the minimum num
 
 graph = {
     "A": ["B", "C"],
-    "B": ["A", "C", "B"],
-    "C": ["A", "B", "D"],
-    "D": ["B", "C"]
+    "B": ["A", "D"],
+    "C": ["A", "D"],
+    "D": ["B", "C"],
 }
 
 color = {
@@ -19,7 +19,7 @@ color = {
 for parent, children in graph.items():
     for child in children:
         if color[child] == color[parent]:
-            color[child] += color[parent] + 1
+            color[child] += 1
 
 print(color)
 print(len(set(color.values())))
