@@ -1,0 +1,3 @@
+[submodule "src/sem3/mechatronics-project"]
+	path = src/sem3/mechatronics-project
+	url = git@github.com:sujaldev/bison.git
