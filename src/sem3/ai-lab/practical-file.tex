@@ -224,6 +224,51 @@ search()
 
     % ---------------------------------------------------------------------------------------------------------------- %
     % ---------------------------------------------------------------------------------------------------------------- %
+    \experiment{3}{To implement breadth-first search.}%
+    {Iinitilize OPEN queue with starting node and CLOSE as an empty list, loop until there are elements present in OPEN,
+    at each iteration pop the first item in the queue from the left and append it to CLOSE if not already prsent, then
+    for each child node of the current node append it to OPEN if not present in CLOSE. At the end CLOSE will contain the
+    BFS traversal of the given graph, print CLOSE.}
+
+    \begin{code}
+        {Program}{python}
+from collections import deque
+
+graph = {
+    "A": ["B", "C"],
+    "B": ["A", "D"],
+    "C": ["A", "D"],
+    "D": ["B", "C"],
+}
+
+OPEN = deque([])
+CLOSE = []
+
+
+def bfs(start):
+    OPEN.append(start)
+
+    while OPEN:
+        current = OPEN.popleft()
+        if current in CLOSE:
+            continue
+        CLOSE.append(current)
+        for child in graph[current]:
+            if child not in CLOSE:
+                OPEN.append(child)
+
+    print(CLOSE)
+
+
+bfs("A")
+    \end{code}
+    \begin{code}
+        {Output}{text}
+['A', 'B', 'C', 'D']
+    \end{code}
+
+    % ---------------------------------------------------------------------------------------------------------------- %
+    % ---------------------------------------------------------------------------------------------------------------- %
 
     \experiment{5}{Color nodes such that no adjacent nodes have the same color with the minimum number of colors.}%
     {The program performs breadth-first search on the given graph and at every node it changes the color of adjacent
