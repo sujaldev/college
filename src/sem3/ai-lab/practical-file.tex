@@ -224,11 +224,12 @@ search()
 
     % ---------------------------------------------------------------------------------------------------------------- %
     % ---------------------------------------------------------------------------------------------------------------- %
+
     \experiment{3}{To implement breadth-first search.}%
-    {Iinitilize OPEN queue with starting node and CLOSE as an empty list, loop until there are elements present in OPEN,
-    at each iteration pop the first item in the queue from the left and append it to CLOSE if not already prsent, then
-    for each child node of the current node append it to OPEN if not present in CLOSE. At the end CLOSE will contain the
-    BFS traversal of the given graph, print CLOSE.}
+    {Initilize OPEN queue with starting node and CLOSE as an empty list, loop until there are elements present in OPEN,
+        at each iteration pop the first item in the queue from the left and append it to CLOSE if not already prsent,
+        then for each child node of the current node append it to OPEN if not present in CLOSE. At the end CLOSE will
+        contain the BFS traversal of the given graph, print CLOSE.}
 
     \begin{code}
         {Program}{python}
@@ -265,6 +266,48 @@ bfs("A")
     \begin{code}
         {Output}{text}
 ['A', 'B', 'C', 'D']
+    \end{code}
+
+    % ---------------------------------------------------------------------------------------------------------------- %
+    % ---------------------------------------------------------------------------------------------------------------- %
+
+    \experiment{4}{To implement depth-first search.}%
+    {Initialize a recursive function dfs (depth-first search) that takes a starting node as input. The function first
+    checks if the current node is already in the CLOSE list (visited nodes). If not, it adds the current node to CLOSE
+    and recursively calls itself for each child node connected to the current node in the graph. The process continues
+    until all nodes are visited. The CLOSE list contains the DFS traversal of the graph. Finally, print the contents of
+    CLOSE.}
+
+    \begin{code}
+        {Program}{python}
+graph = {
+    "A": ["B", "C"],
+    "B": ["A", "D"],
+    "C": ["A", "E"],
+    "D": ["B"],
+    "E": ["C"],
+}
+
+CLOSE = []
+
+
+def dfs(start):
+    if start in CLOSE:
+        return
+
+    CLOSE.append(start)
+
+    for child in graph[start]:
+        dfs(child)
+
+
+dfs("A")
+
+print(CLOSE)
+    \end{code}
+    \begin{code}
+        {Output}{text}
+['A', 'B', 'D', 'C', 'E']
     \end{code}
 
     % ---------------------------------------------------------------------------------------------------------------- %
