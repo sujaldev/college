@@ -118,11 +118,11 @@
         ~\\#3\\%
     \end{tabularsection}}
 
-\BeforeBeginEnvironment{tabularsection}{\vspace*{-18pt}}
-
-\newenvironment{flowchart}{
-    \begin{tabularsection}{Flowchart}%
-        \centering%
-        ~\\~\\%
-        }{\\~\\%
-    \end{tabularsection}}
+\BeforeBeginEnvironment{tabularsection}{\vspace*{-20pt}}
+%
+%\newenvironment{flowchart}{
+%    \begin{tabularsection}{Flowchart}%
+%        \centering%
+%        ~\\~\\%
+%        }{\\~\\%
+%    \end{tabularsection}}

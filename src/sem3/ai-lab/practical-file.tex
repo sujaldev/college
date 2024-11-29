@@ -8,6 +8,8 @@
 
 % Packages
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}
 \usepackage[
     pdftitle={AI Lab Practical File},
     pdfsubject={AI Lab Practical File},
@@ -27,22 +29,29 @@
 
     %------------------------------------------------------------------------------------------------------------------%
     %------------------------------------------------------------------------------------------------------------------%
-    \newpage\pagenumbering{arabic}%
     \experiment{1}%
     {Given two jugs with capacities 4 liters and 3 liters respectively, measure exactly 1 liter in the
     second jug, by only performing the following operations: fill either jug to full capacity, empty either jug or
     transfer water from one jug to another until either first jug is empty or the second jug is full (or vice versa).
     Find the sequence of operations that reaches the target state with the minimum amount of moves.}%
-    {Some Description}%
-
-    \begin{tabularsection}{Algorithm}
-        \begin{algorithmic}[1]
-            \State Start
-            \State{\textbf{print} ``Hello, World!''}
-            \State Stop
-        \end{algorithmic}
-    \end{tabularsection}
-
+    {Given an initial and target state and the capacity of both the jugs, the \detokenize{possible_moves} function
+    produces next possible states which are then appended to a queue if not already visited, each node in the queue is
+    then visited (FIFO) until the current state becomes the target state or there are no possible moves left.}\\%
+%    \begin{tabularsection}{Algorithm}
+%        \begin{algorithmic}[1]
+%            \State Start
+%            \State queue $ \leftarrow \{ \text{INITIAL} \}$
+%            \State visited $ \leftarrow \{\}$
+%            \While{queue $ \neq \emptyset$}
+%                \State \textbf{POPLEFT} from queue $\rightarrow$ current
+%                \If{current $=$ TARGET}
+%                    \State \Return PATH
+%                \EndIf
+%                \State visited.append(current)
+%            \EndWhile
+%            \State Stop
+%        \end{algorithmic}
+%    \end{tabularsection}
     \begin{code}
         {Program}{python}
 from collections import deque
@@ -95,13 +104,13 @@ Path: (0, 0) -> (4, 0) -> (1, 3) -> (1, 0) -> (0, 1)
 
     \experiment{2}{8 Tile Problem.}{Some Description}%
 
-    \begin{tabularsection}{Algorithm}
-        \begin{algorithmic}[1]
-            \State Start
-            \State{\textbf{print} ``Hello, World!''}
-            \State Stop
-        \end{algorithmic}
-    \end{tabularsection}%
+%    \begin{tabularsection}{Algorithm}
+%        \begin{algorithmic}[1]
+%            \State Start
+%            \State{\textbf{print} ``Hello, World!''}
+%            \State Stop
+%        \end{algorithmic}
+%    \end{tabularsection}%
 
     \begin{code}
         {Program}{python}
@@ -216,29 +225,20 @@ search()
 
     \experiment{5}{Color nodes such that no adjacent nodes have the same color with the minimum number of colors.}%
     {Some Description%
-    \begin{center}%
-        \begin{tikzpicture}%
-            \node[shape=circle,draw=red,color=red] (A) at (0,2) {A};
-            \node[shape=circle,draw=blue,color=blue] (B) at (2,4) {B};
-            \node[shape=circle,draw=blue,color=blue] (C) at (2,0) {C};
-            \node[shape=circle,draw=red,color=red] (D) at (4,2) {D};
+        \begin{center}%
+            \begin{tikzpicture}%
+                \node[shape=circle,draw=red,color=red] (A) at (0,2) {A};
+                \node[shape=circle,draw=blue,color=blue] (B) at (2,4) {B};
+                \node[shape=circle,draw=blue,color=blue] (C) at (2,0) {C};
+                \node[shape=circle,draw=red,color=red] (D) at (4,2) {D};
 
-            \path [-] (A) edge (B);
-            \path [-] (A) edge (C);
-            \path [-] (B) edge (D);
-            \path [-] (C) edge (D);
-        \end{tikzpicture}
-    \end{center}~\\%
-    }
-
-    \begin{tabularsection}{Algorithm}
-        \begin{algorithmic}[1]
-            \State Start
-            \State{\textbf{print} ``Hello, World!''}
-            \State Stop
-        \end{algorithmic}
-    \end{tabularsection}%
-
+                \path [-] (A) edge (B);
+                \path [-] (A) edge (C);
+                \path [-] (B) edge (D);
+                \path [-] (C) edge (D);
+            \end{tikzpicture}
+        \end{center}~\\%
+    }%
     \begin{code}
         {Program}{python}
 graph = {
