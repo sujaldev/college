@@ -24,7 +24,7 @@
 
 
 \renewcommand{\experiment}[2]{%
-    \newpage%
+%    \newpage%
     \begin{center}%
         \textbf{\Huge Experiment--#1}\\[30pt]%
     \end{center}%
@@ -43,11 +43,17 @@
     \experiment{1}{Writing a program, compiling and running using command line in Java.}\\%
     \begin{code}
         {Program}{java}
+public class q1 {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
     \end{code}%
     \begin{code}
         {Output}{text}
+Hello, World!
     \end{code}
-    \newpage%
+    \vspace*{10pt}
 
     % ---------------------------------------------------------------------------------------------------------------- %
 
