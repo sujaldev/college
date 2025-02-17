@@ -56,5 +56,31 @@ Hello, World!
     \vspace*{10pt}
 
     % ---------------------------------------------------------------------------------------------------------------- %
+    % ---------------------------------------------------------------------------------------------------------------- %
+
+    \experiment{2(a)}{Write a program to show if the given number is a prime number using for loop.}%
+    \begin{code}
+        {Program}{java}
+public class q2a {
+    public static void main(String[] args) {
+        int n = 67;
+
+        for (int i = 2; i <= (n / 2); i++) {
+            if (n % i == 0) {
+                System.out.println("Composite number.");
+                return;
+            }
+        }
+        System.out.println("Prime number.");
+    }
+}
+    \end{code}%
+    \begin{code}
+        {Output}{text}
+Prime number.
+    \end{code}
+    \newpage%
+
+    % ---------------------------------------------------------------------------------------------------------------- %
 
 \end{document}
