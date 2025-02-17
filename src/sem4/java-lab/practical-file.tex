@@ -1,0 +1,54 @@
+%! Author = Sujal Singh
+%! Date = 1/17/25
+
+% Preamble
+%! suppress = FileNotFound
+\documentclass[11pt]{ipu-ai}
+\doctitle{OOPS With Java Lab (ARI256)}
+
+% Packages
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[
+    pdftitle={OOPS With Java Lab Practical File},
+    pdfsubject={OOPS With Java Lab Practical File},
+    pdfauthor={Sujal Singh},
+    pdfdisplaydoctitle,
+    hidelinks,
+]{hyperref}
+\usepackage{tabularray}
+\usepackage{tikz}
+\usepackage[indLines]{algpseudocodex}
+\usepackage{enumitem}
+
+
+\renewcommand{\experiment}[2]{%
+    \newpage%
+    \begin{center}%
+        \textbf{\Huge Experiment--#1}\\[30pt]%
+    \end{center}%
+    \begin{tabularsection}{Aim}%
+        ~\\#2\\%
+    \end{tabularsection}}
+
+% Document
+\begin{document}
+    \maketitle
+    \input{index}
+    % ---------------------------------------------------------------------------------------------------------------- %
+
+    %------------------------------------------------------------------------------------------------------------------%
+    %------------------------------------------------------------------------------------------------------------------%
+    \experiment{1}{Writing a program, compiling and running using command line in Java.}\\%
+    \begin{code}
+        {Program}{java}
+    \end{code}%
+    \begin{code}
+        {Output}{text}
+    \end{code}
+    \newpage%
+
+    % ---------------------------------------------------------------------------------------------------------------- %
+
+\end{document}
