@@ -3,6 +3,5 @@ project(src C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(src
-        q1a.c
-        q1b.c)
+add_executable(q1a q1a.c)
+add_executable(q1b q1b.c)

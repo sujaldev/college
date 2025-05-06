@@ -15,7 +15,7 @@ int main() {
             max = arr[i];
     }
 
-    printf("Minimum = %d; Maximum = %d; Difference = %d", min, max, max-min);
+    printf("Minimum = %d; Maximum = %d; Difference = %d", min, max, max - min);
 
     return 0;
 }
