@@ -1,0 +1,276 @@
+%! Author = Sujal Singh
+%! Date = 11/29/25
+
+% Preamble
+\documentclass[11pt]{beamer}
+
+\title{Fixed Partitioning \& Dynamic Partitioning}
+\author[Rohan, Shashwat, Sujal]
+{\(|\) Rohan Kumar \(|\) Shashwat Kumar \(|\) Sujal Singh \(|\)}
+\date[0\{39,40,41\}19051723]{\textbf{Enrollment Numbers:\\}\texttt{0\{39,40,41\}19051723}}
+
+
+% Packages
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage[edges]{forest}
+
+\usetheme{Madrid}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{frametitle continuation}[from second][]
+
+% Document
+\begin{document}
+    \begin{frame}{Operating Systems Presentation}
+        \begin{center}
+            %! suppress = FileNotFound
+            \includegraphics[width=80pt]{logo}
+        \end{center}
+        \maketitle
+    \end{frame}
+
+    \begin{frame}{Introduction: Memory Management in Operating Systems}
+        The operating system is responsible for deciding how the system's physical memory is shared among running
+        processes. There exist several approaches to do so:\\
+
+        \begin{center}
+            \begin{figure}
+                \begin{forest}
+                    forked edges,
+                    for tree={draw,l=4em,
+                    font=\strut\footnotesize\sffamily\em,
+                    align=center},
+                    where level=1{s sep=2em}{},
+                    [\textbf{Memory Management Techniques},
+                    [Contiguous Allocation
+                    [Single Contiguous\\Memory Partition]
+                    [Multiple Partitioning
+                    [\colorbox{yellow}{Fixed Partitioning}]
+                    [\colorbox{yellow}{Dynamic Partitioning}]]]
+                    [Non-Contiguous Allocation
+                    [Paging]
+                    [Segmentation]]]
+                \end{forest}\label{fig:allocation-methods}
+            \end{figure}
+        \end{center}
+    \end{frame}
+
+    % --------------------------------------
+    \begin{frame}[t]{Fixed Partitioning: Concept}
+        Fixed partitioning divides physical memory into a set of
+        \textbf{predefined, fixed-size partitions}.
+
+        \medskip
+
+        Key points:
+        \begin{itemize}
+            \item Number and size of partitions are decided at system boot.
+            \item Each partition holds at most one process at a time.
+            \item A process is loaded into the smallest partition large enough to contain it.
+        \end{itemize}
+
+        \medskip
+        This is the simplest form of contiguous memory allocation.
+    \end{frame}
+
+
+    % --------------------------------------
+    \begin{frame}[t]{Fixed Partitioning: Layout}
+        Partitions are static and do not adjust to process size.\\~\\
+        \begin{figure}[h!]
+            \centering
+            \begin{tikzpicture}[x=0.12cm, y=0.95cm]
+
+                % Outer memory box
+                \draw[thick] (0,0) rectangle (80,4);
+
+                % Partition boundaries
+                \foreach \x in {20,40,60} {
+                    \draw[thick] (\x,0) -- (\x,4);
+                }
+
+                % Labels for partitions
+                \node at (10,4.3) {OS};
+                \node at (30,4.3) {Partition 1};
+                \node at (50,4.3) {Partition 2};
+                \node at (70,4.3) {Partition 3};
+
+                % Process in Partition 2 (smaller than partition)
+                \draw[fill=blue!30] (20,0) rectangle (32,4);
+                \node at (26,2) {\footnotesize Process};
+
+                % Internal fragmentation shading
+                \draw[fill=red!20,pattern=north east lines] (32,0) rectangle (40,4);
+                \node[rotate=90] at (36,2) {\footnotesize Internal Fragmentation};
+
+                % Empty partitions
+                \node at (10,2) {\footnotesize OS};
+                \node at (50,2) {\footnotesize Free};
+                \node at (70,2) {\footnotesize Free};
+
+            \end{tikzpicture}
+            \caption{Fixed Partioning Layout}
+            \label{fig:frixed-partioning}
+        \end{figure}
+        \\~\\
+    \end{frame}
+
+
+    % --------------------------------------
+    \begin{frame}[t]{Fixed Partioning: Drawbacks}
+        Fixed partitioning suffers from \textbf{internal fragmentation}:
+        unused memory \emph{inside} a partition.
+
+        \medskip
+
+        Why it occurs:
+        \begin{itemize}
+            \item Processes rarely match the partition size exactly.
+            \item Extra space inside the assigned partition cannot be used by others.
+        \end{itemize}
+
+        \medskip
+        Example: a 40\,KB process placed in a 64\,KB partition wastes 24\,KB.
+    \end{frame}
+
+
+    % --------------------------------------
+    \begin{frame}[t]{Fixed Partioning: Drawbacks}
+        Additional limitations:
+        \begin{itemize}
+            \item Total number of simultaneously running processes
+            is capped by the number of partitions.
+            \item Memory distribution cannot adapt to real workload changes.
+            \item Large processes may not fit any partition even if total free
+            memory is sufficient.
+        \end{itemize}
+
+        \medskip
+        These constraints made fixed partitioning unsustainable as programs grew larger and more varied.
+    \end{frame}
+
+
+    % --------------------------------------
+    \begin{frame}[t]{Fixed Partioning: Summary}
+        Fixed partitioning is simple but fundamentally rigid:
+        \begin{itemize}
+            \item Wastes memory (internal fragmentation).
+            \item Artificially limits multiprogramming.
+            \item Cannot respond to dynamic workload requirements.
+        \end{itemize}
+
+        \medskip
+        Dynamic partitioning was introduced to escape these limitations.
+    \end{frame}
+
+    \begin{frame}[t]{Dynamic Partitioning: Concept}
+        Dynamic partitioning allows the operating system to allocate memory blocks
+        \textbf{of variable size}, matching the exact needs of each process.
+
+        \medskip
+
+        Key ideas:
+        \begin{itemize}
+            \item Memory begins as one large free block.
+            \item When a process arrives, the OS finds a free region large enough.
+            \item The process receives a block equal to its required size.
+            \item On exit, its block is returned to the free list.
+        \end{itemize}
+
+        \medskip
+        This eliminates the internal fragmentation seen in fixed partitioning.
+    \end{frame}
+
+
+    % ------------------------------------------------------------------------------------------------------------------
+    %                                                Dynamic Partitioning
+    % ------------------------------------------------------------------------------------------------------------------
+
+    \begin{frame}[t]{Dynamic Partitioning}
+        Fixed partitioning wastes memory through \textbf{internal fragmentation}:
+        unused space inside rigid, predefined partitions.
+
+        \medskip
+
+        Dynamic partitioning was created to solve this problem by:
+        \begin{itemize}
+            \item Allocating memory exactly as needed.
+            \item Avoiding fixed-size, pre-cut partitions.
+        \end{itemize}
+
+        \medskip
+        The goal: give processes precisely the memory they request.
+    \end{frame}
+
+
+    % --------------------------------------
+
+    \begin{frame}[t]{Dynamic Partitioning: External Fragmentation}
+        Although dynamic partitioning avoids internal fragmentation,
+        it introduces \textbf{external fragmentation}.
+
+        \medskip
+
+        As processes are created and terminated:
+        \begin{itemize}
+            \item Free memory becomes scattered into small, non-adjacent holes.
+            \item Total free memory may be enough for a new process, but
+            no \emph{single} contiguous block may be large enough.
+        \end{itemize}
+
+        \medskip
+        This is the fundamental limitation that eventually pushed OS design
+        toward paging.
+    \end{frame}
+
+
+    % --------------------------------------
+
+    \begin{frame}[t]{Placement Algorithms}
+        Because free memory holes vary in size, the OS must choose where to place new processes.
+
+        \medskip
+
+        Common strategies:
+        \begin{itemize}
+            \item \textbf{First-fit}: use the first hole large enough.
+            Fast and works well in practice.
+            \item \textbf{Best-fit}: use the smallest hole that fits.
+            Minimizes leftover space per allocation but increases fragmentation.
+            \item \textbf{Worst-fit}: use the largest hole.
+            Attempts to keep holes large; performs poorly overall.
+        \end{itemize}
+    \end{frame}
+
+
+    % --------------------------------------
+
+    \begin{frame}[t]{Compaction}
+        To reduce external fragmentation, the OS may perform \textbf{compaction}:
+        \begin{itemize}
+            \item Move allocated blocks to one side of memory.
+            \item Combine scattered free holes into one large block.
+        \end{itemize}
+
+        \medskip
+
+        Limitations:
+        \begin{itemize}
+            \item Requires relocating processes.
+            \item Expensive and disruptive.
+        \end{itemize}
+
+        Compaction is a temporary fix, paging eventually replaced this entire model.
+    \end{frame}
+
+    % --------------------------------------
+
+    \begin{frame}[t]{The End}
+        \begin{center}
+            \vfill
+            \textbf{\Huge Thank you.}
+            \vfill
+        \end{center}
+    \end{frame}
+\end{document}
