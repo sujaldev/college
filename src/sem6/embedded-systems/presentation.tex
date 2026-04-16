@@ -26,10 +26,6 @@
 \usepackage{tabularray}
 \UseTblrLibrary{booktabs}
 
-% --- Code Environment ---
-%\usemintedstyle{bw}
-% Changes minted line number size
-
 % Document
 \begin{document}
     \begin{frame}{Embedded Systems Presentation}
@@ -52,10 +48,15 @@
     \begin{frame}{What is RTC?}
         \begin{itemize}
             \item RTC (Real-Time Clock) is a hardware module that keeps track of time.
-            \item It stores seconds, minutes, hours, day, date, month, year.
+            \item It stores seconds, minutes, hours, day, date, month, year in registers.
             \item A battery is used to keep the time and date even when the power is off.
             \item Used where accurate, persistent timekeeping is required.
             \item It works independently of the microcontroller.
+            \item Time is maintained using a 32.768 kHz crystal oscillator.
+            \item Internal frequency division generates a 1 Hz signal (1 second tick).
+            \item Time values are stored in registers in BCD (Binary Coded Decimal) format.
+            \item RTC communicates with microcontrollers using protocols like I2C or SPI.
+            \item Some RTCs provide additional features like alarms and square wave output.
         \end{itemize}
     \end{frame}
 
@@ -135,10 +136,10 @@
 
         \textbf{Typical Operating Circuit:}
 
-        \\~\\
+        \\
 
         \begin{center}
-            \includegraphics[width=0.85\textwidth]{ds1307-circuit}
+            \includegraphics[width=0.8\textwidth]{ds1307-circuit}
         \end{center}
 
         \framebreak
@@ -191,7 +192,7 @@
                 output depends upon the value of the RS0 and RS1 bits.
                 \item \textbf{RS (Rate Select):}
                 These bits control the frequency of the square wave output when the square wave
-                output has been enabled.
+                output has been enabled.\\~\\
                 \begin{tblr}{colspec={|c|c|c|}, hlines, vlines}
                     \textbf{RS1} & \textbf{RS0} & \textbf{SQW Output Frequency} \\
                     0 & 0 & 1Hz \\
@@ -234,19 +235,71 @@
             \includegraphics[width=0.9\textwidth]{start-stop-i2c}
         \end{center}
 
-        \\~\\
+        \framebreak
 
-        \textbf{\large Reading from DS1307}\\~\\
+        \textbf{\large Reading from DS1307}\\
+
+        \begin{center}
+            \includegraphics[width=0.7\textwidth]{repeated-start}
+        \end{center}
+
+        \\[10pt]
 
         \begin{enumerate}
             \item Follow steps 1 and 2 of writing procedure and set the address to be read.
             \item After sending a repeated START condition, transmit the address of DS1307 (1001101) follwed by a 1 to
-            indicate a read operation. Register pointer will be auto incremeted after transmitting each byte.
+            indicate a read operation. Register pointer will be auto incremented after transmitting each byte.
             \item Transmit a STOP bit condition.
         \end{enumerate}
     \end{frame}
 
     \begin{frame}[fragile,allowframebreaks]{Interfacing with AVR Microcontroller}
+
+        \noindent%
+        In the AVR microcontroller, five major registers are associated with the TWI (I2C is referred to as Two-Wire
+        Interface). They are: \\
+        \begin{enumerate}
+            \item \textbf{TWI Bit Rate Register (TWBR):}
+            TWBR selects the division factor to control the SCL clock frequency in master mode.
+            \\
+            \begin{equation*}
+                \text{SCL Frequency} = \frac{\text{CPU Clock Frequency}}{16 + 2 (\text{TWBR}) \times 4^{\text{TWPS}}}
+            \end{equation*}
+            \item \textbf{TWI Status Register (TWSR):}
+            The most-significant first five bits of TWSR are dedicated to show the status of the TWI logic and bus. The
+            first two least-significant bits control the bit rate prescaler.
+            \item \textbf{TWI Control Register (TWCR):} TWCR controls the operation of the TWI.
+            \begin{enumerate}
+                \item \textbf{Bit 0 -- TWIE (TWI Interrupt Enable):}
+                Making this bit HIGH enables the TWI interrupt if the general interrupt is enabled.
+                \item \textbf{Bit 2 -- TWEN (TWI Enable):} Making this bit HIGH enables the TWI module.
+                \item \textbf{Bit 3 -- TWWC (TWI Write Collison Flag):}
+                This bit is set HIGH when we attempt to access the TWI Data Register when TWINT is low. This flag is
+                cleared by writing to the TWDR register when TWINT is high.
+                \item \textbf{Bit 4 -- TWSTO (TWI STOP Condition bit):}
+                In master mode, making this bit HIGH causes the TWI to generate a STOP condition. This bit is cleared by
+                hardware when the STOP condition is transmitted.
+                \item \textbf{Bit 5 -- TWSTA (TWI START Condition bit):}
+                Making this bit HIGH will generate a START condition if the bus is free; otherwise, the TWI module waits
+                for the bus to become free and then generates a START condition.
+                \item \textbf{Bit 6 -- TWEA (TWI Enable Acknowledge):}
+                Making this bit HIGH will enable the generation of ACK when needed in slave or receiver mode.
+                \item \textbf{Bit 7 -- TWINT (TWI Interrupt):}
+                This bit is set by hardware when the TWI module has finished its current job. If the TWI and general
+                interrupt are enabled, changing TWINT to one will cause the MCU to jump to the TWI interrupt vector.
+                Clearing this flag starts the operation of the TWI. TWINT must be cleared by software.
+            \end{enumerate}
+            \item \textbf{TWI Data Register (TWDR):}
+            In Receive mode, the last received byte will be in the TWDR, and in Transmit mode, you should write the next
+            byte into TWDR to be transmitted. We can access the TWDR only when the TWIE is set to one otherwise
+            collision happens.
+            \item \textbf{TWI Address Register (TWAR):}
+            TWAR contains the 7-bit slave address to which the TWI will respond
+            when working as slave.
+        \end{enumerate}
+
+        \framebreak
+
         \textbf{\large Setting the time in assembly:}
         \\~\\
 
@@ -333,5 +386,241 @@ A1: DEC     R22                  ;transmit STOP condition
     BRNE    A1
     RET
         \end{minted}
+
+        \framebreak
+
+        \textbf{\large Setting the date in assembly:}
+        \\~\\
+        \begin{minted}[fontsize=\scriptsize,ignorelexererrors=true]{asm}
+.INCLUDE "M32DEF.INC"
+
+    LDI     R21,HIGH(RAMEND)     ;set up stack
+    OUT     SPH,R21
+    LDI     R21,LOW(RAMEND)
+    OUT     SPL,R21
+
+    CALL    I2C_INIT             ;initialize the I2C module
+
+    CALL    I2C_START            ;transmit a START condition
+    LDI     R21, 0b11010000      ;SLA (1001101) + W(0)
+    CALL    I2C_SEND             ;transmit R21 to I2C bus
+    LDI     R21, 0x07            ;set register pointer to 07
+    CALL    I2C_SEND             ;to access the control register
+    LDI     R21, 0x00            ;set control register = 0
+    CALL    I2C_SEND             ;transmit R21 to I2C bus
+    CALL    I2C_STOP             ;transmit a STOP condition
+
+    CALL    DELAY
+
+    CALL    I2C_START            ;transmit a START condition
+    LDI     R21, 0b11010000      ;SLA (1001101) + W(0)
+    CALL    I2C_SEND             ;transmit R21 to I2C bus
+    LDI     R21, 0x04            ;set register pointer to 4
+    CALL    I2C_SEND             ;transmit R21 to I2C bus
+    LDI     R21, 0x19            ;set day to 0x19 = 19 BCD
+    CALL    I2C_SEND             ;transmit R21 to I2C bus
+    LDI     R21, 0x10            ;set month to 0x10 = 10 BCD
+    CALL    I2C_SEND             ;transmit R21 to I2C bus
+    LDI     R21, 0x09            ;set year to 0x09 = 09 BCD
+    CALL    I2C_SEND             ;transmit R21 to I2C bus
+    CALL    I2C_STOP             ;transmit a STOP condition
+
+HERE: RJMP HERE                 ;wait here forever
+
+;****************************************************
+I2C_INIT:
+    LDI   R21, 0
+    OUT   TWSR, R21        ; set prescaler bits to zero
+    LDI   R21, 0x47        ; move 0x47 into R21
+    OUT   TWBR, R21        ; SCL freq. is 50k for 8 MHz XTAL
+    LDI   R21, (1<<TWEN)   ; move 0x04 into R21
+    OUT   TWCR, R21        ; enable the TWI
+    RET
+
+;****************************************************
+I2C_START:
+    LDI   R21, (1<<TWINT)|(1<<TWSTA)|(1<<TWEN)
+    OUT   TWCR, R21        ; transmit a START condition
+W1:
+    IN    R21, TWCR        ; read control register into R21
+    SBRS  R21, TWINT       ; mask the interrupt flag
+    RJMP  W1               ; jump to W1 if TWINT is 1
+    RET
+
+;****************************************************
+I2C_SEND:
+    OUT   TWDR, R21        ; move SLA+W into TWDR
+    LDI   R21, (1<<TWINT)|(1<<TWEN)
+    OUT   TWCR, R21        ; configure TWCR to send TWDR
+W2:
+    IN    R21, TWCR        ; read control register into R21
+    SBRS  R21, TWINT       ; mask the interrupt flag
+    RJMP  W2               ; jump to W2 if TWINT is 1
+    RET
+
+;****************************************************
+I2C_STOP:
+    LDI   R21, (1<<TWINT)|(1<<TWSTO)|(1<<TWEN)
+    OUT   TWCR, R21        ; transmit STOP condition
+W3:
+    IN    R21, TWCR        ; read control register into R21
+    SBRS  R21, TWSTO       ; mask the interrupt flag
+    RJMP  W3               ; jump to W3 if TWINT is 1
+    RET
+
+;****************************************************
+DELAY:
+    LDI   R22, 0xFF
+A1:
+    DEC   R22              ; transmit STOP condition
+    NOP
+    BRNE  A1
+    RET
+        \end{minted}
+
+        \framebreak
+
+        \textbf{\large Setting the time in C:}
+        \\~\\
+        \begin{minted}[fontsize=\scriptsize,ignorelexererrors=true]{C}
+#include <avr/io.h>              //standard AVR header
+
+void i2c_stop()
+{
+    TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
+}
+
+/**************************************************************/
+void i2c_write(unsigned char data)
+{
+    TWDR = data;
+    TWCR = (1<<TWINT) | (1<<TWEN);
+    while (!(TWCR & (1<<TWINT)));
+}
+
+/**************************************************************/
+void i2c_start(void)
+{
+    TWCR = (1<<TWINT) | (1<<TWSTA) | (1<<TWEN);
+    while (!(TWCR & (1<<TWINT)));
+}
+
+/**************************************************************/
+void i2c_init(void)
+{
+    TWSR = 0x00;        //set prescaler bits to zero
+    TWBR = 0x47;        //SCL freq. is 50k for XTAL=8M
+    TWCR = 0x04;        //enable TWI module
+}
+
+/**************************************************************/
+int main(void)
+{
+    i2c_init();                     //initialize I2C module
+    i2c_start();                    //transmit START condition
+    i2c_write(0b11010000);          //address DS1307 for write
+    i2c_write(0x07);                //set register pointer to 7
+    i2c_write(0x00);                //set value of location 7 to 0
+    i2c_stop();                     //transmit STOP condition
+
+    for (int k = 0; k < 100; k++);  //wait for a short time
+
+    i2c_start();                    //transmit START condition
+    i2c_write(0b11010000);          //address DS1307 for write
+    i2c_write(0);                   //set register pointer to 7
+    i2c_write(0x55);                //set seconds to 0x55 = 55 BCD
+    i2c_write(0x58);                //set minutes to 0x58 = 58 BCD
+    i2c_write(0b00010110);          //set hour=16 in 24 hours mode
+    i2c_stop();                     //transmit STOP condition
+
+    while (1);                      //stop here
+    return 0;
+}
+        \end{minted}
+
+        \framebreak
+
+        \textbf{\large Setting the date in C:}
+        \\~\\
+        \begin{minted}[fontsize=\scriptsize,ignorelexererrors=true]{C}
+#include <avr/io.h>              //standard AVR header
+
+void i2c_stop()
+{
+    TWCR = (1<<TWINT) | (1<<TWEN) | (1<<TWSTO);
+}
+
+/**************************************************************/
+void i2c_write(unsigned char data)
+{
+    TWDR = data;
+    TWCR = (1<<TWINT) | (1<<TWEN);
+    while (!(TWCR & (1<<TWINT)));
+}
+
+/**************************************************************/
+void i2c_start(void)
+{
+    TWCR = (1<<TWINT) | (1<<TWSTA) | (1<<TWEN);
+    while (!(TWCR & (1<<TWINT)));
+}
+
+/**************************************************************/
+void i2c_init(void)
+{
+    TWSR = 0x00;        //set prescaler bits to zero
+    TWBR = 0x47;        //SCL freq. is 50k for XTAL=8M
+    TWCR = 0x04;        //enable TWI module
+}
+
+/**************************************************************/
+int main(void)
+{
+    i2c_init();                     //initialize I2C module
+    i2c_start();                    //transmit START condition
+    i2c_write(0b11010000);          //address DS1307 for write
+    i2c_write(0x07);                //set register pointer to 7
+    i2c_write(0x00);                //set value of location 7 to 0
+    i2c_stop();                     //transmit STOP condition
+
+    for (int k = 0; k < 100; k++);  //wait for a short time
+
+    i2c_start();                    //transmit START condition
+    i2c_write(0b11010000);          //address DS1307 for write
+    i2c_write(0);                   //set register pointer to 7
+    i2c_write(0x55);                //set seconds to 0x55 = 55 BCD
+    i2c_write(0x58);                //set minutes to 0x58 = 58 BCD
+    i2c_write(0b00010110);          //set hour=16 in 24 hours mode
+    i2c_stop();                     //transmit STOP condition
+
+    while (1);                      //stop here
+    return 0;
+}
+        \end{minted}
+    \end{frame}
+
+    \begin{frame}{Applications of RTC}
+        \begin{itemize}
+            \item Digital clocks and watches
+            \item Data logging systems
+            \item Embedded systems requiring timestamps
+            \item Alarm systems
+            \item IoT devices
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{Example System}
+        \begin{itemize}
+            \item RTC + Microcontroller + LCD
+            \item RTC stores current time
+            \item MCU reads time using I2C
+            \item Time displayed on LCD
+        \end{itemize}
+    \end{frame}
+
+    \begin{frame}{The End}
+        \begin{center}
+            \textbf{\Huge Thank you.}
+        \end{center}
     \end{frame}
 \end{document}
